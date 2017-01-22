@@ -1,0 +1,22 @@
+<redpen-conf lang="ja">
+    <validators>
+        <validator name="SentenceLength">
+            <property name="max_len" value="120" />
+        </validator>
+        <validator name="SectionLength">
+            <property name="max_num" value="2000" />
+        </validator>
+        <validator name="CommaNumber">
+            <property name="max_num" value="5" />
+        </validator>
+        <validator name="InvalidExpression" />
+        <validator name="KatakanaEndHyphen" />
+        <validator name="KatakanaSpellCheck" />
+        <validator name="DoubleNegative" />
+        <validator name="DoubledJoshi" />
+        <validator name="Okurigana" />
+        <validator name="SpaceBetweenAlphabeticalWord" />
+        <validator name="Contraction" />
+        <validator name="SuccessiveWord" />
+    </validators>
+</redpen-conf>

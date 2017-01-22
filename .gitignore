@@ -1,0 +1,11 @@
+node_modules/
+vendor/
+.bundle/
+articles/webroot/
+articles/book/
+redpen-distribution-*/
+temp/
+
+articles/*.pdf
+npm-debug.log
+redpen-*.tar.gz

@@ -1,0 +1,34 @@
+sudo: false
+
+language: ruby
+
+rvm:
+  - 2.3.1
+jdk:
+  - oraclejdk8
+
+env:
+  global:
+    - export LC_CTYPE=ja_JP.UTF-8
+    - GIT_COMMITTER_NAME=kubosho_
+    - GIT_COMMITTER_EMAIL=ta2@o2p.jp
+    - GIT_AUTHOR_NAME=kubosho_
+    - GIT_AUTHOR_EMAIL=ta2@o2p.jp
+    - REDPEN_VER=1.6.2
+    - NODEJS_VER=6.2.2
+    - secure: <token>
+
+install:
+  - ./bin/setup-redpen.sh $REDPEN_VER
+  - nvm install $NODEJS_VER
+  - nvm use $NODEJS_VER
+  - bundle install --path vendor/bundle
+  - npm install
+
+cache:
+  directories:
+    - vendor/bundle
+    - node_modules
+
+after_success:
+  - '[ "$TRAVIS_BRANCH" == "master" ] && [ "${TRAVIS_PULL_REQUEST}" = "false" ] && [ "$GH_TOKEN" ] && npm run deploy

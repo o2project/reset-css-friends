@@ -1,0 +1,17 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    epub_validator (1.1.0)
+    review (2.0.0)
+      rubyzip
+    rubyzip (1.2.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  epub_validator
+  review
+
+BUNDLED WITH
+   1.11.2
