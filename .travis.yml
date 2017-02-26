@@ -14,12 +14,11 @@ env:
     - GIT_COMMITTER_EMAIL=ta2@o2p.jp
     - GIT_AUTHOR_NAME=kubosho_
     - GIT_AUTHOR_EMAIL=ta2@o2p.jp
-    - REDPEN_VER=1.6.2
-    - NODEJS_VER=6.2.2
+    - NODEJS_VER=6.10.0
     - secure: <token>
 
 install:
-  - ./bin/setup-redpen.sh $REDPEN_VER
+  - ./bin/setup-redpen.sh
   - nvm install $NODEJS_VER
   - nvm use $NODEJS_VER
   - bundle install --path vendor/bundle
