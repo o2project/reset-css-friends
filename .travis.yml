@@ -24,6 +24,9 @@ install:
   - bundle install --path vendor/bundle
   - npm install
 
+script:
+  - npm test
+
 cache:
   directories:
     - vendor/bundle
