@@ -30,4 +30,4 @@ cache:
     - node_modules
 
 after_success:
-  - '[ "$TRAVIS_BRANCH" == "master" ] && [ "${TRAVIS_PULL_REQUEST}" = "false" ] && [ "$GH_TOKEN" ] && npm run deploy
+  - '[ "$TRAVIS_BRANCH" == "master" ] && [ "${TRAVIS_PULL_REQUEST}" = "false" ] && [ "$GH_TOKEN" ] && npm run deploy'
