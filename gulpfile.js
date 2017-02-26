@@ -15,7 +15,7 @@ const webrootDir = 'book'
 
 const redpenBin = 'redpen-distribution-*/bin/redpen'
 const redpenTargetFile = '*.re'
-const redpenConfigFile = 'redpen-config.xml'
+const redpenConfigFile = 'redpen-conf-ja.xml'
 
 const reviewConfig = 'config.yml'
 const reviewPrefix = 'bundle exec'
