@@ -21,8 +21,7 @@ install:
   - ./bin/setup-redpen.sh
   - nvm install $NODEJS_VER
   - nvm use $NODEJS_VER
-  - bundle install --path vendor/bundle
-  - npm install
+  - npm run setup
 
 script:
   - npm test
