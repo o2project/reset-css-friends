@@ -27,7 +27,7 @@ body要素はBlink・Gecko・WebKitで同様のスタイル定義がおこなわ
 #@mapfile(../codes/body.css)
 //}
 
-一方Eric Mayer、Normalize.css、Sanitize.css、YUI 3では@<code>{body}要素へ対し@<code>{margin: 0;}を指定しています。
+reset.css側ではEric Mayer、Normalize.css、Sanitize.css、YUI 3では@<code>{body}要素へ対し@<code>{margin: 0;}を指定しています。
 Webページを作るときにページの外周へmarginを設定することはほとんど無いため、このような指定がされていると予想しています。
 
 == p要素
@@ -37,7 +37,28 @@ p要素はGeckoでは文字レイアウトの方向（@<code>{writing-mode}）�
 またBlinkやWebKitでは、@<code>{margin-before}や@<code>{margin-after}といったプロパティが定義されています。また値として@<code>{1__qem}というのが定義されています。
 これは、互換性モードで表示するときにmarginの相殺をおこなわないようにするものです。
 
-一方reset.css側ではYUI 3やEric Mayerといった古めのreset.cssでは@<code>{margin}と@<code>{padding}が0と指定されています。
+reset.css側ではYUI 3やEric Mayerといった古めのreset.cssでは@<code>{margin}と@<code>{padding}が0と指定されています。
 しかし、他のreset.cssでは特に指定がなくユーザーエージェントスタイルシートをそのまま使うようにしています。
 
 これは縦書きという概念が出てきて、論理marginが適用されている中、文字レイアウトの方向や向き、文字が流れる方向を意識しない指定が避けられてきた結果です。
+
+== h1要素
+
+h1要素は見出しを表す要素の中でもっともランクが高い要素です。
+また@<code>{section}や@<code>{article}要素といったセクショニング・コンテンツへh1要素を入れた場合は、入れ子具合に応じてスタイルが変わるようになっています。
+
+//list[h1-element][h1要素に対するスタイル定義]{
+#@mapfile(../codes/h1.css)
+//}
+
+normalize.cssやsanitize.cssではこの入れ子具合によってスタイルが変わるのを無くし、@<list>{h1-normalize}で示すスタイルが適用されるようになっています。
+
+//list[h1-normalize][h1要素に対するnormalize.cssなどのスタイル定義]{
+#@mapfile(../codes/h1-normalize.css)
+//}
+
+また、YUI3やEric Mayerでは見出しらしいスタイル定義を全て無かったことにしています（@<list>{h1-yui3}）。
+
+//list[h1-yui3][h1要素に対するYUI3などのスタイル定義]{
+#@mapfile(../codes/h1-yui3.css)
+//}
