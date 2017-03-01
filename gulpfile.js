@@ -19,6 +19,7 @@ const redpenConfigFile = 'redpen-conf-ja.xml'
 
 const reviewConfig = 'config.yml'
 const reviewPrefix = 'bundle exec'
+const reviewPreproc = `${reviewPrefix} review-preproc --replace`
 const reviewCompile = `${reviewPrefix} review-compile`
 const reviewWebMaker = `${reviewPrefix} review-webmaker`
 const reviewPdfMaker = `${reviewPrefix} review-pdfmaker`
@@ -32,8 +33,18 @@ gulp.task('clean', done => {
     })
 })
 
-gulp.task('web', done => {
+gulp.task('preproc', done => {
   process.chdir(targetDir)
+
+  exec(`${reviewPreproc} *.re`, (error) => {
+    if (error != null) {
+      console.error(error)
+    }
+    done()
+  })
+})
+
+gulp.task('web', ['preproc'], done => {
   exec(`${reviewWebMaker} ${reviewConfig}`, (error) => {
     if (error != null) {
       console.error(error)
@@ -42,8 +53,7 @@ gulp.task('web', done => {
   })
 })
 
-gulp.task('pdf', done => {
-  process.chdir(targetDir)
+gulp.task('pdf', ['preproc'], done => {
   exec(`${reviewPdfMaker} ${reviewConfig}`, (error) => {
     if (error != null) {
       console.error(error)
