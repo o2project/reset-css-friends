@@ -18,7 +18,6 @@ env:
     - secure: <token>
 
 install:
-  - ./bin/setup-redpen.sh
   - nvm install $NODEJS_VER
   - nvm use $NODEJS_VER
   - npm run setup

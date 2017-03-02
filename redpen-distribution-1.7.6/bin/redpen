@@ -1,0 +1,48 @@
+#!/bin/sh
+##
+## RedPen startup script
+##
+
+SCRIPT="$0"
+
+# SCRIPT may be an arbitrarily deep series of symlinks. Loop until we have the concrete path.
+while [ -h "$SCRIPT" ] ; do
+  ls=`ls -ld "$SCRIPT"`
+  # Drop everything prior to ->
+  link=`expr "$ls" : '.*-> \(.*\)$'`
+  if expr "$link" : '/.*' > /dev/null; then
+    SCRIPT="$link"
+  else
+    SCRIPT=`dirname "$SCRIPT"`/"$link"
+  fi
+done
+
+# Find RedPen home
+REDPEN_HOME=`dirname "$SCRIPT"`/..
+
+# Make REDPEN_HOME absolute
+export REDPEN_HOME=`cd "$REDPEN_HOME"; pwd`
+REDPEN_CLASSPATH=$REDPEN_HOME/conf/*:$REDPEN_HOME/lib/*
+
+JAVA_CMD=java
+JAVA_OPTS="$JAVA_OPTS -Dlogback.configurationFile=$REDPEN_HOME/conf/logback.xml -Dfile.encoding=UTF-8"
+
+which $JAVA_CMD >/dev/null
+if [ $? != 0 ]; then
+  if [ -z "$JAVA_HOME" ]; then
+      echo "Error: JAVA_HOME is not defined. Can not start RedPen" 1>&2
+      exit 1
+  else
+    JAVA_CMD=$JAVA_HOME/bin/java
+
+    if [ ! -x "$JAVA_CMD" ]; then
+      echo "Error: $JAVA_CMD is not execututable. Can not start RedPen" 1>&2
+      exit 1
+    fi
+  fi
+fi
+
+exec "$JAVA_CMD" $JAVA_OPTS \
+  -classpath "$REDPEN_CLASSPATH" \
+  cc.redpen.Main \
+  "$@"
