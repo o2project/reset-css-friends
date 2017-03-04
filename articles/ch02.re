@@ -130,3 +130,20 @@ h1 {
 }
 #@end
 //}
+
+== a要素
+
+a要素は各ブラウザのuser agent stylesheetでは特にスタイルが適用されていません。
+ただ、normalize.cssやsanitize.css、ressでは@<list>{a-reset}のようなスタイル定義をしています。
+
+//list[a-reset][a要素に対するreset.css側のスタイル定義]{
+#@mapfile(../codes/a-reset.css)
+a {
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+#@end
+//}
+
+@<code>{background-color: transparent;}が指定されている理由としては、IE 10上でリンクをクリックしたときにグレーの背景がついてしまうため、それを無かったことにするために定義されています。
+また@<code>{-webkit-text-decoration-skip: objects;}という指定は、英語の@<kw>{p}や@<kw>{y}、一部のロシア語をリンクの文字列にした場合、リンクの下線が途切れてしまうのを防ぐために指定されています。
