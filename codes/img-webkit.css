@@ -1,0 +1,8 @@
+#if defined(WTF_PLATFORM_IOS) && WTF_PLATFORM_IOS
+img {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+:any-link img {
+  -webkit-tap-highlight-color: inherit;
+}
+#endif

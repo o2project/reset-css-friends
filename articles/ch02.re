@@ -146,4 +146,24 @@ a {
 //}
 
 @<code>{background-color: transparent;}が指定されている理由としては、IE 10上でリンクをクリックしたときにグレーの背景がついてしまうため、それを無かったことにするために定義されています。
-また@<code>{-webkit-text-decoration-skip: objects;}という指定は、英語の@<kw>{p}や@<kw>{y}、一部のロシア語をリンクの文字列にした場合、リンクの下線が途切れてしまうのを防ぐために指定されています。
+また@<code>{-webkit-text-decoration-skip: objects;}という指定は、英語の@<kw>{p}や@<kw>{y}、一部のロシア語をリンクの文字列にした場合、リンクの下線が途切れてしまうのを防ぐために指定されています@<fn>{normalize-issue-573}。
+//footnote[normalize-issue-573][https://github.com/necolas/normalize.css/pull/573]
+
+== img要素
+
+img要素はiOSのWebKit上でタップしたときのハイライトが適用されないようになっています。
+
+//list[img-webkit][img要素に対するWebKitのスタイル定義]{
+#@mapfile(../codes/img-webkit.css)
+#if defined(WTF_PLATFORM_IOS) && WTF_PLATFORM_IOS
+img {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+:any-link img {
+  -webkit-tap-highlight-color: inherit;
+}
+#endif
+#@end
+//}
+
+normalize.cssやsanitize.css、ressではIE10でリンク内に画像があるとborderが適用されてしまうのを防ぐために、@<code>{border-style: none;}が指定されています。
