@@ -1,13 +1,24 @@
-= reset.cssは何をリセットしているのか
+= ユーザーエージェントスタイルシート
 
-=== 各ブラウザが既定で読み込むCSS
+ブラウザがWeb上のページを読み込むときに既定で使うCSSとして、@<kw>{ユーザーエージェントスタイルシート}があります。
+このユーザーエージェントスタイルシートはブラウザ上でどのように指定されているか見ることができます。
 
-ブラウザがWeb上のページを読み込むときに使うCSSとして、@<kw>{user agent stylesheet}があります。
-このuser agent stylesheetはブラウザ上でどのように指定されているか見ることができます。
+  * Chrome: https://chromium.googlesource.com/chromium/blink/+/master/Source/core/css/html.css
+  * Firefox: Firefoxで resource://gre-resources/html.css をアドレスバーに入力
+  * Safari: http://trac.webkit.org/browser/trunk/Source/WebCore/css/html.css
 
-  * Gecko: Firefoxで resource://gre-resources/html.css をアドレスバーに入力
-  * WebKit: http://trac.webkit.org/browser/trunk/Source/WebCore/css/html.css
-  * Blink: https://chromium.googlesource.com/chromium/blink/+/master/Source/core/css/html.css
+この章では、各ブラウザがユーザーエージェントスタイルシート内へどういった指定をしているか、@<list>{explain-elements}で示す要素に限定し見ていきます。
+
+//list[explain-elements][解説する要素一覧]{
+html, body,
+img, video, audio,
+ul, ol, li,
+table, tr, td,
+blockquote, h1, br, a, p,
+section, article, nav, aside,
+header, footer, main,
+form, input, textarea, button, select
+//}
 
 == html要素
 
