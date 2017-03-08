@@ -46,7 +46,7 @@ h1 {
 
 == a要素
 
-a要素は各ブラウザのuser agent stylesheetでは特にスタイルが適用されていません。
+a要素は各ブラウザのユーザーエージェントスタイルシートでは特にスタイルが適用されていません。
 ただ、normalize.cssやsanitize.css、ressでは@<list>{a-reset}のようなスタイル定義をしています。
 
 //list[a-reset][a要素に対するreset.css側のスタイル定義]{
