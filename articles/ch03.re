@@ -4,7 +4,7 @@
 
 sanitize.cssとress.cssでは、html要素に対し@<code>{box-sizing: border-box;}を指定した上で、全称セレクタへ@<code>{box-sizing: inherit;}を指定しています。
 このことでコンテンツ領域に@<code>{padding}や@<code>{border}の値が入るようになります。
-これによりボックスサイズの計算をより簡単にし、サイズの計算をやりやすくすることを狙っていると思われます。
+これによりボックスサイズの計算をより簡単にすることを狙っていると思われます。
 
 == body要素
 
@@ -16,7 +16,8 @@ Webページを作るときにページの外周へmarginを設定すること�
 reset.css側ではYUI 3やEric Meyerといった古めのreset.cssでは@<code>{margin}と@<code>{padding}が0と指定されています。
 しかし、他のreset.cssでは特に指定がなくユーザーエージェントスタイルシートをそのまま使うようにしています。
 
-これは縦書きという概念が出てきて、論理marginが適用されている中、文字レイアウトの方向や向き、文字が流れる方向を意識しない指定が避けられてきた結果です。
+これは新しく縦書きという概念が出てきたのに従い、reset.css側で文字の方向や向き、流れる方向を意識するようになったためです。
+その結果ユーザーエージェントスタイルシートをそのまま使ったほうが良いという結論に至ったと思われます。
 
 == h1要素
 
@@ -58,8 +59,8 @@ a {
 #@end
 //}
 
-@<code>{background-color: transparent;}が指定されている理由としては、IE 10上でリンクをクリックしたときにグレーの背景がついてしまうため、それを無かったことにするために定義されています。
-また@<code>{-webkit-text-decoration-skip: objects;}という指定は、英語の@<kw>{p}や@<kw>{y}、一部のロシア語をリンクの文字列にした場合、リンクの下線が途切れてしまうのを防ぐために指定されています@<fn>{normalize-issue-573}。
+@<code>{background-color: transparent;}が指定されている理由としては、IE 10上でリンクをクリックしたときにグレーの背景がついてしまうのを無くすために定義されています。
+また@<code>{-webkit-text-decoration-skip: objects;}という指定は、英語の@<kw>{p}や@<kw>{y}、一部のロシア語をリンクの文字にした場合、リンクの下線が途切れてしまうのを防ぐためです@<fn>{normalize-issue-573}。
 //footnote[normalize-issue-573][https://github.com/necolas/normalize.css/pull/573]
 
 == img要素
