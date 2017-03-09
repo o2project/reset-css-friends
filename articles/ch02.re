@@ -110,7 +110,7 @@ h1 {
 
 == img要素
 
-img要素はiOSのWebKit上でタップしたときのハイライトが適用されないようになっています。
+img要素はiOSのSafari上でタップしたときにハイライトが適用されないようになっています。
 
 //list[img-webkit][img要素に対するWebKitのスタイル定義]{
 #@mapfile(../codes/img-webkit.css)
@@ -122,5 +122,72 @@ img {
   -webkit-tap-highlight-color: inherit;
 }
 #endif
+#@end
+//}
+
+== ul, ol要素
+
+ulやol要素はFirefoxやChrome、Safariで論理marginとpaddingが指定されています@<list>{ul-firefox}。
+
+//list[ul-firefox][ul要素に対するSafariのスタイル定義]{
+#@mapfile(../codes/ul-firefox.css)
+ul {
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  padding-inline-start: 40px;
+}
+#@end
+//}
+
+入れ子になったulやol要素はFirefoxとChrome、Safariで指定しているプロパティは同じですが、セレクタの指定方法が違います。
+Firefoxでは@<code>{:any()}という疑似クラスを使って、@<list>{ul-nested-firefox}のようにul要素やol要素などが入れ子になったときのスタイル指定をおこなっています@<fn>{mdn-any-pseudo-class}。
+この@<code>{:any()}擬似クラスですが、CSS Selectors Level 4では@<code>{:matches()}として仕様策定が進んでいます@<fn>{css-selectors-4-matches}。
+//footnote[mdn-any-pseudo-class][https://developer.mozilla.org/ja/docs/Web/CSS/:any]
+//footnote[css-selectors-4-matches][https://drafts.csswg.org/selectors-4/#matches]
+
+//list[ul-nested-firefox][入れ子になったul要素に対するFirefoxのスタイル定義]{
+#@mapfile(../codes/ul-nested-firefox.css)
+/* nested lists have no top/bottom margins */
+:-moz-any(ul, ol, dir, menu, dl) ul,
+:-moz-any(ul, ol, dir, menu, dl) ol,
+:-moz-any(ul, ol, dir, menu, dl) dir,
+:-moz-any(ul, ol, dir, menu, dl) menu,
+:-moz-any(ul, ol, dir, menu, dl) dl {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+/* 2 deep unordered lists use a circle */
+:-moz-any(ol, ul, menu, dir) ul,
+:-moz-any(ol, ul, menu, dir) menu,
+:-moz-any(ol, ul, menu, dir) dir {
+  list-style-type: circle;
+}
+
+/* 3 deep (or more) unordered lists use a square */
+:-moz-any(ol, ul, menu, dir) :-moz-any(ol, ul, menu, dir) ul,
+:-moz-any(ol, ul, menu, dir) :-moz-any(ol, ul, menu, dir) menu,
+:-moz-any(ol, ul, menu, dir) :-moz-any(ol, ul, menu, dir) dir {
+  list-style-type: square;
+}
+#@end
+//}
+
+@<code>{:any()}や@<code>{:matches()}の仕様が固まっていないためか、ChromeやSafariでは@<list>{ul-nested-chrome}のように従来どおりの子孫セレクタを使った指定になっています。
+
+//list[ul-nested-chrome][入れ子になったul要素に対するChromeやSafariのスタイル定義]{
+#@mapfile(../codes/ul-nested-chrome.css)
+ul ul,
+ol ul {
+    list-style-type: circle
+}
+ol ol ul,
+ol ul ul,
+ul ol ul,
+ul ul ul {
+    list-style-type: square
+}
 #@end
 //}
