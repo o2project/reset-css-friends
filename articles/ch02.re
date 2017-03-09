@@ -3,6 +3,7 @@
 ブラウザがWeb上のページを読み込むときに既定で使うCSSとして、@<kw>{ユーザーエージェントスタイルシート}があります。
 このユーザーエージェントスタイルシートはブラウザ上でどのように指定されているか見ることができます。
 
+#@# prh:disable
   * Chrome: https://chromium.googlesource.com/chromium/blink/+/master/Source/core/css/html.css
   * Firefox: Firefoxで resource://gre-resources/html.css をアドレスバーに入力
   * Safari: http://trac.webkit.org/browser/trunk/Source/WebCore/css/html.css
