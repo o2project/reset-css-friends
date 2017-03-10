@@ -8,7 +8,10 @@
   * Firefox: Firefoxで resource://gre-resources/html.css をアドレスバーに入力
   * Safari: http://trac.webkit.org/browser/trunk/Source/WebCore/css/html.css
 
+このユーザーエージェントスタイルシートですが、ブラウザごとに指定されているスタイルが違います。
+そのため別途reset.cssを使わなかった場合、ブラウザによって見えかたが違うということが起きます@<fn>{user-agent-stylesheet-diff}。
 この章では、各ブラウザがユーザーエージェントスタイルシート内へどういった指定をしているか、自分がよく使う要素に限定し見ていきます（@<list>{explain-elements}）。
+//footnote[user-agent-stylesheet-diff][https://developer.mozilla.org/ja/docs/Web/Compatibility_FAQ/Tips_Default_Style_Difference.html]
 
 //list[explain-elements][解説する要素一覧]{
 html, body, img,
