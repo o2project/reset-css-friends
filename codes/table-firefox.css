@@ -1,0 +1,12 @@
+table[align="left"] {
+  float: left;
+}
+
+table[align="right"] {
+  float: right;
+  text-align: start;
+}
+
+table[rules] {
+  border-width: thin;
+  border-style: hidden;

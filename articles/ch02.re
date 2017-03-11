@@ -187,3 +187,25 @@ ul ul ul {
 }
 #@end
 //}
+
+== table要素
+
+table要素のスタイル指定ですが、Firefoxでは非推奨となった属性にもスタイル指定をおこなっているのが特色です。
+たとえば@<code>{align}や@<code>{frame}、@<code>{rules}といった属性が挙げられます（@<list>{table-firefox}）。
+
+//list[table-firefox][Firefoxで指定されている非推奨の属性に対してのスタイル指定（一部）]{
+#@mapfile(../codes/table-firefox.css)
+table[align="left"] {
+  float: left;
+}
+
+table[align="right"] {
+  float: right;
+  text-align: start;
+}
+
+table[rules] {
+  border-width: thin;
+  border-style: hidden;
+#@end
+//}
