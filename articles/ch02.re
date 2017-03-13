@@ -116,7 +116,7 @@ ChromeやSafariでは、@<code>{margin-before}や@<code>{margin-after}といっ�
 img要素はiOSのSafari上でタップしたときにハイライトが適用されないようになっています。
 
 //list[img-webkit][img要素に対するWebKitのスタイル定義]{
-#@mapfile(../codes/img-webkit.css)
+#@mapfile(../codes/browser/safari/img.css)
 #if defined(WTF_PLATFORM_IOS) && WTF_PLATFORM_IOS
 img {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -133,7 +133,7 @@ img {
 ulやol要素はFirefoxやChrome、Safariで論理marginとpaddingが指定されています@<list>{ul-firefox}。
 
 //list[ul-firefox][ul要素に対するSafariのスタイル定義]{
-#@mapfile(../codes/ul-firefox.css)
+#@mapfile(../codes/broser/firefox/ul.css)
 ul {
   display: block;
   list-style-type: disc;
@@ -151,7 +151,7 @@ Firefoxでは@<code>{:any()}という疑似クラスを使って、@<list>{ul-ne
 //footnote[css-selectors-4-matches][https://drafts.csswg.org/selectors-4/#matches]
 
 //list[ul-nested-firefox][入れ子になったul要素に対するFirefoxのスタイル定義]{
-#@mapfile(../codes/ul-nested-firefox.css)
+#@mapfile(../codes/firefox/ul-nested.css)
 /* nested lists have no top/bottom margins */
 :-moz-any(ul, ol, dir, menu, dl) ul,
 :-moz-any(ul, ol, dir, menu, dl) ol {
@@ -174,7 +174,7 @@ Firefoxでは@<code>{:any()}という疑似クラスを使って、@<list>{ul-ne
 @<code>{:any()}や@<code>{:matches()}の仕様が固まっていないためか、ChromeやSafariでは@<list>{ul-nested-chrome}のように従来どおりの子孫セレクタを使った指定になっています。
 
 //list[ul-nested-chrome][入れ子になったul要素に対するChromeやSafariのスタイル定義]{
-#@mapfile(../codes/ul-nested-chrome.css)
+#@mapfile(../codes/browser/chrome/ul-nested.css)
 ul ul,
 ol ul {
     list-style-type: circle
@@ -194,7 +194,7 @@ table要素のスタイル指定ですが、Firefoxでは非推奨となった�
 たとえば@<code>{align}や@<code>{frame}、@<code>{rules}といった属性が挙げられます（@<list>{table-firefox-1}）。
 
 //list[table-firefox-1][Firefoxで指定されている非推奨の属性に対してのスタイル指定（一部）]{
-#@mapfile(../codes/table-firefox-1.css)
+#@mapfile(../codes/browser/firefox/table-firefox.css)
 table[align="left"] {
   float: left;
 }
@@ -216,7 +216,7 @@ table[rules] {
 //footnote[form-firefox][https://jsfiddle.net/f3rp4kmu/]
 
 //list[table-firefox-2][-moz-is-htmlという謎の擬似クラスっぽいセレクタ]{
-#@mapfile(../codes/table-firefox-2.css)
+#@mapfile(../codes/browser/firefox/table-2.css)
 tr > form:-moz-is-html, tbody > form:-moz-is-html,
 thead > form:-moz-is-html, tfoot > form:-moz-is-html,
 table > form:-moz-is-html {
@@ -232,7 +232,7 @@ blockquote要素はFirefoxで@<code>{[type=cite]}という属性に対するス�
 この属性は現在W3Cの仕様には無い仕様ですが、過去にはあったらしくFirefoxではいい感じの見た目になります@<img>{firefox-blockquote-type-cite}。
 
 //list[blockquote-firefox][blockquote要素に対してのスタイル指定]{
-#@mapfile(../codes/blockquote-firefox.css)
+#@mapfile(../codes/browser/firefox/blockquote.css)
 blockquote {
   display: block;
   margin-block-start: 1em;
