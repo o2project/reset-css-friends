@@ -85,7 +85,7 @@ history: [["2017-04-09"]]
 debug: null
 
 # 固有IDに使用するドメイン。指定しない場合には、時刻に基づくランダムUUIDが入る
-# urnid: urn:uid:http://example.com/book-title/
+urnid: urn:uid:http://friends.o2p.jp/
 #
 # ISBN。省略した場合はurnidが入る
 # isbn: null
@@ -114,22 +114,8 @@ toclevel: 2
 # 本文でセクション番号を表示する見出しレベル
 secnolevel: 2
 
-# 以下のsecnolevelはまだ未実装。
-# 前付でセクション番号を表示する見出しレベル(未実装)
-# pre_secnolevel: 0
-#
-# 後付(付録)でセクション番号を表示する見出しレベル(未実装)
-# post_secnolevel: 1
-#
-# 部番号を表示する見出しレベル(未実装)
-# part_secnolevel: 1
-
 # 本文中に目次ページを作成するか。省略した場合はnull (作成しない)
-# toc: true
-
-# EPUB2標準の目次(NCX)以外に物理目次ファイルを作成するか。省略した場合はnull (作成しない)
-# ePUB3においてはこの設定によらず必ず作成される
-# mytoc: true
+toc: true
 
 # 表紙にするHTMLファイル。ファイル名を指定すると表紙として入る
 # cover: null
@@ -137,20 +123,11 @@ secnolevel: 2
 # 表紙に配置し、書籍の影絵にも利用する画像ファイル。省略した場合はnull (画像を使わない)。画像ディレクトリ内に置いてもディレクトリ名は不要(例: cover.jpg)
 coverimage: null
 #
-# 表紙の後に大扉ページを作成するか。省略した場合はnull (作成しない)
-# titlepage: null
-#
-# 自動生成される大扉ページを上書きするファイル。ファイル名を指定すると大扉として入る
-# titlefile: null
-#
-# 原書大扉ページにするHTMLファイル。ファイル名を指定すると原書大扉として入る
-# originaltitlefile: null
-#
 # 権利表記ページファイル。ファイル名を指定すると権利表記として入る
 # creditfile: null
 
 # 奥付を作成するか。デフォルトでは作成されない。trueを指定するとデフォルトの奥付、ファイル名を指定するとそれがcolophon.htmlとしてコピーされる
-# colophon: null
+# colophon: true
 
 # 裏表紙ファイル (画像はcoversまたはimagesに配置する)。ファイル名を指定すると裏表紙として入る
 # backcover: null
@@ -159,9 +136,6 @@ coverimage: null
 # profile: null
 # プロフィールページの目次上の見出し
 # profiletitle: 著者紹介
-
-# 広告ファイル。ファイル名を指定すると広告として入る
-# advfile: null
 
 # 取り込む画像が格納されているディレクトリ。省略した場合は以下
 # imagedir: images

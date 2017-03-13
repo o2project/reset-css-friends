@@ -1,0 +1,18 @@
+@import "./external/nico/bootstrap";
+
+main img {
+    max-width: 100%;
+}
+
+footer {
+    background-color: #333;
+}
+
+.social-media {
+    [class$="-icon"] {
+        svg {
+            width: 16px;
+            height: 16px;
+        }
+    }
+}

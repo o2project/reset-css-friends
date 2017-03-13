@@ -1,17 +1,19 @@
 const exec = require('child_process').exec
 const execSync = require('child_process').execSync
 const gulp = require('gulp')
+const sass = require('gulp-sass')
 const del = require('del')
 
-const repositoryName = 'kubosho/review-boilerplate'
+const repositoryName = 'o2project/reset-css-friends'
 const repository = process.env.GH_TOKEN
   ? `https://${process.env.GH_TOKEN}@github.com/${repositoryName}`
   : `git@github.com:${repositoryName}`
-const publishBranch = 'gh-pages'
 
 const targetDir = 'articles'
 const tempDir = 'temp'
 const webrootDir = 'book'
+const publishBranch = 'master'
+const publishDir = 'docs'
 
 const redpenBin = 'redpen-distribution-*/bin/redpen'
 const redpenTargetFile = '*.re'
@@ -44,7 +46,13 @@ gulp.task('preproc', done => {
   })
 })
 
-gulp.task('web', ['preproc'], done => {
+gulp.task('sass', () => {
+  return gulp.src('./articles/css/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('./articles/'));
+})
+
+gulp.task('web', ['sass', 'preproc'], done => {
   exec(`${reviewWebMaker} ${reviewConfig}`, (error) => {
     if (error != null) {
       console.error(error)
@@ -91,13 +99,15 @@ gulp.task('deploy', () => {
   process.chdir('..')
 
   execSync(`npm run web`)
-  execSync(`cp ${targetDir}/${webrootDir}/*.* ${tempDir}`)
+  execSync(`cp -r ${targetDir}/${webrootDir}/ ${tempDir}/${publishDir}/`)
+
   const sha = execSync('git rev-parse --verify HEAD').toString().substring(0, 7)
 
   process.chdir(tempDir)
 
   const remote = execSync('git remote').toString().replace(/\r?\n/g, '')
+
   execSync(`git add -A`)
-  execSync(`git commit -m '[ci skip] Update with ${sha}'`)
+  execSync(`git commit -m '[ci skip] update Web preview with ${sha}'`)
   execSync(`git push -u --quiet ${remote} ${publishBranch}`)
 })
