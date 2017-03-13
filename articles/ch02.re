@@ -225,3 +225,35 @@ table > form:-moz-is-html {
 }
 #@end
 //}
+
+== blockquote要素
+
+blockquote要素はFirefoxで@<code>{[type=cite]}という属性に対するスタイル指定があります（@<list>{blockquote-firefox}）。
+この属性は現在W3Cの仕様には無い仕様ですが、過去にはあったらしくFirefoxではいい感じの見た目になります@<img>{firefox-blockquote-type-cite}。
+
+//list[blockquote-firefox][blockquote要素に対してのスタイル指定]{
+#@mapfile(../codes/blockquote-firefox.css)
+blockquote {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
+}
+
+blockquote[type=cite] {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  padding-inline-start: 1em;
+  border-inline-start: solid;
+  border-color: blue;
+  border-width: thin;
+}
+#@end
+//}
+
+//image[firefox-blockquote-type-cite][Firefoxでblockquote\[type="cite"\]をプレビューしてみた様子]{
+//}
