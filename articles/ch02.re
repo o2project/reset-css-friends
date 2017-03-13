@@ -133,7 +133,7 @@ img {
 ulやol要素はFirefoxやChrome、Safariで論理marginとpaddingが指定されています@<list>{ul-firefox}。
 
 //list[ul-firefox][ul要素に対するSafariのスタイル定義]{
-#@mapfile(../codes/broser/firefox/ul.css)
+#@mapfile(../codes/browser/firefox/ul.css)
 ul {
   display: block;
   list-style-type: disc;
@@ -151,7 +151,7 @@ Firefoxでは@<code>{:any()}という疑似クラスを使って、@<list>{ul-ne
 //footnote[css-selectors-4-matches][https://drafts.csswg.org/selectors-4/#matches]
 
 //list[ul-nested-firefox][入れ子になったul要素に対するFirefoxのスタイル定義]{
-#@mapfile(../codes/firefox/ul-nested.css)
+#@mapfile(../codes/browser/firefox/ul-nested.css)
 /* nested lists have no top/bottom margins */
 :-moz-any(ul, ol, dir, menu, dl) ul,
 :-moz-any(ul, ol, dir, menu, dl) ol {
@@ -194,7 +194,7 @@ table要素のスタイル指定ですが、Firefoxでは非推奨となった�
 たとえば@<code>{align}や@<code>{frame}、@<code>{rules}といった属性が挙げられます（@<list>{table-firefox-1}）。
 
 //list[table-firefox-1][Firefoxで指定されている非推奨の属性に対してのスタイル指定（一部）]{
-#@mapfile(../codes/browser/firefox/table-firefox.css)
+#@mapfile(../codes/browser/firefox/table-1.css)
 table[align="left"] {
   float: left;
 }
