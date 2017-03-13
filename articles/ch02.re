@@ -43,15 +43,7 @@ body {
 #@end
 //}
 
-== p要素
-
-Firefoxでは文字のレイアウト方向や向き、文字が流れる方向を元にマージンを設定する@<code>{margin-block-start}や@<code>{margin-block-end}が定義されています。
-ちなみにCSSのプロパティでは、文字のレイアウト方向は@<code>{writing-mode}、文字の向きは@<code>{text-orientation}、文字の流れる方向は@<code>{direction}に対応しています。
-
-ChromeやSafariでは、@<code>{margin-before}や@<code>{margin-after}といったプロパティが定義され、値として@<code>{1__qem}が定義されています。
-これは、互換性モードで表示するときにmarginの相殺をおこなわないようにするものです。
-
-== h1要素
+== セクショニング・コンテンツ（article, section, nav, aside）とh1要素
 
 h1要素は見出しを表す要素の中でもっともランクが高い要素です。
 また@<code>{section}や@<code>{article}要素といったセクショニング・コンテンツへh1要素を入れた場合は、入れ子の深さに応じてスタイルが変わるようになっています。
@@ -110,6 +102,14 @@ h1 {
 }
 #@end
 //}
+
+== p要素
+
+Firefoxでは文字のレイアウト方向や向き、文字が流れる方向を元にマージンを設定する@<code>{margin-block-start}や@<code>{margin-block-end}が定義されています。
+ちなみにCSSのプロパティでは、文字のレイアウト方向は@<code>{writing-mode}、文字の向きは@<code>{text-orientation}、文字の流れる方向は@<code>{direction}に対応しています。
+
+ChromeやSafariでは、@<code>{margin-before}や@<code>{margin-after}といったプロパティが定義され、値として@<code>{1__qem}が定義されています。
+これは、互換性モードで表示するときにmarginの相殺をおこなわないようにするものです。
 
 == img要素
 
