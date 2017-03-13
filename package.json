@@ -1,7 +1,7 @@
 {
-  "name": "review-boilerplate",
-  "version": "2.0.0",
-  "description": "Re:VIEW boilerplate",
+  "name": "reset-css-friends",
+  "version": "0.0.1",
+  "description": "reset.cssフレンズっていうのは、reset.cssやそのほかのライブラリについてかくほんだよー！",
   "scripts": {
     "test": "gulp redpen",
     "setup": "bundle install --path vendor/bundle && npm install && ./bin/setup-redpen.sh",
@@ -12,17 +12,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com:kubosho/review-boilerplate.git"
+    "url": "git+ssh://git@github.com:o2project/reset-css-friends.git"
   },
   "keywords": [
     "book",
-    "re:view"
+    "css",
+    "reset-css",
+    "kemono-friends"
   ],
-  "author": "kubosho",
+  "author": "O2 Project",
   "license": "MIT",
   "private": true,
   "devDependencies": {
     "del": "^2.2.1",
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0"
   }
 }
