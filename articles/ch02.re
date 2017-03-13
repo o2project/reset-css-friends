@@ -191,10 +191,10 @@ ul ul ul {
 == table要素
 
 table要素のスタイル指定ですが、Firefoxでは非推奨となった属性にもスタイル指定をおこなっているのが特色です。
-たとえば@<code>{align}や@<code>{frame}、@<code>{rules}といった属性が挙げられます（@<list>{table-firefox}）。
+たとえば@<code>{align}や@<code>{frame}、@<code>{rules}といった属性が挙げられます（@<list>{table-firefox-1}）。
 
-//list[table-firefox][Firefoxで指定されている非推奨の属性に対してのスタイル指定（一部）]{
-#@mapfile(../codes/table-firefox.css)
+//list[table-firefox-1][Firefoxで指定されている非推奨の属性に対してのスタイル指定（一部）]{
+#@mapfile(../codes/table-firefox-1.css)
 table[align="left"] {
   float: left;
 }
@@ -207,5 +207,21 @@ table[align="right"] {
 table[rules] {
   border-width: thin;
   border-style: hidden;
+}
+#@end
+//}
+
+またFirefox特有の指定として@<code>{-moz-is-html}という擬似クラスのようなセレクタ指定があります（@<list>{table-firefox-2}）。
+この指定が何を示すのかJSFiddleで見てみようとしましたが、特に表示は変わりなく謎のままでした@<fn>{form-firefox}。
+//footnote[form-firefox][https://jsfiddle.net/f3rp4kmu/]
+
+//list[table-firefox-2][-moz-is-htmlという謎の擬似クラスっぽいセレクタ]{
+#@mapfile(../codes/table-firefox-2.css)
+tr > form:-moz-is-html, tbody > form:-moz-is-html,
+thead > form:-moz-is-html, tfoot > form:-moz-is-html,
+table > form:-moz-is-html {
+  /* Important: don't show these forms in HTML */
+  display: none !important;
+}
 #@end
 //}
