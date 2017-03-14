@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
+<link rel="prev" title="ユーザーエージェントスタイルシート" href="ch02.html">  <meta name="generator" content="Re:VIEW" />
+  <title>reset.cssは何をリセットしているのか | reset.cssフレンズ</title>
+</head>
+<body>
+  <div class="book">
+    <nav class="side-content">
+      <h1>reset.cssフレンズ</h1>
+      <ul class="book-toc">
+<li><a href="index.html">TOP</a></li>
+<li><a href="./index.html">はじめに</a></li>
+<li><a href="./ch01.html">1 reset.cssとは</a></li>
+<li><a href="./ch02.html">2 ユーザーエージェントスタイルシート</a></li>
+<li><a href="./ch03.html">3 reset.cssは何をリセットしているのか</a></li>
+</ul>
+      <p class="review-signature">powered by <a href="http://reviewml.com">Re:VIEW</a></p>
+    </nav>
+    <div class="book-body">
+      <header>
+      </header>
+      <div class="book-page">
+        <h1><a id="h3"></a><span class="secno">第3章　</span>reset.cssは何をリセットしているのか</h1>
+
+<h2><a id="h3-1"></a><span class="secno">3.1　</span>html要素</h2>
+<p>sanitize.cssとress.cssでは、html要素に対し<code class="inline-code tt">box-sizing: border-box;</code>を指定した上で、全称セレクタへ<code class="inline-code tt">box-sizing: inherit;</code>を指定しています。このことでコンテンツ領域に<code class="inline-code tt">padding</code>や<code class="inline-code tt">border</code>の値が入るようになります。これによりボックスサイズの計算をより簡単にすることを狙っていると思われます。</p>
+
+<h2><a id="h3-2"></a><span class="secno">3.2　</span>body要素</h2>
+<p>reset.css側ではEric Meyer、Normalize.css、Sanitize.css、YUI 3では<code class="inline-code tt">body</code>要素へ対し<code class="inline-code tt">margin: 0;</code>を指定しています。Webページを作るときにページの外周へmarginを設定することはほとんど無いため、このような指定がされていると予想しています。</p>
+
+<h2><a id="h3-3"></a><span class="secno">3.3　</span>p要素</h2>
+<p>reset.css側ではYUI 3やEric Meyerといった古めのreset.cssでは<code class="inline-code tt">margin</code>と<code class="inline-code tt">padding</code>が0と指定されています。しかし、他のreset.cssでは特に指定がなくユーザーエージェントスタイルシートをそのまま使うようにしています。</p>
+<p>これは新しく縦書きという概念が出てきたのに従い、reset.css側で文字の方向や向き、流れる方向を意識するようになったためです。その結果ユーザーエージェントスタイルシートをそのまま使ったほうが良いという結論に至ったと思われます。</p>
+
+<h2><a id="h3-4"></a><span class="secno">3.4　</span>h1要素</h2>
+<p>normalize.cssやsanitize.cssではこの入れ子具合によってスタイルが変わるのを無くし、リスト3.1で示すスタイルが適用されるようになっています。</p>
+<div class="caption-code">
+<p class="caption">リスト3.1: h1要素に対するnormalize.cssなどのスタイル定義</p>
+<pre class="list">h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+</pre>
+</div>
+<p>また、YUI3やEric Meyerでは見出しらしいスタイル定義をすべて無かったことにしています（リスト3.2）。</p>
+<div class="caption-code">
+<p class="caption">リスト3.2: h1要素に対するYUI3などのスタイル定義</p>
+<pre class="list">h1 {
+  margin:0;
+  padding:0;
+  font-size:100%;
+  font-weight:normal;
+}
+</pre>
+</div>
+
+<h2><a id="h3-5"></a><span class="secno">3.5　</span>a要素</h2>
+<p>a要素は各ブラウザのユーザーエージェントスタイルシートでは特にスタイルが適用されていません。ただ、normalize.cssやsanitize.css、ressではリスト3.3のようなスタイル定義をしています。</p>
+<div class="caption-code">
+<p class="caption">リスト3.3: a要素に対するreset.css側のスタイル定義</p>
+<pre class="list">a {
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+</pre>
+</div>
+<p><code class="inline-code tt">background-color: transparent;</code>が指定されている理由としては、IE 10上でリンクをクリックしたときにグレーの背景がついてしまうのを無くすために定義されています。また<code class="inline-code tt">-webkit-text-decoration-skip: objects;</code>という指定は、英語の<b class="kw">p</b><!-- IDX:p -->や<b class="kw">y</b><!-- IDX:y -->、一部のロシア語をリンクの文字にした場合、リンクの下線が途切れてしまうのを防ぐためです<a id="fnb-normalize-issue-573" href="#fn-normalize-issue-573" class="noteref" epub:type="noteref">*1</a>。</p>
+<div class="footnote" epub:type="footnote" id="fn-normalize-issue-573"><p class="footnote">[*1] https://github.com/necolas/normalize.css/pull/573</p></div>
+
+<h2><a id="h3-6"></a><span class="secno">3.6　</span>img要素</h2>
+<p>normalize.cssやsanitize.css、ressではIE10でリンク内に画像があるとborderが適用されてしまうのを防ぐために、<code class="inline-code tt">border-style: none;</code>が指定されています。</p>
+      </div>
+      <nav class="book-navi book-prev">
+                <a href="ch02.html">
+          <div class="book-cursor"><span class="cursor-prev">◀</span></div>
+        </a>
+              </nav>
+      <nav class="book-navi book-next">
+              </nav>
+    </div>
+  </div>
+  <footer>
+      </footer>
+  </body>
+</html>
