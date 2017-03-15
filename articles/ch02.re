@@ -257,3 +257,14 @@ blockquote[type=cite] {
 
 //image[firefox-blockquote-type-cite][Firefoxでblockquote\[type="cite"\]をプレビューしてみた様子]{
 //}
+
+== input要素
+
+input要素はtype属性の値によって、@<img>{input-types}で示すように挙動が大きく変わります。
+そのためChromeのユーザーエージェントスタイルシートでは1123行中295行がinput要素関連のスタイル指定です。
+Safariに至っては1221行中421行がinput要素関連のスタイル指定です@<fn>{safari-user-agent-stylesheet-line}。
+//footnote[safari-user-agent-stylesheet-line][Safariの場合iOS向けと思われるスタイル指定もあるためChromeと比較して行数が多いのかもしれません]
+なおFirefoxは895行中24行がinput要素関連のスタイル指定です。
+
+//image[input-types][input要素はtype属性の値によって挙動が大きく変わる]{
+//}
