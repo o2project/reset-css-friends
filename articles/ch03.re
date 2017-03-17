@@ -1,1 +1,1 @@
-= どのreset.cssを使うのか
+= どのReset CSSを使うのか

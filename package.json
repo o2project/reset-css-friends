@@ -1,7 +1,7 @@
 {
   "name": "reset-css-friends",
   "version": "0.0.1",
-  "description": "reset.cssフレンズっていうのは、reset.cssやそのほかのライブラリについてかくほんだよー！",
+  "description": "Reset CSSフレンズっていうのは、Reset CSSやそのほかのライブラリについてかくほんだよー！",
   "scripts": {
     "test": "gulp redpen",
     "setup": "bundle install --path vendor/bundle && npm install && ./bin/setup-redpen.sh",

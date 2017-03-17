@@ -1,12 +1,12 @@
-= reset.cssは何をリセットしているのか
+= Reset CSSは何をリセットしているのか
 
-reset.cssの思想は2004年に生まれ、そこから数多くのreset.cssがでました。
-そんなreset.cssですが、年代によって思想や定義されているスタイルが変わってきました。
-この章では特に有名だと思われる7個のreset.cssから思想や定義されているスタイルを見ていきます。
+Reset CSSの思想は2004年に生まれ、そこから数多くのReset CSSがでました。
+そんなReset CSSですが、年代によって思想や定義されているスタイルが変わってきました。
+この章では特に有名だと思われる7個のReset CSSから思想や定義されているスタイルを見ていきます。
 
 == Hard reset
 
-Hard resetは@<list>{hard-reset}のように書くだけの簡単なreset.cssです。
+Hard resetは@<list>{hard-reset}のように書くだけの簡単なReset CSSです。
 
 //list[hard-reset][Hard reset]{
 #@mapfile(../codes/hard-reset.css)
@@ -17,7 +17,7 @@ Hard resetは@<list>{hard-reset}のように書くだけの簡単なreset.cssで
 #@end
 //}
 
-これが出てきたのは2004年で、おそらく最初のreset.cssだと思われます@<fn>{fight-the-power-default}。
+これが出てきたのは2004年で、おそらく最初のReset CSSだと思われます@<fn>{fight-the-power-default}。
 なお公式ではHard resetと名乗っていません。Hard resetという名称は「A Comprehensive Guide to CSS Resets@<fn>{a-comprehensive-guide-to-css-resets}」という記事で出てきました。
 自分は2004年当時Webサイトを作っていなかったため、当時の状況はよく分からないので次の段落は憶測を含みます。
 #@# prh:disable
