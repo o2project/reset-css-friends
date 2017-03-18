@@ -27,11 +27,21 @@ Hard resetは@<list>{hard-reset}のように書くだけの簡単なReset CSSで
 このHard resetが発表された当時、ブラウザ間でmarginやpaddingの指定に差があることに対し大きな関心を持っていたようです。
 そのため、全称セレクタでmarginとpaddingを0にすることで、ブラウザによってmarginやpaddingの指定に差があることを無かったことにしようと試みたようです。
 
-== Eric Meyer's reset.css
+== Eric Meyer's Reset CSS
 
+Eric MeyerというCSSへ対しとても貢献している人がいます。
+最近だとその貢献が認められ、CSS Color Module Level 4に彼の亡くなってしまった娘の名前を元にした「rebeccapurple」という色の名前が入ったということでも有名です@<fn>{rebeccapurple}。
+そのEric MeyerがHard resetの問題点を指摘した上で作ったReset CSSがEric Meyer's Reset CSSです。
+//footnote[rebeccapurple][https://cpplover.blogspot.jp/2014/06/rebeccapurplecss-4-color.html]
 
+Hard resetの問題点ですが、全称セレクタを使ってmarginやpaddingを0にするやり方は、フォーム関連の要素に対してどういった影響があるか分からないと書いてあります。
+そしてmarginやpaddingを0にするだけでなく、一貫したフォントに関わるスタイル指定をしたかったとも書いてあります。
+また全称セレクタは名前空間が指定されていない場合はすべての要素にマッチしてしまうため、とても処理コストが高いセレクタです。
 
-== YUI 3
+そのため明示的に要素を指定して個別にリセットしていくことで、そういった問題を解決できると思って書かれたのがEric Meyer's Reset CSSです。
+#@# prh:disable
+なお、Eric Meyer's Reset CSSのソースコードは@<href>{http://meyerweb.com/eric/tools/css/reset/}にあるので見てください。
+
 == HTML5 Docter
 == normalize.css
 == sanitize.css
