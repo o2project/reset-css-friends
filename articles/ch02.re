@@ -44,7 +44,13 @@ Hard resetの問題点ですが、全称セレクタを使ってmarginやpadding
 
 == YUI 3 Reset CSS
 
-Yahoo!が中心となって出していたYUI
+Yahoo!が主に開発していたYUI library@<fn>{yui-deprecate}の中に含まれるReset CSSです。
+//footnote[yui-deprecate][なおYUI 3はこれからメンテナンスをおこなわないというアナウンスをしています]
+
+YUI 3 Reset CSSはhtml要素に対しcolorプロパティやbackgroundプロパティが指定されています。
+またarticle要素やheader要素といったHTML5で追加された要素に対する指定がありません。
+これはYUI 2の時代からReset CSSがほぼ更新されていないためです@<fn>{yui2-reset}。
+//footnote[yui2-reset][https://github.com/yui/yui2/blob/master/src/reset/css/reset.css]
 
 == HTML5 Docter
 == normalize.css
