@@ -42,6 +42,10 @@ Hard resetの問題点ですが、全称セレクタを使ってmarginやpadding
 #@# prh:disable
 なお、Eric Meyer's Reset CSSのソースコードは@<href>{http://meyerweb.com/eric/tools/css/reset/}にあるので見てください。
 
+== YUI 3 Reset CSS
+
+Yahoo!が中心となって出していたYUI
+
 == HTML5 Docter
 == normalize.css
 == sanitize.css
