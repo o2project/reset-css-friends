@@ -72,4 +72,39 @@ normalize.cssはブラウザが指定しているスタイルで使えそうな�
 またソースコードにはなぜそのような指定をしたのか書かれているため、ソースコードを読むだけでも勉強になります。
 
 == sanitize.css
+
+normalize.cssをNicolas Gallagherとともに作ったJonathan Nealが作ったReset CSSです。
+Jonathan NealはそれまでEric Meyer's Reset CSSやnormalize.cssを使っていたようですが、それらを元に大多数が書いたスタイル指定を含んだものがsanitize.cssです。
+具体的には@<list>{sanitize-html}のとおり、html要素に@<code>{box-sizing: border-box;}を指定して全称セレクタで@<code>{box-sizing: inherit;}を指定することです。
+これによって特定の要素に対してwidthやheightを指定するときに、borderやpaddingの指定を気にせずwidthやheightの値を指定できます。
+
+//list[sanitize-html][sanitize.cssのhtml要素に対する指定]{
+#@mapfile(../codes/sanitize-html.css)
+/**
+ * 1. Remove repeating backgrounds in all browsers (opinionated).
+ * 2. Add box sizing inheritence in all browsers (opinionated).
+ */
+
+*,
+::before,
+::after {
+  background-repeat: no-repeat; /* 1 */
+  box-sizing: inherit; /* 2 */
+}
+
+/**
+ * 1. Add border box sizing in all browsers (opinionated).
+ * 2. Add the default cursor in all browsers (opinionated).
+ * 3. Prevent font size adjustments after orientation changes in IE and iOS.
+ */
+
+html {
+  box-sizing: border-box; /* 1 */
+  cursor: default; /* 2 */
+  -ms-text-size-adjust: 100%; /* 3 */
+  -webkit-text-size-adjust: 100%; /* 3 */
+}
+#@end
+//}
+
 == ress
