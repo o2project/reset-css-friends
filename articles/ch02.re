@@ -52,7 +52,16 @@ YUI 3 Reset CSSはhtml要素に対しcolorプロパティやbackgroundプロパ�
 これはYUI 2の時代からReset CSSがほぼ更新されていないためです@<fn>{yui2-reset}。
 //footnote[yui2-reset][https://github.com/yui/yui2/blob/master/src/reset/css/reset.css]
 
-== HTML5 Docter
+== HTML5 Docter Reset CSS
+
+HTML5 DocterというHTML5を使った開発について発信していたWebサイトがありました。そのWebサイトで提唱されたReset CSSです。
+HTML5 Docter Reset CSSのソースコードは@<href>{http://html5doctor.com/html-5-reset-stylesheet/}にあります。
+
+HTML5 Docter Reset CSSはEric Meyer's Reset CSSのv1.0を元に作られたものです。
+Eric Meyer's Reset CSSのv1.0は作られた時期が2008年2月12日なので、HTML5に関わる要素のスタイル指定がありませんでした。
+HTML5 Docter Reset CSSはそこにHTML5で追加されたarticle要素やheader要素に対するスタイル指定を追加しています。
+またins要素やmark要素、hr要素などに独自のスタイルが適用されています。
+
 == normalize.css
 == sanitize.css
 == ress
