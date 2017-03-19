@@ -63,5 +63,13 @@ HTML5 Docter Reset CSSはそこにHTML5で追加されたarticle要素やheader�
 またins要素やmark要素、hr要素などに独自のスタイルが適用されています。
 
 == normalize.css
+
+normalize.cssはそれまでのReset CSSを代替するReset CSSとして出てきました。
+
+それまでのReset CSSはブラウザが既定で指定しているスタイルを消すものでした。
+normalize.cssはブラウザが指定しているスタイルで使えそうなものはそのまま残しているのが特徴です。
+またInternet Explorerを中心にバグ修正をしています。
+またソースコードにはなぜそのような指定をしたのか書かれているため、ソースコードを読むだけでも勉強になります。
+
 == sanitize.css
 == ress
