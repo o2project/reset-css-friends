@@ -108,3 +108,7 @@ html {
 //}
 
 == ress
+
+最後はA modern CSS resetと称するressです。
+ressはnormalize.cssの指定を受け継ぎつつ、Hard resetのようにすべてのmarginやpaddingを0にしています。
+またsanitize.cssと同じくすべての要素に対して@<code>{box-sizing: border-box;}を指定しています。
