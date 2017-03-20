@@ -1,259 +1,114 @@
-= ユーザーエージェントスタイルシート
+= Reset CSSの特色
 
-ブラウザがWeb上のページを読み込むときに既定で使うCSSとして、@<kw>{ユーザーエージェントスタイルシート}があります。
-このユーザーエージェントスタイルシートはブラウザ上でどのように指定されているか見ることができます。
+Reset CSSの思想は2004年に生まれ、そこから数多くのReset CSSがでました。
+そんなReset CSSですが、年代によって思想や定義されているスタイルが変わってきました。
+この章では特に有名だと思われる7個のReset CSSから思想や定義されているスタイルを見ていきます。
 
+== Hard reset
+
+Hard resetは@<list>{hard-reset}のように書くだけの簡単なReset CSSです。
+
+//list[hard-reset][Hard reset]{
+#@mapfile(../codes/hard-reset.css)
+* {
+  margin: 0;
+  padding: 0;
+}
+#@end
+//}
+
+これが出てきたのは2004年で、おそらく最初のReset CSSだと思われます@<fn>{fight-the-power-default}。
+なお公式ではHard resetと名乗っていません。Hard resetという名称は「A Comprehensive Guide to CSS Resets@<fn>{a-comprehensive-guide-to-css-resets}」という記事で出てきました。
+自分は2004年当時Webサイトを作っていなかったため、当時の状況はよく分からないので次の段落は憶測を含みます。
 #@# prh:disable
-  * Chrome: https://chromium.googlesource.com/chromium/blink/+/master/Source/core/css/html.css
-  * Firefox: Firefoxで resource://gre-resources/html.css をアドレスバーに入力
-  * Safari: http://trac.webkit.org/browser/trunk/Source/WebCore/css/html.css
+//footnote[fight-the-power-default][https://web.archive.org/web/20150905184045/http://leftjustified.net/journal/2004/10/07/css-negotiation/]
+//footnote[a-comprehensive-guide-to-css-resets][http://sixrevisions.com/css/a-comprehensive-guide-to-css-resets/]
 
-このユーザーエージェントスタイルシートですが、ブラウザごとに指定されているスタイルが違います。
-そのため別途reset.cssを使わなかった場合、ブラウザによって見えかたが違うということが起きます@<fn>{user-agent-stylesheet-diff}。
-この章では、各ブラウザがユーザーエージェントスタイルシート内へどういった指定をしているか、自分がよく使う要素に限定し見ていきます（@<list>{explain-elements}）。
-//footnote[user-agent-stylesheet-diff][https://developer.mozilla.org/ja/docs/Web/Compatibility_FAQ/Tips_Default_Style_Difference.html]
+このHard resetが発表された当時、ブラウザ間でmarginやpaddingの指定に差があることに対し大きな関心を持っていたようです。
+そのため、全称セレクタでmarginとpaddingを0にすることで、ブラウザによってmarginやpaddingの指定に差があることを無かったことにしようと試みたようです。
 
-//list[explain-elements][解説する要素一覧]{
-html, body, img,
-ul, ol, li,
-table, tr, td,
-h1, p, a, blockquote, br,
-section, article, nav, aside,
-header, footer, main,
-form, input, textarea, button, select
-//}
+== Eric Meyer's Reset CSS
 
-== html要素
+Eric MeyerというCSSへ対しとても貢献している人がいます。
+最近だとその貢献が認められ、CSS Color Module Level 4に彼の亡くなってしまった娘の名前を元にした「rebeccapurple」という色の名前が入ったということでも有名です@<fn>{rebeccapurple}。
+そのEric MeyerがHard resetの問題点を指摘した上で作ったReset CSSがEric Meyer's Reset CSSです。
+#@# prh:disable
+Eric Meyer's Reset CSSのソースコードは@<href>{http://meyerweb.com/eric/tools/css/reset/}にあります。
+//footnote[rebeccapurple][https://cpplover.blogspot.jp/2014/06/rebeccapurplecss-4-color.html]
 
-まず目に入るのがhtml要素です。ChromeとSafariでは@<code>{display: block;}の指定だけがあります。
-いっぽうFirefoxでは@<code>{display: block;}以外にも、@<code>{unicode-bidi: isolate;}という複数の表記方向が混在する文章をどのように扱うか決める定義もされています。
-@<code>{unicode-bidi}プロパティの値によって表示がどう変わるかは@<href>{http://www.osaka-kyoiku.ac.jp/~joho/html5_ref/css/unicode-bidi_css.php}を参照してください。
+Hard resetの問題点ですが、全称セレクタを使ってmarginやpaddingを0にするやり方は、フォーム関連の要素に対してどういった影響があるか分からないと書いてあります。
+そしてmarginやpaddingを0にするだけでなく、一貫したフォントに関わるスタイル指定をしたかったとも書いてあります。
+また全称セレクタは名前空間が指定されていない場合はすべての要素にマッチしてしまうため、とても処理コストが高いセレクタです。
 
-== body要素
+そのため明示的に要素を指定して個別にリセットしていくことで、そういった問題を解決できると思って書かれたのがEric Meyer's Reset CSSです。
 
-body要素はChrome・Firefox・Safariで同様のスタイル定義がおこなわれています（@<list>{body-element}）。
-ただし@<code>{margin: 8px;}の指定は多くのWebサイトにおいて不要な指定となるため、reset.css側では@<code>{margin: 0;}と指定されていることが多いです。
+== YUI 3 Reset CSS
 
-//list[body-element][body要素に対するスタイル定義]{
-#@mapfile(../codes/body.css)
-body {
-  display: block;
-  margin: 8px;
+Yahoo!が主に開発していたYUI library@<fn>{yui-deprecate}の中に含まれるReset CSSです。
+//footnote[yui-deprecate][なおYUI 3はこれからメンテナンスをおこなわないというアナウンスをしています]
+
+YUI 3 Reset CSSはhtml要素に対しcolorプロパティやbackgroundプロパティが指定されています。
+またarticle要素やheader要素といったHTML5で追加された要素に対する指定がありません。
+これはYUI 2の時代からReset CSSがほぼ更新されていないためです@<fn>{yui2-reset}。
+//footnote[yui2-reset][https://github.com/yui/yui2/blob/master/src/reset/css/reset.css]
+
+== HTML5 Docter Reset CSS
+
+HTML5 DocterというHTML5を使った開発について発信していたWebサイトがありました。そのWebサイトで提唱されたReset CSSです。
+HTML5 Docter Reset CSSのソースコードは@<href>{http://html5doctor.com/html-5-reset-stylesheet/}にあります。
+
+HTML5 Docter Reset CSSはEric Meyer's Reset CSSのv1.0を元に作られたものです。
+Eric Meyer's Reset CSSのv1.0は作られた時期が2008年2月12日なので、HTML5に関わる要素のスタイル指定がありませんでした。
+HTML5 Docter Reset CSSはそこにHTML5で追加されたarticle要素やheader要素に対するスタイル指定を追加しています。
+またins要素やmark要素、hr要素などに独自のスタイルが適用されています。
+
+== normalize.css
+
+normalize.cssはそれまでのReset CSSを代替するReset CSSとして出てきました。
+
+それまでのReset CSSはブラウザが既定で指定しているスタイルを消すものでした。
+normalize.cssはブラウザが指定しているスタイルで使えそうなものはそのまま残しているのが特徴です。
+またInternet Explorerを中心にバグ修正をしています。
+またソースコードにはなぜそのような指定をしたのか書かれているため、ソースコードを読むだけでも勉強になります。
+
+== sanitize.css
+
+normalize.cssをNicolas Gallagherとともに作ったJonathan Nealが作ったReset CSSです。
+Jonathan NealはそれまでEric Meyer's Reset CSSやnormalize.cssを使っていたようですが、それらを元に大多数が書いたスタイル指定を含んだものがsanitize.cssです。
+具体的には@<list>{sanitize-html}のとおり、html要素に@<code>{box-sizing: border-box;}を指定して全称セレクタで@<code>{box-sizing: inherit;}を指定することです。
+これによって特定の要素に対してwidthやheightを指定するときに、borderやpaddingの指定を気にせずwidthやheightの値を指定できます。
+
+//list[sanitize-html][sanitize.cssのhtml要素に対する指定]{
+#@mapfile(../codes/sanitize-html.css)
+/**
+ * 1. Remove repeating backgrounds in all browsers (opinionated).
+ * 2. Add box sizing inheritence in all browsers (opinionated).
+ */
+
+*,
+::before,
+::after {
+  background-repeat: no-repeat; /* 1 */
+  box-sizing: inherit; /* 2 */
+}
+
+/**
+ * 1. Add border box sizing in all browsers (opinionated).
+ * 2. Add the default cursor in all browsers (opinionated).
+ * 3. Prevent font size adjustments after orientation changes in IE and iOS.
+ */
+
+html {
+  box-sizing: border-box; /* 1 */
+  cursor: default; /* 2 */
+  -ms-text-size-adjust: 100%; /* 3 */
+  -webkit-text-size-adjust: 100%; /* 3 */
 }
 #@end
 //}
 
-== セクショニング・コンテンツ（article, section, nav, aside）とh1要素
+== ress
 
-h1要素は見出しを表す要素の中でもっともランクが高い要素です。
-また@<code>{section}や@<code>{article}要素といったセクショニング・コンテンツへh1要素を入れた場合は、入れ子の深さに応じてスタイルが変わるようになっています。
-
-//list[h1-element][h1要素に対するスタイル定義]{
-#@mapfile(../codes/h1.css)
-/* Blink, WebKit */
-h1 {
-  display: block;
-  font-size: 2em;
-  -webkit-margin-before: 0.67__qem;
-  -webkit-margin-after: 0.67em;
-  -webkit-margin-start: 0;
-  -webkit-margin-end: 0;
-  font-weight: bold
-}
-:-webkit-any(article,aside,nav,section) h1 {
-  font-size: 1.5em;
-  -webkit-margin-before: 0.83__qem;
-  -webkit-margin-after: 0.83em;
-}
-:-webkit-any(article,aside,nav,section) :-webkit-any(article,aside,nav,section) h1 {
-  font-size: 1.17em;
-  -webkit-margin-before: 1__qem;
-  -webkit-margin-after: 1em;
-}
-
-/* Gecko */
-h1 {
-  display: block;
-  font-size: 2em;
-  font-weight: bold;
-  margin-block-start: .67em;
-  margin-block-end: .67em;
-}
-
-h2,
-:-moz-any(article, aside, nav, section)
-h1 {
-  display: block;
-  font-size: 1.5em;
-  font-weight: bold;
-  margin-block-start: .83em;
-  margin-block-end: .83em;
-}
-
-h3,
-:-moz-any(article, aside, nav, section)
-:-moz-any(article, aside, nav, section)
-h1 {
-  display: block;
-  font-size: 1.17em;
-  font-weight: bold;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-}
-#@end
-//}
-
-== p要素
-
-Firefoxでは文字のレイアウト方向や向き、文字が流れる方向を元にマージンを設定する@<code>{margin-block-start}や@<code>{margin-block-end}が定義されています。
-ちなみにCSSのプロパティでは、文字のレイアウト方向は@<code>{writing-mode}、文字の向きは@<code>{text-orientation}、文字の流れる方向は@<code>{direction}に対応しています。
-
-ChromeやSafariでは、@<code>{margin-before}や@<code>{margin-after}といったプロパティが定義され、値として@<code>{1__qem}が定義されています。
-これは、互換性モードで表示するときにmarginの相殺をおこなわないようにするものです。
-
-== img要素
-
-img要素はiOSのSafari上でタップしたときにハイライトが適用されないようになっています。
-
-//list[img-webkit][img要素に対するWebKitのスタイル定義]{
-#@mapfile(../codes/browser/safari/img.css)
-#if defined(WTF_PLATFORM_IOS) && WTF_PLATFORM_IOS
-img {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-:any-link img {
-  -webkit-tap-highlight-color: inherit;
-}
-#endif
-#@end
-//}
-
-== ul, ol要素
-
-ulやol要素はFirefoxやChrome、Safariで論理marginとpaddingが指定されています@<list>{ul-firefox}。
-
-//list[ul-firefox][ul要素に対するSafariのスタイル定義]{
-#@mapfile(../codes/browser/firefox/ul.css)
-ul {
-  display: block;
-  list-style-type: disc;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  padding-inline-start: 40px;
-}
-#@end
-//}
-
-入れ子になったulやol要素はFirefoxとChrome、Safariで指定しているプロパティは同じですが、セレクタの指定方法が違います。
-Firefoxでは@<code>{:any()}という疑似クラスを使って、@<list>{ul-nested-firefox}のようにul要素やol要素などが入れ子になったときのスタイル指定をおこなっています@<fn>{mdn-any-pseudo-class}。
-この@<code>{:any()}擬似クラスですが、CSS Selectors Level 4では@<code>{:matches()}として仕様策定が進んでいます@<fn>{css-selectors-4-matches}。
-//footnote[mdn-any-pseudo-class][https://developer.mozilla.org/ja/docs/Web/CSS/:any]
-//footnote[css-selectors-4-matches][https://drafts.csswg.org/selectors-4/#matches]
-
-//list[ul-nested-firefox][入れ子になったul要素に対するFirefoxのスタイル定義]{
-#@mapfile(../codes/browser/firefox/ul-nested.css)
-/* nested lists have no top/bottom margins */
-:-moz-any(ul, ol, dir, menu, dl) ul,
-:-moz-any(ul, ol, dir, menu, dl) ol {
-  margin-block-start: 0;
-  margin-block-end: 0;
-}
-
-/* 2 deep unordered lists use a circle */
-:-moz-any(ol, ul, menu, dir) ul {
-  list-style-type: circle;
-}
-
-/* 3 deep (or more) unordered lists use a square */
-:-moz-any(ol, ul, menu, dir) :-moz-any(ol, ul, menu, dir) ul {
-  list-style-type: square;
-}
-#@end
-//}
-
-@<code>{:any()}や@<code>{:matches()}の仕様が固まっていないためか、ChromeやSafariでは@<list>{ul-nested-chrome}のように従来どおりの子孫セレクタを使った指定になっています。
-
-//list[ul-nested-chrome][入れ子になったul要素に対するChromeやSafariのスタイル定義]{
-#@mapfile(../codes/browser/chrome/ul-nested.css)
-ul ul,
-ol ul {
-    list-style-type: circle
-}
-ol ol ul,
-ol ul ul,
-ul ol ul,
-ul ul ul {
-    list-style-type: square
-}
-#@end
-//}
-
-== table要素
-
-table要素のスタイル指定ですが、Firefoxでは非推奨となった属性にもスタイル指定をおこなっているのが特色です。
-たとえば@<code>{align}や@<code>{frame}、@<code>{rules}といった属性が挙げられます（@<list>{table-firefox-1}）。
-
-//list[table-firefox-1][Firefoxで指定されている非推奨の属性に対してのスタイル指定（一部）]{
-#@mapfile(../codes/browser/firefox/table-1.css)
-table[align="left"] {
-  float: left;
-}
-
-table[align="right"] {
-  float: right;
-  text-align: start;
-}
-
-table[rules] {
-  border-width: thin;
-  border-style: hidden;
-}
-#@end
-//}
-
-またFirefox特有の指定として@<code>{-moz-is-html}という擬似クラスのようなセレクタ指定があります（@<list>{table-firefox-2}）。
-この指定が何を示すのかJSFiddleで見てみようとしましたが、特に表示は変わりなく謎のままでした@<fn>{form-firefox}。
-//footnote[form-firefox][https://jsfiddle.net/f3rp4kmu/]
-
-//list[table-firefox-2][-moz-is-htmlという謎の擬似クラスっぽいセレクタ]{
-#@mapfile(../codes/browser/firefox/table-2.css)
-tr > form:-moz-is-html, tbody > form:-moz-is-html,
-thead > form:-moz-is-html, tfoot > form:-moz-is-html,
-table > form:-moz-is-html {
-  /* Important: don't show these forms in HTML */
-  display: none !important;
-}
-#@end
-//}
-
-== blockquote要素
-
-blockquote要素はFirefoxで@<code>{[type=cite]}という属性に対するスタイル指定があります（@<list>{blockquote-firefox}）。
-この属性は現在W3Cの仕様には無い仕様ですが、過去にはあったらしくFirefoxではいい感じの見た目になります@<img>{firefox-blockquote-type-cite}。
-
-//list[blockquote-firefox][blockquote要素に対してのスタイル指定]{
-#@mapfile(../codes/browser/firefox/blockquote.css)
-blockquote {
-  display: block;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 40px;
-  margin-inline-end: 40px;
-}
-
-blockquote[type=cite] {
-  display: block;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0;
-  margin-inline-end: 0;
-  padding-inline-start: 1em;
-  border-inline-start: solid;
-  border-color: blue;
-  border-width: thin;
-}
-#@end
-//}
-
-//image[firefox-blockquote-type-cite][Firefoxでblockquote\[type="cite"\]をプレビューしてみた様子]{
-//}
+最後はA modern CSS resetと称するressです。
+ressはnormalize.cssの指定を受け継ぎつつ、Hard resetのようにすべてのmarginやpaddingを0にしています。
+またsanitize.cssと同じくすべての要素に対して@<code>{box-sizing: border-box;}を指定しています。

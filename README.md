@@ -1,6 +1,6 @@
-# reset.cssフレンズ
+# Reset CSSフレンズ
 
-reset.cssフレンズっていうのは、reset.cssやそのほかのライブラリについてかくほんだよー！
+Reset CSSフレンズっていうのは、Reset CSSについてくわしくかくほんだよー！
 
 ## いぞんするもの
 
