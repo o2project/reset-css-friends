@@ -52,10 +52,10 @@ body {
 Eric Meyer's Reset CSS、normalize.css、sanitize.css、YUI 3 Reset CSSでは@<code>{body}要素へ対し@<code>{margin: 0;}を指定しています。
 Webページを作るときにページの外周へmarginを設定することはほとんど無いため、このような指定がされていると思われます。
 
-== セクショニング・コンテンツ（article, section, nav, aside）とh1要素
+== セクショニング・コンテンツとh1要素
 
 h1要素は見出しを表す要素の中でもっともランクが高い要素です。
-また@<code>{section}や@<code>{article}要素といったセクショニング・コンテンツへh1要素を入れた場合は、入れ子の深さに応じてスタイルが変わるようになっています。
+また@<code>{section}要素や@<code>{article}要素といったセクショニング・コンテンツへh1要素を入れた場合は、入れ子の深さに応じてスタイルが変わるようになっています。
 
 //list[h1-element][h1要素に対するスタイル定義]{
 #@mapfile(../codes/h1.css)
@@ -114,7 +114,7 @@ h1 {
 
 normalize.cssやsanitize.cssではこの入れ子具合によってスタイルが変わるのを無くし、@<list>{h1-normalize}で示すスタイルが適用されるようになっています。
 
-//list[h1-normalize][h1要素に対するnormalize.cssなどのスタイル定義]{
+//list[h1-normalize][h1要素に対するnormalize.cssやsanitize.cssのスタイル定義]{
 #@mapfile(../codes/h1-normalize.css)
 h1 {
   font-size: 2em;
@@ -123,9 +123,9 @@ h1 {
 #@end
 //}
 
-また、YUI 3 Reset CSSやEric Meyer Reset CSSでは見出しらしいスタイル定義をすべて無かったことにしています（@<list>{h1-yui3}）。
+また、YUI 3 Reset CSSやEric Meyer's Reset CSSでは見出しらしいスタイル定義をすべて無かったことにしています（@<list>{h1-yui3}）。
 
-//list[h1-yui3][h1要素に対するYUI3などのスタイル定義]{
+//list[h1-yui3][h1要素に対するYUI 3 Reset CSSやEric Meyer's Reset CSSのスタイル定義]{
 #@mapfile(../codes/h1-yui3.css)
 h1 {
   margin:0;
@@ -186,7 +186,7 @@ img {
 #@end
 //}
 
-normalize.cssやsanitize.css、ressではIE10でリンク内に画像があるとborderが適用されてしまうのを防ぐために、@<code>{border-style: none;}が指定されています。
+normalize.cssやsanitize.css、ressではIE 10でリンク内に画像があるとborderが適用されてしまうのを防ぐために、@<code>{border-style: none;}が指定されています。
 
 == ul, ol要素
 
