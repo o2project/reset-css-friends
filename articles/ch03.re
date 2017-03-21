@@ -354,6 +354,22 @@ blockquote[type=cite] {
 //image[firefox-blockquote-type-cite][Firefoxでblockquote\[type="cite"\]をプレビューしてみた様子]{
 //}
 
+Eric Meyer's Reset CSSではblockquoteやq要素に対し引用符を消すスタイルが指定されています（@<list>{eric-meyers-blockquote}）。
+なお、他のReset CSSには特徴的な指定がありません。
+
+//list[eric-meyers-blockquote][Eric Meyer's Reset CSSのblockquote要素に対するスタイル指定]{
+#@mapfile(../codes/eric-meyers-blockquote.css)
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+#@end
+//}
+
 == input要素
 
 input要素はtype属性の値によって、@<img>{input-types}で示すように挙動が大きく変わります。
