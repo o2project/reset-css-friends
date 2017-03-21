@@ -62,8 +62,8 @@ form, input, textarea, button, select
 </div>
 <p>Eric Meyer's Reset CSS、normalize.css、sanitize.css、YUI 3 Reset CSSでは<code class="inline-code tt">body</code>要素へ対し<code class="inline-code tt">margin: 0;</code>を指定しています。Webページを作るときにページの外周へmarginを設定することはほとんど無いため、このような指定がされていると思われます。</p>
 
-<h2><a id="h3-3"></a><span class="secno">3.3　</span>セクショニング・コンテンツ（article, section, nav, aside）とh1要素</h2>
-<p>h1要素は見出しを表す要素の中でもっともランクが高い要素です。また<code class="inline-code tt">section</code>や<code class="inline-code tt">article</code>要素といったセクショニング・コンテンツへh1要素を入れた場合は、入れ子の深さに応じてスタイルが変わるようになっています。</p>
+<h2><a id="h3-3"></a><span class="secno">3.3　</span>セクショニング・コンテンツとh1要素</h2>
+<p>h1要素は見出しを表す要素の中でもっともランクが高い要素です。また<code class="inline-code tt">section</code>要素や<code class="inline-code tt">article</code>要素といったセクショニング・コンテンツへh1要素を入れた場合は、入れ子の深さに応じてスタイルが変わるようになっています。</p>
 <div class="caption-code">
 <p class="caption">リスト3.3: h1要素に対するスタイル定義</p>
 <pre class="list">/* Blink, WebKit */
@@ -120,16 +120,16 @@ h1 {
 </div>
 <p>normalize.cssやsanitize.cssではこの入れ子具合によってスタイルが変わるのを無くし、リスト3.4で示すスタイルが適用されるようになっています。</p>
 <div class="caption-code">
-<p class="caption">リスト3.4: h1要素に対するnormalize.cssなどのスタイル定義</p>
+<p class="caption">リスト3.4: h1要素に対するnormalize.cssやsanitize.cssのスタイル定義</p>
 <pre class="list">h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }
 </pre>
 </div>
-<p>また、YUI 3 Reset CSSやEric Meyer Reset CSSでは見出しらしいスタイル定義をすべて無かったことにしています（リスト3.5）。</p>
+<p>また、YUI 3 Reset CSSやEric Meyer's Reset CSSでは見出しらしいスタイル定義をすべて無かったことにしています（リスト3.5）。</p>
 <div class="caption-code">
-<p class="caption">リスト3.5: h1要素に対するYUI3などのスタイル定義</p>
+<p class="caption">リスト3.5: h1要素に対するYUI 3 Reset CSSやEric Meyer's Reset CSSのスタイル定義</p>
 <pre class="list">h1 {
   margin:0;
   padding:0;
@@ -172,7 +172,7 @@ img {
 #endif
 </pre>
 </div>
-<p>normalize.cssやsanitize.css、ressではIE10でリンク内に画像があるとborderが適用されてしまうのを防ぐために、<code class="inline-code tt">border-style: none;</code>が指定されています。</p>
+<p>normalize.cssやsanitize.css、ressではIE 10でリンク内に画像があるとborderが適用されてしまうのを防ぐために、<code class="inline-code tt">border-style: none;</code>が指定されています。</p>
 
 <h2><a id="h3-7"></a><span class="secno">3.7　</span>ul, ol要素</h2>
 <p>ulやol要素はFirefoxやChrome、Safariで論理marginとpaddingが指定されていますリスト3.8。</p>
@@ -225,11 +225,24 @@ ul ul ul {
 }
 </pre>
 </div>
+<p>sanitize.cssではnav要素が親要素としてあるときにol要素とul要素に対して<code class="inline-code tt">list-style: none;</code>の指定をしていますリスト3.11。実際に自分が開発しているときも、nav要素内に指定したol要素とul要素に対して<code class="inline-code tt">list-style</code>の値を指定することは少ないので、自分で書くスタイル指定を減らすことができます。</p>
+<div class="caption-code">
+<p class="caption">リスト3.11: sanitize.cssのulやol要素に対するスタイル指定</p>
+<pre class="list">/**
+ * Remove the list style on navigation lists in all browsers (opinionated).
+ */
+
+nav ol,
+nav ul {
+  list-style: none;
+}
+</pre>
+</div>
 
 <h2><a id="h3-8"></a><span class="secno">3.8　</span>table要素</h2>
-<p>table要素のスタイル指定ですが、Firefoxでは非推奨となった属性にもスタイル指定をおこなっているのが特色です。たとえば<code class="inline-code tt">align</code>や<code class="inline-code tt">frame</code>、<code class="inline-code tt">rules</code>といった属性が挙げられます（リスト3.11）。</p>
+<p>table要素のスタイル指定ですが、Firefoxでは非推奨となった属性にもスタイル指定をおこなっているのが特色です。たとえば<code class="inline-code tt">align</code>や<code class="inline-code tt">frame</code>、<code class="inline-code tt">rules</code>といった属性が挙げられます（リスト3.12）。</p>
 <div class="caption-code">
-<p class="caption">リスト3.11: Firefoxで指定されている非推奨の属性に対してのスタイル指定（一部）</p>
+<p class="caption">リスト3.12: Firefoxで指定されている非推奨の属性に対してのスタイル指定（一部）</p>
 <pre class="list">table[align=&quot;left&quot;] {
   float: left;
 }
@@ -245,10 +258,10 @@ table[rules] {
 }
 </pre>
 </div>
-<p>またFirefox特有の指定として<code class="inline-code tt">-moz-is-html</code>という擬似クラスのようなセレクタ指定があります（リスト3.12）。この指定が何を示すのかJSFiddleで見てみようとしましたが、特に表示は変わりなく謎のままでした<a id="fnb-form-firefox" href="#fn-form-firefox" class="noteref" epub:type="noteref">*5</a>。</p>
+<p>またFirefox特有の指定として<code class="inline-code tt">-moz-is-html</code>という擬似クラスのようなセレクタ指定があります（リスト3.13）。この指定が何を示すのかJSFiddleで見てみようとしましたが、特に表示は変わりなく謎のままでした<a id="fnb-form-firefox" href="#fn-form-firefox" class="noteref" epub:type="noteref">*5</a>。</p>
 <div class="footnote" epub:type="footnote" id="fn-form-firefox"><p class="footnote">[*5] https://jsfiddle.net/f3rp4kmu/</p></div>
 <div class="caption-code">
-<p class="caption">リスト3.12: -moz-is-htmlという謎の擬似クラスっぽいセレクタ</p>
+<p class="caption">リスト3.13: -moz-is-htmlという謎の擬似クラスっぽいセレクタ</p>
 <pre class="list">tr &gt; form:-moz-is-html, tbody &gt; form:-moz-is-html,
 thead &gt; form:-moz-is-html, tfoot &gt; form:-moz-is-html,
 table &gt; form:-moz-is-html {
@@ -257,11 +270,31 @@ table &gt; form:-moz-is-html {
 }
 </pre>
 </div>
+<p>sanitize.cssでは<code class="inline-code tt">border-collapse: collapse;</code>の指定がされています（リスト3.14）。これはtableのborderをセル同士で共有する指定になります。表を表示するときにセルを分けて表示することは少ないので、余計なスタイル指定を減らすことができます。</p>
+<div class="caption-code">
+<p class="caption">リスト3.14: sanitize.cssのtable要素に対する指定</p>
+<pre class="list">/**
+ * Collapse border spacing
+ */
+
+table {
+  border-collapse: collapse;
+}
+</pre>
+</div>
+<p><code class="inline-code tt">border-collapse</code>の値によって表示がどのように変わるかは図3.1で示すとおりです<a id="fnb-table-border-collapse-image" href="#fn-table-border-collapse-image" class="noteref" epub:type="noteref">*6</a>。</p>
+<div class="footnote" epub:type="footnote" id="fn-table-border-collapse-image"><p class="footnote">[*6] 画像の著作権はCC-BY-SA 2.5 © 2005-2017 Mozilla Developer Network &amp; 貢献者各人です</p></div>
+<div id="table-border-collapse" class="image">
+<img src="images/table-border-collapse.png" alt="border-collapseの指定によって表示が変わる" />
+<p class="caption">
+図3.1: border-collapseの指定によって表示が変わる
+</p>
+</div>
 
 <h2><a id="h3-9"></a><span class="secno">3.9　</span>blockquote要素</h2>
-<p>blockquote要素はFirefoxで<code class="inline-code tt">[type=cite]</code>という属性に対するスタイル指定があります（リスト3.13）。この属性は現在W3Cの仕様には無い仕様ですが、過去にはあったらしくFirefoxではいい感じの見た目になります図3.1。</p>
+<p>blockquote要素はFirefoxで<code class="inline-code tt">[type=cite]</code>という属性に対するスタイル指定があります（リスト3.15）。この属性は現在W3Cの仕様には無い仕様ですが、過去にはあったらしくFirefoxではいい感じの見た目になります図3.2。</p>
 <div class="caption-code">
-<p class="caption">リスト3.13: blockquote要素に対してのスタイル指定</p>
+<p class="caption">リスト3.15: blockquote要素に対してのスタイル指定</p>
 <pre class="list">blockquote {
   display: block;
   margin-block-start: 1em;
@@ -286,22 +319,35 @@ blockquote[type=cite] {
 <div id="firefox-blockquote-type-cite" class="image">
 <img src="images/firefox-blockquote-type-cite.png" alt="Firefoxでblockquote\[type=&amp;quot;cite&amp;quot;]をプレビューしてみた様子" />
 <p class="caption">
-図3.1: Firefoxでblockquote\[type=&quot;cite&quot;]をプレビューしてみた様子
+図3.2: Firefoxでblockquote\[type=&quot;cite&quot;]をプレビューしてみた様子
 </p>
+</div>
+<p>Eric Meyer's Reset CSSではblockquoteやq要素に対し引用符を消すスタイルが指定されています（リスト3.16）。なお、他のReset CSSには特徴的な指定がありません。</p>
+<div class="caption-code">
+<p class="caption">リスト3.16: Eric Meyer's Reset CSSのblockquote要素に対するスタイル指定</p>
+<pre class="list">blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+</pre>
 </div>
 
 <h2><a id="h3-10"></a><span class="secno">3.10　</span>input要素</h2>
-<p>input要素はtype属性の値によって、図3.2で示すように挙動が大きく変わります。そのためChromeのユーザーエージェントスタイルシートでは1123行中295行がinput要素関連のスタイル指定です。Safariに至っては1221行中421行がinput要素関連のスタイル指定です<a id="fnb-safari-user-agent-stylesheet-line" href="#fn-safari-user-agent-stylesheet-line" class="noteref" epub:type="noteref">*6</a>。</p>
-<div class="footnote" epub:type="footnote" id="fn-safari-user-agent-stylesheet-line"><p class="footnote">[*6] Safariの場合iOS向けと思われるスタイル指定もあるためChromeと比較して行数が多いのかもしれません</p></div>
+<p>input要素はtype属性の値によって、図3.3で示すように挙動が大きく変わります。そのためChromeのユーザーエージェントスタイルシートでは1123行中295行がinput要素関連のスタイル指定です。Safariに至っては1221行中421行がinput要素関連のスタイル指定です<a id="fnb-safari-user-agent-stylesheet-line" href="#fn-safari-user-agent-stylesheet-line" class="noteref" epub:type="noteref">*7</a>。</p>
+<div class="footnote" epub:type="footnote" id="fn-safari-user-agent-stylesheet-line"><p class="footnote">[*7] Safariの場合iOS向けと思われるスタイル指定もあるためChromeと比較して行数が多いのかもしれません</p></div>
 <p>なおFirefoxは895行中24行がinput要素関連のスタイル指定です。</p>
 <div id="input-types" class="image">
 <img src="images/input-types.png" alt="input要素はtype属性の値によって挙動が大きく変わる" />
 <p class="caption">
-図3.2: input要素はtype属性の値によって挙動が大きく変わる
+図3.3: input要素はtype属性の値によって挙動が大きく変わる
 </p>
 </div>
 <div class="caption-code">
-<p class="caption">リスト3.14: input要素へ対するChromeのスタイル指定</p>
+<p class="caption">リスト3.17: input要素へ対するChromeのスタイル指定</p>
 <pre class="list">input, textarea, keygen, select, button {
   margin: 0__qem;
   font: -webkit-small-control;
