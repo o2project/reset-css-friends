@@ -1,0 +1,7 @@
+/**
+ * Collapse border spacing
+ */
+
+table {
+  border-collapse: collapse;
+}

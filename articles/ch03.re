@@ -301,6 +301,21 @@ table > form:-moz-is-html {
 #@end
 //}
 
+sanitize.cssでは@<code>{border-collapse: collapse;}の指定がされています（@<list>{sanitize-table}）。
+これはtableのborderをセル同士で共有する指定になります。表を表示するときにセルを分けて表示することは少ないので、余計なスタイル指定を減らすことができます。
+
+//list[sanitize-table][sanitize.cssのtable要素に対する指定]{
+#@mapfile(../codes/sanitize-table.css)
+/**
+ * Collapse border spacing
+ */
+
+table {
+  border-collapse: collapse;
+}
+#@end
+//}
+
 == blockquote要素
 
 blockquote要素はFirefoxで@<code>{[type=cite]}という属性に対するスタイル指定があります（@<list>{blockquote-firefox}）。
