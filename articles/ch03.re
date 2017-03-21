@@ -248,6 +248,22 @@ ul ul ul {
 #@end
 //}
 
+Eric Meyer's Reset CSSやYUI 3 Reset CSSでは他の要素と同じくmarginやpaddingなどが0になったり、fontの指定が初期値になっています。
+normalize.cssやressでは特に指定がありません。sanitize.cssはnav要素が親要素としてあるときにol要素とul要素に対して@<code>{list-style: none;}の指定をしています@<list>{sanitize-ul-ol}。
+実際に自分が開発しているときも、nav要素内に指定したol要素とul要素に対して@<code>{list-style}の値を指定することは少ないので、自分で書くスタイル指定が少なくなると期待できます。
+
+//list[sanitize-ul-ol][sanitize.cssのulやol要素に対するスタイル指定]{
+#@mapfile(../codes/sanitize-ul-ol.css)
+/**
+ * Remove the list style on navigation lists in all browsers (opinionated).
+ */
+
+nav ol,
+nav ul {
+  list-style: none;
+}
+//}
+
 == table要素
 
 table要素のスタイル指定ですが、Firefoxでは非推奨となった属性にもスタイル指定をおこなっているのが特色です。
