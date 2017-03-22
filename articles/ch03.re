@@ -252,7 +252,7 @@ sanitize.cssではnav要素が親要素としてあるときにol要素とul要�
 実際に自分が開発しているときも、nav要素内に指定したol要素とul要素に対して@<code>{list-style}の値を指定することは少ないので、自分で書くスタイル指定を減らすことができます。
 
 //list[sanitize-ul-ol][sanitize.cssのulやol要素に対するスタイル指定]{
-#@mapfile(../codes/sanitize-ul-ol.css)
+#@mapfile(../codes/reset-css/sanitize-css/ul-ol.css)
 /**
  * Remove the list style on navigation lists in all browsers (opinionated).
  */
@@ -305,7 +305,7 @@ sanitize.cssでは@<code>{border-collapse: collapse;}の指定がされていま
 これはtableのborderをセル同士で共有する指定になります。表を表示するときにセルを分けて表示することは少ないので、余計なスタイル指定を減らすことができます。
 
 //list[sanitize-table][sanitize.cssのtable要素に対する指定]{
-#@mapfile(../codes/sanitize-table.css)
+#@mapfile(../codes/reset-css/sanitize-css/table.css)
 /**
  * Collapse border spacing
  */
@@ -414,7 +414,7 @@ sanitize.cssでは他にない指定として@<code>{touch-action: manipulation;
 ページのスクロールとズームのみを許可する指定ですが、IE 10ではタップ時の遅延をなくす指定になります。
 
 //list[sanitize-fix-tap-delay][IE 10でタップ時の遅延を無くすCSS]{
-#@mapfile(../codes/sanitize-fix-tap-delay.css)
+#@mapfile(../codes/reset-css/sanitize-css/fix-tap-delay.css)
 /*
  * Remove the tapping delay on clickable elements (opinionated).
  * 1. Remove the tapping delay in IE 10.
