@@ -409,3 +409,28 @@ input {
 }
 #@end
 //}
+
+sanitize.cssでは他にない指定として@<code>{touch-action: manipulation;}があります（@<list>{sanitize-fix-tap-delay}）。
+ページのスクロールとズームのみを許可する指定ですが、IE 10ではタップ時の遅延をなくす指定になります。
+
+//list[sanitize-fix-tap-delay][IE 10でタップ時の遅延を無くすCSS]{
+#@mapfile(../codes/sanitize-fix-tap-delay.css)
+/*
+ * Remove the tapping delay on clickable elements (opinionated).
+ * 1. Remove the tapping delay in IE 10.
+ */
+
+a,
+area,
+button,
+input,
+label,
+select,
+summary,
+textarea,
+[tabindex] {
+  -ms-touch-action: manipulation; /* 1 */
+  touch-action: manipulation;
+}
+#@end
+//}
