@@ -11,7 +11,7 @@
 このユーザーエージェントスタイルシートですが、ブラウザごとに指定されているスタイルが違います。
 そのため別途Reset CSSを使わなかった場合、ブラウザによって見えかたが違うということが起きます@<fn>{user-agent-stylesheet-diff}。
 
-この章では、各ブラウザがユーザーエージェントスタイルシート内へどういった指定をしているか解説し、その後Reset CSSがどのような指定をしているか見ていきます。
+この章では各Reset CSSがどのような指定をしているか、時折ユーザーエージェントスタイルシートでどのように指定されているか解説しつつ見ていきます。
 なお、解説するHTML要素は（@<list>{explain-elements}）のみに絞ります。
 //footnote[user-agent-stylesheet-diff][https://developer.mozilla.org/ja/docs/Web/Compatibility_FAQ/Tips_Default_Style_Difference.html]
 
@@ -27,38 +27,20 @@ form, input, textarea, button, select
 
 == html要素
 
-まずはhtml要素です。ChromeとSafariでは@<code>{display: block;}の指定だけがあります。
-いっぽうFirefoxでは@<code>{display: block;}以外にも、@<code>{unicode-bidi: isolate;}という複数の表記方向が混在する文章をどのように扱うか決める定義もされています。
-@<code>{unicode-bidi}プロパティの値によって表示がどう変わるかは@<href>{http://www.osaka-kyoiku.ac.jp/~joho/html5_ref/css/unicode-bidi_css.php}を参照してください。
-
-Reset CSS側ではsanitize.cssとress.cssが、html要素に対し@<code>{box-sizing: border-box;}を指定した上で、全称セレクタへ@<code>{box-sizing: inherit;}を指定しています。
-このことでコンテンツ領域に@<code>{padding}や@<code>{border}の値が入るようになります。
-これによりボックスサイズの計算をより簡単にすることを狙っていると思われます。
+まずはhtml要素です。sanitize.cssとress.cssが、html要素に対し@<code>{box-sizing: border-box;}を指定した上で、全称セレクタへ@<code>{box-sizing: inherit;}を指定しています。
+このことでコンテンツ領域に@<code>{padding}や@<code>{border}の値が入るようになります。これによりボックスサイズの計算をより簡単にすることを狙っていると思われます。
 
 == body要素
-
-body要素はChrome・Firefox・Safariで同様のスタイル定義がおこなわれています（@<list>{body-element}）。
-ただし@<code>{margin: 8px;}の指定は多くのWebサイトにおいて不要な指定となるため、Reset CSSでは@<code>{margin: 0;}と指定されていることが多いです。
-
-//list[body-element][body要素に対するスタイル定義]{
-#@mapfile(../codes/body.css)
-body {
-  display: block;
-  margin: 8px;
-}
-#@end
-//}
 
 Eric Meyer's Reset CSS、normalize.css、sanitize.css、YUI 3 Reset CSSでは@<code>{body}要素へ対し@<code>{margin: 0;}を指定しています。
 Webページを作るときにページの外周へmarginを設定することはほとんど無いため、このような指定がされていると思われます。
 
 == セクショニング・コンテンツとh1要素
 
-h1要素は見出しを表す要素の中でもっともランクが高い要素です。
-また@<code>{section}要素や@<code>{article}要素といったセクショニング・コンテンツへh1要素を入れた場合は、入れ子の深さに応じてスタイルが変わるようになっています。
+h1要素は見出しを表す要素の中でもっともランクが高い要素です。@<code>{section}要素や@<code>{article}要素といったセクショニング・コンテンツへh1要素を入れ子にすると、深さに応じてスタイルが変わるようになっています。
 
 //list[h1-element][h1要素に対するスタイル定義]{
-#@mapfile(../codes/h1.css)
+#@mapfile(../codes/browser/h1.css)
 /* Blink, WebKit */
 h1 {
   display: block;
@@ -115,7 +97,7 @@ h1 {
 normalize.cssやsanitize.cssではこの入れ子具合によってスタイルが変わるのを無くし、@<list>{h1-normalize}で示すスタイルが適用されるようになっています。
 
 //list[h1-normalize][h1要素に対するnormalize.cssやsanitize.cssのスタイル定義]{
-#@mapfile(../codes/h1-normalize.css)
+#@mapfile(../codes/reset-css/normalize-css/h1.css)
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
@@ -153,11 +135,10 @@ YUI 3 Reset CSSやEric Meyer's Reset CSSといった古めのReset CSSでは@<co
 
 == a要素
 
-a要素は各ブラウザのユーザーエージェントスタイルシートでは特にスタイルが適用されていません。
-ただ、normalize.cssやsanitize.css、ressでは@<list>{a-reset}のようなスタイル定義をしています。
+normalize.cssやsanitize.css、ressでは@<list>{a-reset}のようなスタイル定義をしています。
 
-//list[a-reset][a要素に対するReset CSSのスタイル定義]{
-#@mapfile(../codes/a-reset.css)
+//list[a-reset][a要素に対するnormalize.cssなどのスタイル定義]{
+#@mapfile(../codes/reset-css/a-reset.css)
 a {
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
@@ -171,9 +152,9 @@ a {
 
 == img要素
 
-img要素はiOSのSafari上でタップしたときにハイライトが適用されないようになっています。
+img要素はiOSのSafari上でタップしたときにハイライトが適用されないようになっています（@<list>{img-safari}）。
 
-//list[img-webkit][img要素に対するWebKitのスタイル定義]{
+//list[img-safari][img要素に対するSafariのスタイル定義]{
 #@mapfile(../codes/browser/safari/img.css)
 #if defined(WTF_PLATFORM_IOS) && WTF_PLATFORM_IOS
 img {
