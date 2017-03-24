@@ -79,7 +79,7 @@ Jonathan NealはそれまでEric Meyer's Reset CSSやnormalize.cssを使って�
 これによって特定の要素に対してwidthやheightを指定するときに、borderやpaddingの指定を気にせずwidthやheightの値を指定できます。
 
 //list[sanitize-html][sanitize.cssのhtml要素に対する指定]{
-#@mapfile(../codes/sanitize-html.css)
+#@mapfile(../codes/reset-css/sanitize-css/html.css)
 /**
  * 1. Remove repeating backgrounds in all browsers (opinionated).
  * 2. Add box sizing inheritence in all browsers (opinionated).

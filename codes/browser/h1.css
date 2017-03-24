@@ -1,4 +1,4 @@
-/* Blink, WebKit */
+/* Chrome, Safari */
 h1 {
   display: block;
   font-size: 2em;
@@ -19,7 +19,7 @@ h1 {
   -webkit-margin-after: 1em;
 }
 
-/* Gecko */
+/* Firefox */
 h1 {
   display: block;
   font-size: 2em;
