@@ -32,7 +32,7 @@
 <li>Safari: http://trac.webkit.org/browser/trunk/Source/WebCore/css/html.css</li>
 </ul>
 <p>このユーザーエージェントスタイルシートですが、ブラウザごとに指定されているスタイルが違います。そのため別途Reset CSSを使わなかった場合、ブラウザによって見えかたが違うということが起きます<a id="fnb-user-agent-stylesheet-diff" href="#fn-user-agent-stylesheet-diff" class="noteref" epub:type="noteref">*1</a>。</p>
-<p>この章では、各ブラウザがユーザーエージェントスタイルシート内へどういった指定をしているか解説し、その後Reset CSSがどのような指定をしているか見ていきます。なお、解説するHTML要素は（リスト3.1）のみに絞ります。</p>
+<p>この章では各Reset CSSがどのような指定をしているか、時折ユーザーエージェントスタイルシートでどのように指定されているか解説しつつ見ていきます。なお、解説するHTML要素は（リスト3.1）のみに絞ります。</p>
 <div class="footnote" epub:type="footnote" id="fn-user-agent-stylesheet-diff"><p class="footnote">[*1] https://developer.mozilla.org/ja/docs/Web/Compatibility_FAQ/Tips_Default_Style_Difference.html</p></div>
 <div class="caption-code">
 <p class="caption">リスト3.1: 解説するHTML要素一覧</p>
@@ -47,26 +47,16 @@ form, input, textarea, button, select
 </div>
 
 <h2><a id="h3-1"></a><span class="secno">3.1　</span>html要素</h2>
-<p>まずはhtml要素です。ChromeとSafariでは<code class="inline-code tt">display: block;</code>の指定だけがあります。いっぽうFirefoxでは<code class="inline-code tt">display: block;</code>以外にも、<code class="inline-code tt">unicode-bidi: isolate;</code>という複数の表記方向が混在する文章をどのように扱うか決める定義もされています。<code class="inline-code tt">unicode-bidi</code>プロパティの値によって表示がどう変わるかは<a href="http://www.osaka-kyoiku.ac.jp/~joho/html5_ref/css/unicode-bidi_css.php" class="link">http://www.osaka-kyoiku.ac.jp/~joho/html5_ref/css/unicode-bidi_css.php</a>を参照してください。</p>
-<p>Reset CSS側ではsanitize.cssとress.cssが、html要素に対し<code class="inline-code tt">box-sizing: border-box;</code>を指定した上で、全称セレクタへ<code class="inline-code tt">box-sizing: inherit;</code>を指定しています。このことでコンテンツ領域に<code class="inline-code tt">padding</code>や<code class="inline-code tt">border</code>の値が入るようになります。これによりボックスサイズの計算をより簡単にすることを狙っていると思われます。</p>
+<p>まずはhtml要素です。sanitize.cssとress.cssが、html要素に対し<code class="inline-code tt">box-sizing: border-box;</code>を指定した上で、全称セレクタへ<code class="inline-code tt">box-sizing: inherit;</code>を指定しています。このことでコンテンツ領域に<code class="inline-code tt">padding</code>や<code class="inline-code tt">border</code>の値が入るようになります。これによりボックスサイズの計算をより簡単にすることを狙っていると思われます。</p>
 
 <h2><a id="h3-2"></a><span class="secno">3.2　</span>body要素</h2>
-<p>body要素はChrome・Firefox・Safariで同様のスタイル定義がおこなわれています（リスト3.2）。ただし<code class="inline-code tt">margin: 8px;</code>の指定は多くのWebサイトにおいて不要な指定となるため、Reset CSSでは<code class="inline-code tt">margin: 0;</code>と指定されていることが多いです。</p>
-<div class="caption-code">
-<p class="caption">リスト3.2: body要素に対するスタイル定義</p>
-<pre class="list">body {
-  display: block;
-  margin: 8px;
-}
-</pre>
-</div>
 <p>Eric Meyer's Reset CSS、normalize.css、sanitize.css、YUI 3 Reset CSSでは<code class="inline-code tt">body</code>要素へ対し<code class="inline-code tt">margin: 0;</code>を指定しています。Webページを作るときにページの外周へmarginを設定することはほとんど無いため、このような指定がされていると思われます。</p>
 
 <h2><a id="h3-3"></a><span class="secno">3.3　</span>セクショニング・コンテンツとh1要素</h2>
-<p>h1要素は見出しを表す要素の中でもっともランクが高い要素です。また<code class="inline-code tt">section</code>要素や<code class="inline-code tt">article</code>要素といったセクショニング・コンテンツへh1要素を入れた場合は、入れ子の深さに応じてスタイルが変わるようになっています。</p>
+<p>h1要素は見出しを表す要素の中でもっともランクが高い要素です。<code class="inline-code tt">section</code>要素や<code class="inline-code tt">article</code>要素といったセクショニング・コンテンツへh1要素を入れ子にすると、深さに応じてスタイルが変わるようになっています。</p>
 <div class="caption-code">
-<p class="caption">リスト3.3: h1要素に対するスタイル定義</p>
-<pre class="list">/* Blink, WebKit */
+<p class="caption">リスト3.2: h1要素に対するスタイル定義</p>
+<pre class="list">/* Chrome, Safari */
 h1 {
   display: block;
   font-size: 2em;
@@ -87,7 +77,7 @@ h1 {
   -webkit-margin-after: 1em;
 }
 
-/* Gecko */
+/* Firefox */
 h1 {
   display: block;
   font-size: 2em;
@@ -118,18 +108,18 @@ h1 {
 }
 </pre>
 </div>
-<p>normalize.cssやsanitize.cssではこの入れ子具合によってスタイルが変わるのを無くし、リスト3.4で示すスタイルが適用されるようになっています。</p>
+<p>normalize.cssやsanitize.cssではこの入れ子具合によってスタイルが変わるのを無くし、リスト3.3で示すスタイルが適用されるようになっています。</p>
 <div class="caption-code">
-<p class="caption">リスト3.4: h1要素に対するnormalize.cssやsanitize.cssのスタイル定義</p>
+<p class="caption">リスト3.3: h1要素に対するnormalize.cssやsanitize.cssのスタイル定義</p>
 <pre class="list">h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }
 </pre>
 </div>
-<p>また、YUI 3 Reset CSSやEric Meyer's Reset CSSでは見出しらしいスタイル定義をすべて無かったことにしています（リスト3.5）。</p>
+<p>また、YUI 3 Reset CSSやEric Meyer's Reset CSSでは見出しらしいスタイル定義をすべて無かったことにしています（リスト3.4）。</p>
 <div class="caption-code">
-<p class="caption">リスト3.5: h1要素に対するYUI 3 Reset CSSやEric Meyer's Reset CSSのスタイル定義</p>
+<p class="caption">リスト3.4: h1要素に対するYUI 3 Reset CSSやEric Meyer's Reset CSSのスタイル定義</p>
 <pre class="list">h1 {
   margin:0;
   padding:0;
@@ -146,9 +136,9 @@ h1 {
 <p>これは新しく縦書きという概念が出てきたのに従い、Reset CSSで文字の方向や向き、流れる方向を意識するようになったためです。その結果ユーザーエージェントスタイルシートをそのまま使ったほうが良いという結論に至ったと思われます。</p>
 
 <h2><a id="h3-5"></a><span class="secno">3.5　</span>a要素</h2>
-<p>a要素は各ブラウザのユーザーエージェントスタイルシートでは特にスタイルが適用されていません。ただ、normalize.cssやsanitize.css、ressではリスト3.6のようなスタイル定義をしています。</p>
+<p>normalize.cssやsanitize.css、ressではリスト3.5のようなスタイル定義をしています。</p>
 <div class="caption-code">
-<p class="caption">リスト3.6: a要素に対するReset CSSのスタイル定義</p>
+<p class="caption">リスト3.5: a要素に対するnormalize.cssなどのスタイル定義</p>
 <pre class="list">a {
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
@@ -159,9 +149,9 @@ h1 {
 <div class="footnote" epub:type="footnote" id="fn-normalize-issue-573"><p class="footnote">[*2] https://github.com/necolas/normalize.css/pull/573</p></div>
 
 <h2><a id="h3-6"></a><span class="secno">3.6　</span>img要素</h2>
-<p>img要素はiOSのSafari上でタップしたときにハイライトが適用されないようになっています。</p>
+<p>img要素はiOSのSafari上でタップしたときにハイライトが適用されないようになっています（リスト3.6）。</p>
 <div class="caption-code">
-<p class="caption">リスト3.7: img要素に対するWebKitのスタイル定義</p>
+<p class="caption">リスト3.6: img要素に対するSafariのスタイル定義</p>
 <pre class="list">#if defined(WTF_PLATFORM_IOS) &amp;&amp; WTF_PLATFORM_IOS
 img {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -175,9 +165,9 @@ img {
 <p>normalize.cssやsanitize.css、ressではIE 10でリンク内に画像があるとborderが適用されてしまうのを防ぐために、<code class="inline-code tt">border-style: none;</code>が指定されています。</p>
 
 <h2><a id="h3-7"></a><span class="secno">3.7　</span>ul, ol要素</h2>
-<p>ulやol要素はFirefoxやChrome、Safariで論理marginとpaddingが指定されていますリスト3.8。</p>
+<p>ulやol要素はFirefoxやChrome、Safariで論理marginとpaddingが指定されていますリスト3.7。</p>
 <div class="caption-code">
-<p class="caption">リスト3.8: ul要素に対するSafariのスタイル定義</p>
+<p class="caption">リスト3.7: ul要素に対するSafariのスタイル定義</p>
 <pre class="list">ul {
   display: block;
   list-style-type: disc;
@@ -187,11 +177,11 @@ img {
 }
 </pre>
 </div>
-<p>入れ子になったulやol要素はFirefoxとChrome、Safariで指定しているプロパティは同じですが、セレクタの指定方法が違います。Firefoxでは<code class="inline-code tt">:any()</code>という疑似クラスを使って、リスト3.9のようにul要素やol要素などが入れ子になったときのスタイル指定をおこなっています<a id="fnb-mdn-any-pseudo-class" href="#fn-mdn-any-pseudo-class" class="noteref" epub:type="noteref">*3</a>。この<code class="inline-code tt">:any()</code>擬似クラスですが、CSS Selectors Level 4では<code class="inline-code tt">:matches()</code>として仕様策定が進んでいます<a id="fnb-css-selectors-4-matches" href="#fn-css-selectors-4-matches" class="noteref" epub:type="noteref">*4</a>。</p>
+<p>入れ子になったulやol要素はFirefoxとChrome、Safariで指定しているプロパティは同じですが、セレクタの指定方法が違います。Firefoxでは<code class="inline-code tt">:any()</code>という疑似クラスを使って、リスト3.8のようにul要素やol要素などが入れ子になったときのスタイル指定をおこなっています<a id="fnb-mdn-any-pseudo-class" href="#fn-mdn-any-pseudo-class" class="noteref" epub:type="noteref">*3</a>。この<code class="inline-code tt">:any()</code>擬似クラスですが、CSS Selectors Level 4では<code class="inline-code tt">:matches()</code>として仕様策定が進んでいます<a id="fnb-css-selectors-4-matches" href="#fn-css-selectors-4-matches" class="noteref" epub:type="noteref">*4</a>。</p>
 <div class="footnote" epub:type="footnote" id="fn-mdn-any-pseudo-class"><p class="footnote">[*3] https://developer.mozilla.org/ja/docs/Web/CSS/:any</p></div>
 <div class="footnote" epub:type="footnote" id="fn-css-selectors-4-matches"><p class="footnote">[*4] https://drafts.csswg.org/selectors-4/#matches</p></div>
 <div class="caption-code">
-<p class="caption">リスト3.9: 入れ子になったul要素に対するFirefoxのスタイル定義</p>
+<p class="caption">リスト3.8: 入れ子になったul要素に対するFirefoxのスタイル定義</p>
 <pre class="list">/* nested lists have no top/bottom margins */
 :-moz-any(ul, ol, dir, menu, dl) ul,
 :-moz-any(ul, ol, dir, menu, dl) ol {
@@ -210,9 +200,9 @@ img {
 }
 </pre>
 </div>
-<p><code class="inline-code tt">:any()</code>や<code class="inline-code tt">:matches()</code>の仕様が固まっていないためか、ChromeやSafariではリスト3.10のように従来どおりの子孫セレクタを使った指定になっています。</p>
+<p><code class="inline-code tt">:any()</code>や<code class="inline-code tt">:matches()</code>の仕様が固まっていないためか、ChromeやSafariではリスト3.9のように従来どおりの子孫セレクタを使った指定になっています。</p>
 <div class="caption-code">
-<p class="caption">リスト3.10: 入れ子になったul要素に対するChromeやSafariのスタイル定義</p>
+<p class="caption">リスト3.9: 入れ子になったul要素に対するChromeやSafariのスタイル定義</p>
 <pre class="list">ul ul,
 ol ul {
     list-style-type: circle
@@ -225,9 +215,9 @@ ul ul ul {
 }
 </pre>
 </div>
-<p>sanitize.cssではnav要素が親要素としてあるときにol要素とul要素に対して<code class="inline-code tt">list-style: none;</code>の指定をしていますリスト3.11。実際に自分が開発しているときも、nav要素内に指定したol要素とul要素に対して<code class="inline-code tt">list-style</code>の値を指定することは少ないので、自分で書くスタイル指定を減らすことができます。</p>
+<p>sanitize.cssではnav要素が親要素としてあるときにol要素とul要素に対して<code class="inline-code tt">list-style: none;</code>の指定をしていますリスト3.10。実際に自分が開発しているときも、nav要素内に指定したol要素とul要素に対して<code class="inline-code tt">list-style</code>の値を指定することは少ないので、自分で書くスタイル指定を減らすことができます。</p>
 <div class="caption-code">
-<p class="caption">リスト3.11: sanitize.cssのulやol要素に対するスタイル指定</p>
+<p class="caption">リスト3.10: sanitize.cssのulやol要素に対するスタイル指定</p>
 <pre class="list">/**
  * Remove the list style on navigation lists in all browsers (opinionated).
  */
@@ -240,9 +230,9 @@ nav ul {
 </div>
 
 <h2><a id="h3-8"></a><span class="secno">3.8　</span>table要素</h2>
-<p>table要素のスタイル指定ですが、Firefoxでは非推奨となった属性にもスタイル指定をおこなっているのが特色です。たとえば<code class="inline-code tt">align</code>や<code class="inline-code tt">frame</code>、<code class="inline-code tt">rules</code>といった属性が挙げられます（リスト3.12）。</p>
+<p>table要素のスタイル指定ですが、Firefoxでは非推奨となった属性にもスタイル指定をおこなっているのが特色です。たとえば<code class="inline-code tt">align</code>や<code class="inline-code tt">frame</code>、<code class="inline-code tt">rules</code>といった属性が挙げられます（リスト3.11）。</p>
 <div class="caption-code">
-<p class="caption">リスト3.12: Firefoxで指定されている非推奨の属性に対してのスタイル指定（一部）</p>
+<p class="caption">リスト3.11: Firefoxで指定されている非推奨の属性に対してのスタイル指定（一部）</p>
 <pre class="list">table[align=&quot;left&quot;] {
   float: left;
 }
@@ -258,10 +248,10 @@ table[rules] {
 }
 </pre>
 </div>
-<p>またFirefox特有の指定として<code class="inline-code tt">-moz-is-html</code>という擬似クラスのようなセレクタ指定があります（リスト3.13）。この指定が何を示すのかJSFiddleで見てみようとしましたが、特に表示は変わりなく謎のままでした<a id="fnb-form-firefox" href="#fn-form-firefox" class="noteref" epub:type="noteref">*5</a>。</p>
+<p>またFirefox特有の指定として<code class="inline-code tt">-moz-is-html</code>という擬似クラスのようなセレクタ指定があります（リスト3.12）。この指定が何を示すのかJSFiddleで見てみようとしましたが、特に表示は変わりなく謎のままでした<a id="fnb-form-firefox" href="#fn-form-firefox" class="noteref" epub:type="noteref">*5</a>。</p>
 <div class="footnote" epub:type="footnote" id="fn-form-firefox"><p class="footnote">[*5] https://jsfiddle.net/f3rp4kmu/</p></div>
 <div class="caption-code">
-<p class="caption">リスト3.13: -moz-is-htmlという謎の擬似クラスっぽいセレクタ</p>
+<p class="caption">リスト3.12: -moz-is-htmlという謎の擬似クラスっぽいセレクタ</p>
 <pre class="list">tr &gt; form:-moz-is-html, tbody &gt; form:-moz-is-html,
 thead &gt; form:-moz-is-html, tfoot &gt; form:-moz-is-html,
 table &gt; form:-moz-is-html {
@@ -270,9 +260,9 @@ table &gt; form:-moz-is-html {
 }
 </pre>
 </div>
-<p>sanitize.cssでは<code class="inline-code tt">border-collapse: collapse;</code>の指定がされています（リスト3.14）。これはtableのborderをセル同士で共有する指定になります。表を表示するときにセルを分けて表示することは少ないので、余計なスタイル指定を減らすことができます。</p>
+<p>sanitize.cssでは<code class="inline-code tt">border-collapse: collapse;</code>の指定がされています（リスト3.13）。これはtableのborderをセル同士で共有する指定になります。表を表示するときにセルを分けて表示することは少ないので、余計なスタイル指定を減らすことができます。</p>
 <div class="caption-code">
-<p class="caption">リスト3.14: sanitize.cssのtable要素に対する指定</p>
+<p class="caption">リスト3.13: sanitize.cssのtable要素に対する指定</p>
 <pre class="list">/**
  * Collapse border spacing
  */
@@ -292,9 +282,9 @@ table {
 </div>
 
 <h2><a id="h3-9"></a><span class="secno">3.9　</span>blockquote要素</h2>
-<p>blockquote要素はFirefoxで<code class="inline-code tt">[type=cite]</code>という属性に対するスタイル指定があります（リスト3.15）。この属性は現在W3Cの仕様には無い仕様ですが、過去にはあったらしくFirefoxではいい感じの見た目になります図3.2。</p>
+<p>blockquote要素はFirefoxで<code class="inline-code tt">[type=cite]</code>という属性に対するスタイル指定があります（リスト3.14）。この属性は現在W3Cの仕様には無い仕様ですが、過去にはあったらしくFirefoxではいい感じの見た目になります図3.2。</p>
 <div class="caption-code">
-<p class="caption">リスト3.15: blockquote要素に対してのスタイル指定</p>
+<p class="caption">リスト3.14: blockquote要素に対してのスタイル指定</p>
 <pre class="list">blockquote {
   display: block;
   margin-block-start: 1em;
@@ -322,9 +312,9 @@ blockquote[type=cite] {
 図3.2: Firefoxでblockquote\[type=&quot;cite&quot;]をプレビューしてみた様子
 </p>
 </div>
-<p>Eric Meyer's Reset CSSではblockquoteやq要素に対し引用符を消すスタイルが指定されています（リスト3.16）。なお、他のReset CSSには特徴的な指定がありません。</p>
+<p>Eric Meyer's Reset CSSではblockquoteやq要素に対し引用符を消すスタイルが指定されています（リスト3.15）。なお、他のReset CSSには特徴的な指定がありません。</p>
 <div class="caption-code">
-<p class="caption">リスト3.16: Eric Meyer's Reset CSSのblockquote要素に対するスタイル指定</p>
+<p class="caption">リスト3.15: Eric Meyer's Reset CSSのblockquote要素に対するスタイル指定</p>
 <pre class="list">blockquote, q {
   quotes: none;
 }
@@ -347,7 +337,7 @@ q:before, q:after {
 </p>
 </div>
 <div class="caption-code">
-<p class="caption">リスト3.17: input要素へ対するChromeのスタイル指定</p>
+<p class="caption">リスト3.16: input要素へ対するChromeのスタイル指定</p>
 <pre class="list">input, textarea, keygen, select, button {
   margin: 0__qem;
   font: -webkit-small-control;
@@ -371,6 +361,28 @@ input {
   -webkit-rtl-ordering: logical;
   -webkit-user-select: text;
   cursor: auto;
+}
+</pre>
+</div>
+<p>sanitize.cssでは他にない指定として<code class="inline-code tt">touch-action: manipulation;</code>があります（リスト3.17）。ページのスクロールとズームのみを許可する指定ですが、IE 10ではタップ時の遅延をなくす指定になります。</p>
+<div class="caption-code">
+<p class="caption">リスト3.17: IE 10でタップ時の遅延を無くすCSS</p>
+<pre class="list">/*
+ * Remove the tapping delay on clickable elements (opinionated).
+ * 1. Remove the tapping delay in IE 10.
+ */
+
+a,
+area,
+button,
+input,
+label,
+select,
+summary,
+textarea,
+[tabindex] {
+  -ms-touch-action: manipulation; /* 1 */
+  touch-action: manipulation;
 }
 </pre>
 </div>
