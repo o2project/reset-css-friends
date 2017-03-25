@@ -27,8 +27,13 @@ form, input, textarea, button, select
 
 == html要素
 
-まずはhtml要素です。sanitize.cssとress.cssが、html要素に対し@<code>{box-sizing: border-box;}を指定した上で、全称セレクタへ@<code>{box-sizing: inherit;}を指定しています。
-このことでコンテンツ領域に@<code>{padding}や@<code>{border}の値が入るようになります。これによりボックスサイズの計算をより簡単にすることを狙っていると思われます。
+まずはhtml要素です。ChromeとSafariでは@<code>{display: block;}の指定だけがあります。
+いっぽうFirefoxでは@<code>{display: block;}以外にも、@<code>{unicode-bidi: isolate;}という複数の表記方向が混在する文章をどのように扱うか決める定義もされています。
+@<code>{unicode-bidi}プロパティの値によって表示がどう変わるかは@<href>{http://www.osaka-kyoiku.ac.jp/~joho/html5_ref/css/unicode-bidi_css.php}を参照してください。
+
+Reset CSS側ではsanitize.cssとress.cssが、html要素に対し@<code>{box-sizing: border-box;}を指定した上で、全称セレクタへ@<code>{box-sizing: inherit;}を指定しています。
+このことでコンテンツ領域に@<code>{padding}や@<code>{border}の値が入るようになります。
+これによりボックスサイズの計算をより簡単にすることを狙っていると思われます。
 
 == body要素
 
@@ -49,7 +54,8 @@ Webページを作るときにページの外周へmarginを設定すること�
 
 == セクショニング・コンテンツとh1要素
 
-h1要素は見出しを表す要素の中でもっともランクが高い要素です。@<code>{section}要素や@<code>{article}要素といったセクショニング・コンテンツへh1要素を入れ子にすると、深さに応じてスタイルが変わるようになっています。
+h1要素は見出しを表す要素の中でもっともランクが高い要素です。
+また@<code>{section}要素や@<code>{article}要素といったセクショニング・コンテンツへh1要素を入れた場合は、入れ子の深さに応じてスタイルが変わるようになっています。
 
 //list[h1-element][h1要素に対するスタイル定義]{
 #@mapfile(../codes/browser/h1.css)
@@ -147,9 +153,10 @@ YUI 3 Reset CSSやEric Meyer's Reset CSSといった古めのReset CSSでは@<co
 
 == a要素
 
-normalize.cssやsanitize.css、ressでは@<list>{a-reset}のようなスタイル定義をしています。
+a要素は各ブラウザのユーザーエージェントスタイルシートでは特にスタイルが適用されていません。
+ただ、normalize.cssやsanitize.css、ressでは@<list>{a-reset}のようなスタイル定義をしています。
 
-//list[a-reset][a要素に対するnormalize.cssなどのスタイル定義]{
+//list[a-reset][a要素に対するReset CSSのスタイル定義]{
 #@mapfile(../codes/reset-css/a-reset.css)
 a {
   background-color: transparent;
