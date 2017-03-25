@@ -32,6 +32,18 @@ form, input, textarea, button, select
 
 == body要素
 
+body要素はChrome・Firefox・Safariで同様のスタイル定義がおこなわれています（@<list>{body-element}）。
+ただし@<code>{margin: 8px;}の指定は多くのWebサイトにおいて不要な指定となるため、Reset CSSでは@<code>{margin: 0;}と指定されていることが多いです。
+
+//list[body-element][body要素に対するスタイル定義]{
+#@mapfile(../codes/browser/body.css)
+body {
+  display: block;
+  margin: 8px;
+}
+#@end
+//}
+
 Eric Meyer's Reset CSS、normalize.css、sanitize.css、YUI 3 Reset CSSでは@<code>{body}要素へ対し@<code>{margin: 0;}を指定しています。
 Webページを作るときにページの外周へmarginを設定することはほとんど無いため、このような指定がされていると思われます。
 
@@ -41,7 +53,7 @@ h1要素は見出しを表す要素の中でもっともランクが高い要素
 
 //list[h1-element][h1要素に対するスタイル定義]{
 #@mapfile(../codes/browser/h1.css)
-/* Blink, WebKit */
+/* Chrome, Safari */
 h1 {
   display: block;
   font-size: 2em;
@@ -62,7 +74,7 @@ h1 {
   -webkit-margin-after: 1em;
 }
 
-/* Gecko */
+/* Firefox */
 h1 {
   display: block;
   font-size: 2em;
@@ -242,6 +254,7 @@ nav ol,
 nav ul {
   list-style: none;
 }
+#@end
 //}
 
 == table要素
