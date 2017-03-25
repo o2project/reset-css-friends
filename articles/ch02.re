@@ -9,7 +9,7 @@ Reset CSSの思想は2004年に生まれ、そこから数多くのReset CSSが�
 Hard resetは@<list>{hard-reset}のように書くだけの簡単なReset CSSです。
 
 //list[hard-reset][Hard reset]{
-#@mapfile(../codes/hard-reset.css)
+#@mapfile(../codes/reset-css/hard-reset.css)
 * {
   margin: 0;
   padding: 0;

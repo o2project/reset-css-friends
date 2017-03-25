@@ -108,7 +108,7 @@ h1 {
 また、YUI 3 Reset CSSやEric Meyer's Reset CSSでは見出しらしいスタイル定義をすべて無かったことにしています（@<list>{h1-yui3}）。
 
 //list[h1-yui3][h1要素に対するYUI 3 Reset CSSやEric Meyer's Reset CSSのスタイル定義]{
-#@mapfile(../codes/h1-yui3.css)
+#@mapfile(../codes/reset-css/h1-yui3.css)
 h1 {
   margin:0;
   padding:0;
@@ -339,7 +339,7 @@ Eric Meyer's Reset CSSではblockquoteやq要素に対し引用符を消すス�
 なお、他のReset CSSには特徴的な指定がありません。
 
 //list[eric-meyers-blockquote][Eric Meyer's Reset CSSのblockquote要素に対するスタイル指定]{
-#@mapfile(../codes/eric-meyers-blockquote.css)
+#@mapfile(../codes/reset-css/eric-meyers-blockquote.css)
 blockquote, q {
   quotes: none;
 }
