@@ -5,7 +5,7 @@ Reset CSSは@<kw>{Hard reset}とも呼ばれるユニバーサルセレクタを
 そして今日に至るまでさまざまな手法が開発されています。
 
 //list[hard-reset-css][初期のReset CSSであるHard reset]{
-#@mapfile(../codes/hard-reset.css)
+#@mapfile(../codes/reset-css/hard-reset.css)
 * {
   margin: 0;
   padding: 0;

@@ -27,21 +27,39 @@ form, input, textarea, button, select
 
 == html要素
 
-まずはhtml要素です。sanitize.cssとress.cssが、html要素に対し@<code>{box-sizing: border-box;}を指定した上で、全称セレクタへ@<code>{box-sizing: inherit;}を指定しています。
-このことでコンテンツ領域に@<code>{padding}や@<code>{border}の値が入るようになります。これによりボックスサイズの計算をより簡単にすることを狙っていると思われます。
+まずはhtml要素です。ChromeとSafariでは@<code>{display: block;}の指定だけがあります。
+いっぽうFirefoxでは@<code>{display: block;}以外にも、@<code>{unicode-bidi: isolate;}という複数の表記方向が混在する文章をどのように扱うか決める定義もされています。
+@<code>{unicode-bidi}プロパティの値によって表示がどう変わるかは@<href>{http://www.osaka-kyoiku.ac.jp/~joho/html5_ref/css/unicode-bidi_css.php}を参照してください。
+
+Reset CSS側ではsanitize.cssとress.cssが、html要素に対し@<code>{box-sizing: border-box;}を指定した上で、全称セレクタへ@<code>{box-sizing: inherit;}を指定しています。
+このことでコンテンツ領域に@<code>{padding}や@<code>{border}の値が入るようになります。
+これによりボックスサイズの計算をより簡単にすることを狙っていると思われます。
 
 == body要素
+
+body要素はChrome・Firefox・Safariで同様のスタイル定義がおこなわれています（@<list>{body-element}）。
+ただし@<code>{margin: 8px;}の指定は多くのWebサイトにおいて不要な指定となるため、Reset CSSでは@<code>{margin: 0;}と指定されていることが多いです。
+
+//list[body-element][body要素に対するスタイル定義]{
+#@mapfile(../codes/browser/body.css)
+body {
+  display: block;
+  margin: 8px;
+}
+#@end
+//}
 
 Eric Meyer's Reset CSS、normalize.css、sanitize.css、YUI 3 Reset CSSでは@<code>{body}要素へ対し@<code>{margin: 0;}を指定しています。
 Webページを作るときにページの外周へmarginを設定することはほとんど無いため、このような指定がされていると思われます。
 
 == セクショニング・コンテンツとh1要素
 
-h1要素は見出しを表す要素の中でもっともランクが高い要素です。@<code>{section}要素や@<code>{article}要素といったセクショニング・コンテンツへh1要素を入れ子にすると、深さに応じてスタイルが変わるようになっています。
+h1要素は見出しを表す要素の中でもっともランクが高い要素です。
+また@<code>{section}要素や@<code>{article}要素といったセクショニング・コンテンツへh1要素を入れた場合は、入れ子の深さに応じてスタイルが変わるようになっています。
 
 //list[h1-element][h1要素に対するスタイル定義]{
 #@mapfile(../codes/browser/h1.css)
-/* Blink, WebKit */
+/* Chrome, Safari */
 h1 {
   display: block;
   font-size: 2em;
@@ -62,7 +80,7 @@ h1 {
   -webkit-margin-after: 1em;
 }
 
-/* Gecko */
+/* Firefox */
 h1 {
   display: block;
   font-size: 2em;
@@ -108,7 +126,7 @@ h1 {
 また、YUI 3 Reset CSSやEric Meyer's Reset CSSでは見出しらしいスタイル定義をすべて無かったことにしています（@<list>{h1-yui3}）。
 
 //list[h1-yui3][h1要素に対するYUI 3 Reset CSSやEric Meyer's Reset CSSのスタイル定義]{
-#@mapfile(../codes/h1-yui3.css)
+#@mapfile(../codes/reset-css/h1-yui3.css)
 h1 {
   margin:0;
   padding:0;
@@ -135,9 +153,10 @@ YUI 3 Reset CSSやEric Meyer's Reset CSSといった古めのReset CSSでは@<co
 
 == a要素
 
-normalize.cssやsanitize.css、ressでは@<list>{a-reset}のようなスタイル定義をしています。
+a要素は各ブラウザのユーザーエージェントスタイルシートでは特にスタイルが適用されていません。
+ただ、normalize.cssやsanitize.css、ressでは@<list>{a-reset}のようなスタイル定義をしています。
 
-//list[a-reset][a要素に対するnormalize.cssなどのスタイル定義]{
+//list[a-reset][a要素に対するReset CSSのスタイル定義]{
 #@mapfile(../codes/reset-css/a-reset.css)
 a {
   background-color: transparent;
@@ -242,6 +261,7 @@ nav ol,
 nav ul {
   list-style: none;
 }
+#@end
 //}
 
 == table要素
@@ -339,7 +359,7 @@ Eric Meyer's Reset CSSではblockquoteやq要素に対し引用符を消すス�
 なお、他のReset CSSには特徴的な指定がありません。
 
 //list[eric-meyers-blockquote][Eric Meyer's Reset CSSのblockquote要素に対するスタイル指定]{
-#@mapfile(../codes/eric-meyers-blockquote.css)
+#@mapfile(../codes/reset-css/eric-meyers-blockquote.css)
 blockquote, q {
   quotes: none;
 }
@@ -362,36 +382,98 @@ Safariに至っては1221行中421行がinput要素関連のスタイル指定�
 //image[input-types][input要素はtype属性の値によって挙動が大きく変わる]{
 //}
 
-//list[chrome-input][input要素へ対するChromeのスタイル指定]{
-#@mapfile(../codes/browser/chrome/input.css)
-input, textarea, keygen, select, button {
-  margin: 0__qem;
-  font: -webkit-small-control;
-  text-rendering: auto; /* FIXME: Remove when tabs work with optimizeLegibility. */
-  color: initial;
-  letter-spacing: normal;
-  word-spacing: normal;
-  line-height: normal;
-  text-transform: none;
-  text-indent: 0;
-  text-shadow: none;
-  display: inline-block;
-  text-align: start;
+=== input要素に対するReset CSSのスタイル指定
+
+Reset CSSのinput要素に対する指定はnormalize.css、sanitize.css、ressそれぞれで似通っているのですが微妙に違います。
+この項ではそれぞれのライブラリでどのように指定されているかを解説します。
+
+==== normalize.css
+
+input要素に対して作者の意見が反映されているReset CSSがnormalize.cssです。
+@<code>{font-family: sans-serif}、@<code>{font-size: 100%}、@<code>{line-height: 1.15}とそれぞれ指定されています（@<list>{normalize-input}）。
+
+//list[normalize-input][作者の意見が反映されているnormalize.css]{
+#@mapfile(../codes/reset-css/normalize-css/input.css)
+/**
+ * 1. Change the font styles in all browsers (opinionated).
+ * 2. Remove the margin in Firefox and Safari.
+ */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: sans-serif; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
 }
 
-input {
-  -webkit-appearance: textfield;
-  padding: 1px;
-  background-color: white;
-  border: 2px inset;
-  -webkit-rtl-ordering: logical;
-  -webkit-user-select: text;
-  cursor: auto;
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+
+button,
+input { /* 1 */
+  overflow: visible;
 }
 #@end
 //}
 
-sanitize.cssでは他にない指定として@<code>{touch-action: manipulation;}があります（@<list>{sanitize-fix-tap-delay}）。
+ほとんどの場合@<code>{font-family: sans-serif}はフォームを構成する要素へ対し指定されることが多い値です。
+そのためnormalize.cssで指定することで、normalize.cssを使う側では指定をしなくて済むことを目指していると思われます。
+@<code>{line-height: 1.15;}は好みでしょうか？
+
+==== sanitize.css
+
+normalize.cssの指定を受け継ぎつつ、@<code>{font-size}や@<code>{line-height}の値指定は@<code>{inherit}へ変更されています（@<code>{sanitize-input}）。
+
+//list[sanitize-input][normalize.cssより主張が少なくなったsanitize.css]{
+#@mapfile(../codes/reset-css/sanitize-css/input.css)
+/**
+* Remove the margin in Firefox and Safari.
+*/
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  margin: 0;
+}
+
+/**
+* Inherit styling in all browsers (opinionated).
+*/
+
+button,
+input,
+select,
+textarea {
+  background-color: transparent;
+  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/**
+* Show the overflow in IE.
+* 1. Show the overflow in Edge.
+*/
+
+button,
+input { /* 1 */
+  overflow: visible;
+}
+#@end
+//}
+
+normalize.cssの場合、作っているWebサイトの指定によっては自分で文字サイズや行間を調整する必要がありました。
+それをsanitize.cssでは親要素の指定を継承することにより、自分でスタイル指定することを極力減らそうとしています。
+
+またinput要素に対する指定として他にないものとしては@<code>{touch-action: manipulation;}があります（@<list>{sanitize-fix-tap-delay}）。
 ページのスクロールとズームのみを許可する指定ですが、IE 10ではタップ時の遅延をなくす指定になります。
 
 //list[sanitize-fix-tap-delay][IE 10でタップ時の遅延を無くすCSS]{
@@ -412,6 +494,40 @@ textarea,
 [tabindex] {
   -ms-touch-action: manipulation; /* 1 */
   touch-action: manipulation;
+}
+#@end
+//}
+
+==== ress
+
+ressもnormalize.css並かそれ以上に作者の意見が反映されています（@<list>{ress-input}）。
+[type="button"]や[type="submit"]、[type="search"]はブラウザのユーザーエージェントスタイルシートで@<code>{border-radius}が指定されていることが多いです。
+その指定をressでは無かったことにしています。
+
+また@<code>{background-color}を透過したり、@<code>{border-style}を無くしたりと大胆な指定をしています。
+
+//list[ress-input][normalize.cssと同じく主張が強いress]{
+#@mapfile(../codes/reset-css/ress/input.css)
+input {
+  border-radius: 0;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font: inherit; /* Specify font inheritance of form elements */
+}
+
+/* Remove the default button styling in all browsers */
+button,
+input,
+select,
+textarea {
+  background-color: transparent;
+  border-style: none;
+  color: inherit;
 }
 #@end
 //}
