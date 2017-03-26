@@ -528,3 +528,48 @@ textarea {
 }
 #@end
 //}
+
+== select要素
+
+select要素はChromeとSafariで@<code>{text-transform: none;}という指定がされています。
+しかしEdgeとFirefoxでは指定がないため、normalize.cssとsanitize.cssでは同様の指定をしています（@<list>{normalize-select}）。
+
+//list[normalize-select][normalize.cssとsanitize.cssではtext-transform: none;の指定だけ]{
+#@mapfile(../codes/reset-css/normalize-css/select.css)
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+
+button,
+select { /* 1 */
+  text-transform: none;
+}
+#@end
+//}
+
+==={select-ress} ress
+
+normalize.cssやsanitize.cssと違い独自路線なのがressです。
+@<code>{text-transform: none;}も指定されていますが、他にもselect要素らしい見た目を無くす@<code>{appearance}やIE独自の疑似要素に対してスタイルを指定しています（@<list>{ress-select}）。
+ちなみに@<code>{::-ms-expand}はドロップダウンを表示するためのボタンを表す疑似要素、@<code>{::-ms-value}はselect要素内の文字を表す疑似要素です@<fn>{ie-pseudo-elements}。
+//footnote[ie-pseudo-elements][http://subtech.g.hatena.ne.jp/mayuki/20110923/1316786871]
+
+//list[ress-select][ressはselect要素でも独自路線]{
+#@mapfile(../codes/reset-css/ress/select.css)
+
+/* Style select like a standard input */
+select {
+  -moz-appearance: none; /* Firefox 36+ */
+  -webkit-appearance: none; /* Chrome 41+ */
+}
+
+select::-ms-expand {
+  display: none; /* Internet Explorer 11+ */
+}
+
+select::-ms-value {
+  color: currentColor; /* Internet Explorer 11+ */
+}
+#@end
+//}
