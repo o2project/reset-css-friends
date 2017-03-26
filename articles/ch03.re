@@ -382,12 +382,10 @@ Safariに至っては1221行中421行がinput要素関連のスタイル指定�
 //image[input-types][input要素はtype属性の値によって挙動が大きく変わる]{
 //}
 
-=== input要素に対するReset CSSのスタイル指定
-
 Reset CSSのinput要素に対する指定はnormalize.css、sanitize.css、ressそれぞれで似通っているのですが微妙に違います。
 この項ではそれぞれのライブラリでどのように指定されているかを解説します。
 
-==== normalize.css
+==={input-normalize} normalize.css
 
 input要素に対して作者の意見が反映されているReset CSSがnormalize.cssです。
 @<code>{font-family: sans-serif}、@<code>{font-size: 100%}、@<code>{line-height: 1.15}とそれぞれ指定されています（@<list>{normalize-input}）。
@@ -426,7 +424,7 @@ input { /* 1 */
 そのためnormalize.cssで指定することで、normalize.cssを使う側では指定をしなくて済むことを目指していると思われます。
 @<code>{line-height: 1.15;}は好みでしょうか？
 
-==== sanitize.css
+==={input-sanitize} sanitize.css
 
 normalize.cssの指定を受け継ぎつつ、@<code>{font-size}や@<code>{line-height}の値指定は@<code>{inherit}へ変更されています（@<code>{sanitize-input}）。
 
@@ -498,7 +496,7 @@ textarea,
 #@end
 //}
 
-==== ress
+==={input-ress} ress
 
 ressもnormalize.css並かそれ以上に作者の意見が反映されています（@<list>{ress-input}）。
 [type="button"]や[type="submit"]、[type="search"]はブラウザのユーザーエージェントスタイルシートで@<code>{border-radius}が指定されていることが多いです。
