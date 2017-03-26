@@ -41,8 +41,7 @@ ul, ol, li,
 table, tr, td,
 h1, p, a, blockquote, br,
 section, article, nav, aside,
-header, footer, main,
-form, input, textarea, button, select
+input, textarea, button, select
 </pre>
 </div>
 
@@ -346,11 +345,9 @@ q:before, q:after {
 図3.3: input要素はtype属性の値によって挙動が大きく変わる
 </p>
 </div>
-
-<h3><a id="h3-10-1"></a>input要素に対するReset CSSのスタイル指定</h3>
 <p>Reset CSSのinput要素に対する指定はnormalize.css、sanitize.css、ressそれぞれで似通っているのですが微妙に違います。この項ではそれぞれのライブラリでどのように指定されているかを解説します。</p>
 
-<h4><a id="h3-10-1-1"></a>normalize.css</h4>
+<h3 id="input-normalize"><a id="h3-10-1"></a>normalize.css</h3>
 <p>input要素に対して作者の意見が反映されているReset CSSがnormalize.cssです。<code class="inline-code tt">font-family: sans-serif</code>、<code class="inline-code tt">font-size: 100%</code>、<code class="inline-code tt">line-height: 1.15</code>とそれぞれ指定されています（リスト3.17）。</p>
 <div class="caption-code">
 <p class="caption">リスト3.17: 作者の意見が反映されているnormalize.css</p>
@@ -383,7 +380,7 @@ input { /* 1 */
 </div>
 <p>ほとんどの場合<code class="inline-code tt">font-family: sans-serif</code>はフォームを構成する要素へ対し指定されることが多い値です。そのためnormalize.cssで指定することで、normalize.cssを使う側では指定をしなくて済むことを目指していると思われます。<code class="inline-code tt">line-height: 1.15;</code>は好みでしょうか？</p>
 
-<h4><a id="h3-10-1-2"></a>sanitize.css</h4>
+<h3 id="input-sanitize"><a id="h3-10-2"></a>sanitize.css</h3>
 <p>normalize.cssの指定を受け継ぎつつ、<code class="inline-code tt">font-size</code>や<code class="inline-code tt">line-height</code>の値指定は<code class="inline-code tt">inherit</code>へ変更されています（<code class="inline-code tt">sanitize-input</code>）。</p>
 <div class="caption-code">
 <p class="caption">リスト3.18: normalize.cssより主張が少なくなったsanitize.css</p>
@@ -448,7 +445,7 @@ textarea,
 </pre>
 </div>
 
-<h4><a id="h3-10-1-3"></a>ress</h4>
+<h3 id="input-ress"><a id="h3-10-3"></a>ress</h3>
 <p>ressもnormalize.css並かそれ以上に作者の意見が反映されています（リスト3.20）。[type=&quot;button&quot;]や[type=&quot;submit&quot;]、[type=&quot;search&quot;]はブラウザのユーザーエージェントスタイルシートで<code class="inline-code tt">border-radius</code>が指定されていることが多いです。その指定をressでは無かったことにしています。</p>
 <p>また<code class="inline-code tt">background-color</code>を透過したり、<code class="inline-code tt">border-style</code>を無くしたりと大胆な指定をしています。</p>
 <div class="caption-code">
@@ -473,6 +470,44 @@ textarea {
   background-color: transparent;
   border-style: none;
   color: inherit;
+}
+</pre>
+</div>
+
+<h2><a id="h3-11"></a><span class="secno">3.11　</span>select要素</h2>
+<p>select要素はChromeとSafariで<code class="inline-code tt">text-transform: none;</code>という指定がされています。しかしEdgeとFirefoxでは指定がないため、normalize.cssとsanitize.cssでは同様の指定をしています（リスト3.21）。</p>
+<div class="caption-code">
+<p class="caption">リスト3.21: normalize.cssとsanitize.cssではtext-transform: none;の指定だけ</p>
+<pre class="list">/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+
+button,
+select { /* 1 */
+  text-transform: none;
+}
+</pre>
+</div>
+
+<h3 id="select-ress"><a id="h3-11-1"></a>ress</h3>
+<p>normalize.cssやsanitize.cssと違い独自路線なのがressです。<code class="inline-code tt">text-transform: none;</code>も指定されていますが、他にもselect要素らしい見た目を無くす<code class="inline-code tt">appearance</code>やIE独自の疑似要素に対してスタイルを指定しています（リスト3.22）。ちなみに<code class="inline-code tt">::-ms-expand</code>はドロップダウンを表示するためのボタンを表す疑似要素、<code class="inline-code tt">::-ms-value</code>はselect要素内の文字を表す疑似要素です<a id="fnb-ie-pseudo-elements" href="#fn-ie-pseudo-elements" class="noteref" epub:type="noteref">*8</a>。</p>
+<div class="footnote" epub:type="footnote" id="fn-ie-pseudo-elements"><p class="footnote">[*8] http://subtech.g.hatena.ne.jp/mayuki/20110923/1316786871</p></div>
+<div class="caption-code">
+<p class="caption">リスト3.22: ressはselect要素でも独自路線</p>
+<pre class="list">
+/* Style select like a standard input */
+select {
+  -moz-appearance: none; /* Firefox 36+ */
+  -webkit-appearance: none; /* Chrome 41+ */
+}
+
+select::-ms-expand {
+  display: none; /* Internet Explorer 11+ */
+}
+
+select::-ms-value {
+  color: currentColor; /* Internet Explorer 11+ */
 }
 </pre>
 </div>
