@@ -21,8 +21,7 @@ ul, ol, li,
 table, tr, td,
 h1, p, a, blockquote, br,
 section, article, nav, aside,
-header, footer, main,
-form, input, textarea, button, select
+input, textarea, button, select
 //}
 
 == html要素
