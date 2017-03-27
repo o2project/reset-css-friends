@@ -1,0 +1,9 @@
+/**
+ * 1. Remove the default vertical scrollbar in IE.
+ * 2. Change the resize direction on textareas in all browsers (opinionated).
+ */
+
+textarea {
+  overflow: auto; /* 1 */
+  resize: vertical; /* 2 */
+}

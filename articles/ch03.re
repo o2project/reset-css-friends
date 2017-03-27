@@ -642,3 +642,60 @@ button {
 }
 #@end
 //}
+
+== textarea要素
+
+textarea要素はnormalize.cssやsanitize.css、ressでは似通った指定になっています。
+
+==={textarea-yui3} YUI 3 Reset CSS
+
+#@# prh:disable
+書かれた時期が古いため、IE 7以下に適用されるCSSハックが書かれています@<list>{yui3-textarea}。
+この@<code>{*font-size:100%}という書き方については@<href>{http://www.atmarkit.co.jp/fwcr/design/benkyo/csshack02/03.html#13}を見てください。
+
+//list[yui3-textarea][YUI 3のtextarea要素へ対する指定]{
+#@mapfile(../codes/reset-css/yui3/textarea.css)
+input,
+textarea,
+select {
+  font-family:inherit;
+  font-size:inherit;
+  font-weight:inherit;
+  *font-size:100%; /*to enable resizing for IE*/
+}
+#@end
+//}
+
+==={textarea-normalize} normalize.css
+
+normalize.cssの指定は単純で、IE向けにtextarea要素内のスクロールバーを消すだけの指定がされています（@<list>{normalize-textarea}）。
+
+//list[normalize-textarea][normalize.cssのtextarea要素へ対する指定]{
+#@mapfile(../codes/reset-css/normalize-css/textarea.css)
+/**
+ * Remove the default vertical scrollbar in IE.
+ */
+
+textarea {
+  overflow: auto;
+}
+#@end
+//}
+
+==={textarea-sanitize-and-ress} sanitize.cssとress
+
+sanitize.cssとressでは、normalize.cssでされていた指定に加え、textarea要素のリサイズできる方向を縦方向にのみ制限する指定がされています（@<list>{sanitize-and-ress-textarea}）。
+
+//list[sanitize-and-ress-textarea][sanitize.cssとressのtextarea要素へ対する指定]{
+#@mapfile(../codes/reset-css/sanitize-css/textarea.css)
+/**
+ * 1. Remove the default vertical scrollbar in IE.
+ * 2. Change the resize direction on textareas in all browsers (opinionated).
+ */
+
+textarea {
+  overflow: auto; /* 1 */
+  resize: vertical; /* 2 */
+}
+#@end
+//}
