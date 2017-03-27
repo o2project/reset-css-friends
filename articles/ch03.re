@@ -557,7 +557,6 @@ normalize.cssやsanitize.cssと違い独自路線なのがressです。
 
 //list[ress-select][ressはselect要素でも独自路線]{
 #@mapfile(../codes/reset-css/ress/select.css)
-
 /* Style select like a standard input */
 select {
   -moz-appearance: none; /* Firefox 36+ */
