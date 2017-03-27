@@ -125,7 +125,7 @@ h1 {
 また、YUI 3 Reset CSSやEric Meyer's Reset CSSでは見出しらしいスタイル定義をすべて無かったことにしています（@<list>{h1-yui3}）。
 
 //list[h1-yui3][h1要素に対するYUI 3 Reset CSSやEric Meyer's Reset CSSのスタイル定義]{
-#@mapfile(../codes/reset-css/h1-yui3.css)
+#@mapfile(../codes/reset-css/yui3/h1.css)
 h1 {
   margin:0;
   padding:0;
