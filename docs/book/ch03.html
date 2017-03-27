@@ -495,8 +495,7 @@ select { /* 1 */
 <div class="footnote" epub:type="footnote" id="fn-ie-pseudo-elements"><p class="footnote">[*8] http://subtech.g.hatena.ne.jp/mayuki/20110923/1316786871</p></div>
 <div class="caption-code">
 <p class="caption">リスト3.22: ressはselect要素でも独自路線</p>
-<pre class="list">
-/* Style select like a standard input */
+<pre class="list">/* Style select like a standard input */
 select {
   -moz-appearance: none; /* Firefox 36+ */
   -webkit-appearance: none; /* Chrome 41+ */
@@ -508,6 +507,117 @@ select::-ms-expand {
 
 select::-ms-value {
   color: currentColor; /* Internet Explorer 11+ */
+}
+</pre>
+</div>
+
+<h2><a id="h3-12"></a><span class="secno">3.12　</span>button要素</h2>
+<p>normalize.cssやsanitize.css、ressではWebKitのバグを修正するセレクタ指定やプロパティと値の指定がおこなわれていますリスト3.23。またFirefoxに対してもbutton要素内に画像を配置したときにボタンのborderと画像の間に隙間が空く問題などが修正されています<a id="fnb-firefox-form-button" href="#fn-firefox-form-button" class="noteref" epub:type="noteref">*9</a>。</p>
+<div class="footnote" epub:type="footnote" id="fn-firefox-form-button"><p class="footnote">[*9] http://jeffreyfrancesco.org/weblog/2011062101/</p></div>
+<div class="caption-code">
+<p class="caption">リスト3.23: normalize.cssとsanitize.css、ressの共通指定</p>
+<pre class="list">@mapfile(../codes/reset-css/normalize-css/button.css)
+/**
+ * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
+ *    controls in Android 4.
+ * 2. Correct the inability to style clickable types in iOS and Safari.
+ */
+
+button,
+html [type=&quot;button&quot;], /* 1 */
+[type=&quot;reset&quot;],
+[type=&quot;submit&quot;] {
+  -webkit-appearance: button; /* 2 */
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+
+button::-moz-focus-inner,
+[type=&quot;button&quot;]::-moz-focus-inner,
+[type=&quot;reset&quot;]::-moz-focus-inner,
+[type=&quot;submit&quot;]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+
+button:-moz-focusring,
+[type=&quot;button&quot;]:-moz-focusring,
+[type=&quot;reset&quot;]:-moz-focusring,
+[type=&quot;submit&quot;]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+</pre>
+</div>
+
+<h3 id="button-ress"><a id="h3-12-1"></a>ress</h3>
+<p>ressはnormalize.cssやsanitize.cssと同じ指定もしていますが、ress独自の指定として<code class="inline-code tt">cursor: pointer;</code>や<code class="inline-code tt">overflow: visible;</code>があります（リスト3.24）。<code class="inline-code tt">cursor: pointer;</code>はユーザーエージェントスタイルシートでカーソルへ対する指定がないため、ress側で指定しています。<code class="inline-code tt">overflow: visible;</code>はコメントにもありますが、IE8-11ではbutton要素へ対して<code class="inline-code tt">hidden</code>という値が指定されているため、それでは不都合があると考えたのか<code class="inline-code tt">overflow: visible;</code>が指定されています。</p>
+<div class="caption-code">
+<p class="caption">リスト3.24: ressのbutton要素へ対する指定</p>
+<pre class="list">/* Apply cursor pointer to button elements */
+button,
+[type=&quot;button&quot;],
+[type=&quot;reset&quot;],
+[type=&quot;submit&quot;],
+[role=&quot;button&quot;] {
+  cursor: pointer;
+}
+
+button {
+  overflow: visible; /* Address `overflow` set to `hidden` in IE 8/9/10/11 */
+}
+</pre>
+</div>
+
+<h2><a id="h3-13"></a><span class="secno">3.13　</span>textarea要素</h2>
+<p>textarea要素はnormalize.cssやsanitize.css、ressでは似通った指定になっています。</p>
+
+<h3 id="textarea-yui3"><a id="h3-13-1"></a>YUI 3 Reset CSS</h3>
+<p>書かれた時期が古いため、IE 7以下に適用されるCSSハックが書かれていますリスト3.25。この<code class="inline-code tt">*font-size:100%</code>という書き方については<a href="http://www.atmarkit.co.jp/fwcr/design/benkyo/csshack02/03.html#13" class="link">http://www.atmarkit.co.jp/fwcr/design/benkyo/csshack02/03.html#13</a>を見てください。</p>
+<div class="caption-code">
+<p class="caption">リスト3.25: YUI 3のtextarea要素へ対する指定</p>
+<pre class="list">input,
+textarea,
+select {
+  font-family:inherit;
+  font-size:inherit;
+  font-weight:inherit;
+  *font-size:100%; /*to enable resizing for IE*/
+}
+</pre>
+</div>
+
+<h3 id="textarea-normalize"><a id="h3-13-2"></a>normalize.css</h3>
+<p>normalize.cssの指定は単純で、IE向けにtextarea要素内のスクロールバーを消すだけの指定がされています（リスト3.26）。</p>
+<div class="caption-code">
+<p class="caption">リスト3.26: normalize.cssのtextarea要素へ対する指定</p>
+<pre class="list">/**
+ * Remove the default vertical scrollbar in IE.
+ */
+
+textarea {
+  overflow: auto;
+}
+</pre>
+</div>
+
+<h3 id="textarea-sanitize-and-ress"><a id="h3-13-3"></a>sanitize.cssとress</h3>
+<p>sanitize.cssとressでは、normalize.cssでされていた指定に加え、textarea要素のリサイズできる方向を縦方向にのみ制限する指定がされています（リスト3.27）。</p>
+<div class="caption-code">
+<p class="caption">リスト3.27: sanitize.cssとressのtextarea要素へ対する指定</p>
+<pre class="list">/**
+ * 1. Remove the default vertical scrollbar in IE.
+ * 2. Change the resize direction on textareas in all browsers (opinionated).
+ */
+
+textarea {
+  overflow: auto; /* 1 */
+  resize: vertical; /* 2 */
 }
 </pre>
 </div>
