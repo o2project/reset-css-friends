@@ -573,3 +573,73 @@ select::-ms-value {
 }
 #@end
 //}
+
+== button要素
+
+normalize.cssやsanitize.css、ressではWebKitのバグを修正するセレクタ指定やプロパティと値の指定がおこなわれています@<list>{normalize-button}。
+またFirefoxに対してもbutton要素内に画像を配置したときにボタンのborderと画像の間に隙間が空く問題などが修正されています@<fn>{firefox-form-button}。
+#@# prh:disable
+//footnote[firefox-form-button][http://jeffreyfrancesco.org/weblog/2011062101/]
+
+//list[normalize-button][normalize.cssとsanitize.css、ressの共通指定]{
+@mapfile(../codes/reset-css/normalize-css/button.css)
+/**
+ * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
+ *    controls in Android 4.
+ * 2. Correct the inability to style clickable types in iOS and Safari.
+ */
+
+button,
+html [type="button"], /* 1 */
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button; /* 2 */
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+#@#end
+//}
+
+==={button-ress} ress
+
+ressはnormalize.cssやsanitize.cssと同じ指定もしていますが、ress独自の指定として@<code>{cursor: pointer;}や@<code>{overflow: visible;}があります（@<list>{ress-button}）。
+@<code>{cursor: pointer;}はユーザーエージェントスタイルシートでカーソルへ対する指定がないため、ress側で指定しています。
+@<code>{overflow: visible;}はコメントにもありますが、IE8-11ではbutton要素へ対して@<code>{hidden}という値が指定されているため、それでは不都合があると考えたのか@<code>{overflow: visible;}が指定されています。
+
+//list[ress-button][ressのbutton要素へ対する指定]{
+#@mapfile(../codes/reset-css/ress/button.css)
+/* Apply cursor pointer to button elements */
+button,
+[type="button"],
+[type="reset"],
+[type="submit"],
+[role="button"] {
+  cursor: pointer;
+}
+
+button {
+  overflow: visible; /* Address `overflow` set to `hidden` in IE 8/9/10/11 */
+}
+#@end
+//}
