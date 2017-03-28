@@ -6192,11 +6192,20 @@ a {
 .alert, .badge, .breadcrumb, .btn, .form-control, .input-gruop, .label, .lead, .list-group, .nav-pills, .nav-tabs, .navbar, .no-thank-yu, .pager, .pagination, .panel-heading, .panel-title, .popover, .tooltip {
   font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,"ヒラギノ角ゴ ProN W3","Hiragino Kaku Gothic ProN","メイリオ",Meiryo,sans-serif; }
 
+.book-toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+
+.book-body h1:first-of-type {
+  margin-top: 0; }
+
 main img {
   max-width: 100%; }
 
 footer {
-  background-color: #333; }
+  background-color: #003760;
+  color: #fff; }
 
 .social-media [class$="-icon"] svg {
   width: 16px;
