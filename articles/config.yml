@@ -27,42 +27,11 @@ booktitle: Reset CSSフレンズ
 
 # 著者名。「, 」で区切って複数指定できる
 # 読みを入れる例 aut: [{name: "青木峰郎", file-as: "アオキミネロウ"}, {name: "武藤健志", file-as: "ムトウケンシ"}, {name: "高橋征義", file-as: "タカハシマサヨシ"}, {name: "角征典", file-as: "カドマサノリ"}]
-aut: ["O2 Project"]
-
-# 以下はオプション
-# 以下はオプション(autと同じように配列書式で複数指定可能)。
-# 読みの指定はaut:の例を参照。
-# a-が付いているものはcreator側、
-# 付いていないものはcontributor側(二次協力者)に入る
-# a-adp, adp: 異なるメディア向けに作り直した者
-# a-ann, ann: 注釈記述者
-# a-arr, arr: アレンジした者
-# a-art, art: グラフィックデザインおよび芸術家
-# a-asn, asn: 関連・かつての所有者・関係者
-# a-aqt, aqt: 大きく引用された人物
-# a-aft, aft: 後書き・奥付の責任者
-# a-aui, aui: 序論・序文・前書きの責任者
-# a-ant, ant: 目録責任者
-# a-bkp, bkp: メディア制作責任者
-# a-clb, clb: 限定参加または補足者
-# a-cmm, cmm: 解釈・分析・考察者
-# a-dsr, dsr: デザイナ
-# a-edt, edt: 編集者
-# a-ill, ill: イラストレータ
-# a-lyr, lyr: 歌詞作成者
-# a-mdc, mdc: メタデータセットの一次的責任者
-# a-mus, mus: 音楽家
-# a-nrt, nrt: 語り手
-# a-oth, oth: その他
-# a-pht, pht: 撮影責任者
-# a-pbl, pbl: 出版社（発行所）
-# a-prt, prt: 印刷所
-# a-red, red: 項目の枠組起草者
-# a-rev, rev: 評論者
-# a-spn, spn: 援助者
-# a-ths, ths: 監督者
-# a-trc, trc: 筆記・タイプ作業者
-# a-trl, trl: 翻訳者
+aut: O2 Project
+edt: kubosho_
+dsr: kino
+ill: tomo_e
+prt: ねこのしっぽ
 
 # 刊行日(省略した場合は実行時の日付)
 date: 2017-04-09
@@ -72,7 +41,7 @@ date: 2017-04-09
 # 日付の後ろを空白文字で区切り、任意の文字列を置くことも可能。
 history: [["2017-04-09"]]
 # 権利表記(配列で複数指定可)
-# rights: (C) 2016 Re:VIEW Developers
+rights: (C) 2017 O2 Project
 # description: 説明
 # subject: 短い説明用タグ(配列で複数指定可)
 # type: 書籍のカテゴリーなど(配列で複数指定可)
@@ -127,7 +96,7 @@ coverimage: null
 # creditfile: null
 
 # 奥付を作成するか。デフォルトでは作成されない。trueを指定するとデフォルトの奥付、ファイル名を指定するとそれがcolophon.htmlとしてコピーされる
-# colophon: true
+colophon: true
 
 # 裏表紙ファイル (画像はcoversまたはimagesに配置する)。ファイル名を指定すると裏表紙として入る
 # backcover: null
