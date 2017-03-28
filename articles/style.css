@@ -6192,10 +6192,18 @@ a {
 .alert, .badge, .breadcrumb, .btn, .form-control, .input-gruop, .label, .lead, .list-group, .nav-pills, .nav-tabs, .navbar, .no-thank-yu, .pager, .pagination, .panel-heading, .panel-title, .popover, .tooltip {
   font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,"ヒラギノ角ゴ ProN W3","Hiragino Kaku Gothic ProN","メイリオ",Meiryo,sans-serif; }
 
-.book-toc ul {
+.book-toc {
   list-style: none;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  border-radius: 15px; }
+  .book-toc li {
+    padding: 5px 14px;
+    border: solid #ddd;
+    border-width: 1px 1px 0;
+    background-color: #fff; }
+    .book-toc li:last-child {
+      border-bottom-width: 1px; }
 
 .book-body h1:first-of-type {
   margin-top: 0; }
