@@ -90,7 +90,11 @@ gulp.task('deploy', () => {
   execSync(`mkdir ${tempDir} || rm -rf ${tempDir}`)
   execSync(`git clone --quiet ${repository} ${tempDir} 2> /dev/null`)
   execSync(`npm run web`)
-  execSync(`cp -r ${targetDir}/${webrootDir}/ ${tempDir}/${publishDir}/`)
+  execSync(`rm -rf ${tempDir}/${publishDir}/`)
+  execSync(`mkdir ${tempDir}/${publishDir}/`)
+  execSync(`echo friends.o2p.jp > ${tempDir}/${publishDir}/CNAME`)
+  execSync(`cp ${targetDir}/${webrootDir}/*.* ${tempDir}/${publishDir}`)
+  execSync(`cp -r ${targetDir}/${webrootDir}/images ${tempDir}/${publishDir}`)
 
   const sha = execSync('git rev-parse --verify HEAD').toString().substring(0, 7)
 
