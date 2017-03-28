@@ -7,13 +7,22 @@
   border-radius: 15px;
 
   li {
-    padding: 5px 14px;
+    background-color: #fff;
     border: solid #ddd;
     border-width: 1px 1px 0;
-    background-color: #fff;
 
     &:last-child {
       border-bottom-width: 1px;
+    }
+
+    a {
+      display: block;
+      padding: 5px 14px;
+      text-decoration: none;
+
+      &:hover {
+        background-color: #f9f9f9;
+      }
     }
   }
 }
