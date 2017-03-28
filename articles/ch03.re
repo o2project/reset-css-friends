@@ -316,8 +316,7 @@ table {
 #@end
 //}
 
-@<code>{border-collapse}の値によって表示がどのように変わるかは@<img>{table-border-collapse}で示すとおりです@<fn>{table-border-collapse-image}。
-//footnote[table-border-collapse-image][画像の著作権はCC-BY-SA 2.5 © 2005-2017 Mozilla Developer Network & 貢献者各人です]
+@<code>{border-collapse}の値によって表示がどのように変わるかは@<img>{table-border-collapse}で示すとおりです。
 
 //image[table-border-collapse][border-collapseの指定によって表示が変わる]{
 //}
