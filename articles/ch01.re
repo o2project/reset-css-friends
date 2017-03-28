@@ -1,4 +1,4 @@
-= Reset CSSとは
+= Reset CSSとは何か
 
 Reset CSSは、Web上のページを読み込んだときに既定で適用されるスタイル定義をリセットするためのものです。
 Reset CSSは@<kw>{Hard reset}とも呼ばれるユニバーサルセレクタを使ってすべてのmarginとpaddingを0にする手法から始まりました（@<list>{hard-reset-css}）。
