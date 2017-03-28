@@ -5,9 +5,9 @@
   <meta charset="UTF-8" />
   <meta name="generator" content="Re:VIEW" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Reset CSSとは | Reset CSSフレンズ</title>
+  <title>権利情報 | Reset CSSフレンズ</title>
 
-  <link rel="next" title="Reset CSSの特色" href="ch02.html">  <link rel="prev" title="はじめに" href="index.html">      <link rel="stylesheet" href="style.css">
+    <link rel="prev" title="Reset CSSは何をリセットしているのか" href="ch03.html">      <link rel="stylesheet" href="style.css">
     </head>
 <body>
 <header class="navbar navbar-default">
@@ -33,51 +33,39 @@
     </nav>
 
     <main class="book-body col-md-10">
-      <h1><a id="h1"></a><span class="secno">第1章　</span>Reset CSSとは</h1>
-<p>Reset CSSは、Web上のページを読み込んだときに既定で適用されるスタイル定義をリセットするためのものです。Reset CSSは<b class="kw">Hard reset</b><!-- IDX:Hard reset -->とも呼ばれるユニバーサルセレクタを使ってすべてのmarginとpaddingを0にする手法から始まりました（リスト1.1）。そして今日に至るまでさまざまな手法が開発されています。</p>
-<div class="caption-code">
-<p class="caption">リスト1.1: 初期のReset CSSであるHard reset</p>
-<pre class="list">* {
-  margin: 0;
-  padding: 0;
-}
-</pre>
-</div>
+      <h1><a id="h"></a>権利情報</h1>
+<p>次のReset CSSはPublic DomainまたはCC 0ライセンスが適用されています。</p>
+<ul>
+<li>Eric Meyer's Reset CSS</li>
+<li>sanitize.css</li>
+</ul>
 
-<h2><a id="h1-1"></a><span class="secno">1.1　</span>なぜReset CSSを使うのか</h2>
-<p>Reset CSSが使われる理由としてはブラウザが既定で定義するCSS（ユーザーエージェントCSSとも呼ばれます）がブラウザによって差異があるためです。例として<code class="inline-code tt">h1</code>要素と<code class="inline-code tt">p</code>要素を定義しただけのHTMLをブラウザで見てみます。するとFirefoxではセリフがないフォントで表示されています（図1.1）が、Safariではセリフがあるフォントで表示されます（図1.2）。</p>
-<div id="firefox-font" class="image">
-<img src="images/firefox-font.png" alt="Firefoxでプレビューしたときの様子" />
-<p class="caption">
-図1.1: Firefoxでプレビューしたときの様子
-</p>
-</div>
-<div id="safari-font" class="image">
-<img src="images/safari-font.png" alt="Safariでプレビューしたときの様子" />
-<p class="caption">
-図1.2: Safariでプレビューしたときの様子
-</p>
-</div>
-<p>このようにフォント1つとっても差異があります。もちろん他にも差異はあるため、それを吸収するために何らかのReset CSSライブラリを使うか、自分で差異を吸収する必要があります。</p>
+<h2><a id="h-1"></a>MDN</h2>
+<p>Licensed under CC-BY-SA 2.5.</p>
+<p>© 2005-2017 Mozilla Developer Network &amp; Mozilla Contributors,</p>
+<p><a href="http://creativecommons.org/licenses/by-sa/2.5/" class="link">http://creativecommons.org/licenses/by-sa/2.5/</a></p>
 
-<h2><a id="h1-2"></a><span class="secno">1.2　</span>Reset CSSを使わない場面</h2>
-<p>Reset CSSを使う理由として「ブラウザが既定で定義しているCSSの差異を吸収するため」と書きました。そのためNW.jsやElectronといったChromiumしか存在しない環境ではReset CSSを使う必要はなく、必要に応じて各要素をリセットしたほうがよいです。</p>
-<p>それではこれからよく使われていると思われるReset CSSについて説明していきます。</p>
+<h2><a id="h-2"></a>YUI 3</h2>
+<p>The BSD License</p>
+<p>Copyright (c) 2013, Yahoo! Inc. All rights reserved.</p>
+
+<h2><a id="h-3"></a>normalize.css</h2>
+<p>The MIT License (MIT)</p>
+<p>Copyright © Nicolas Gallagher and Jonathan Neal</p>
+
+<h2><a id="h-4"></a>ress</h2>
+<p>The MIT License (MIT)</p>
+<p>Copyright © 2016 Filipe Linhares</p>
     </main>
 
     <nav class="book-navi">
       <ul class="pager">
                 <li>
-          <a href="index.html" class="prev">
+          <a href="ch03.html" class="prev">
             &lt;前の章へ
           </a>
         </li>
         
-                <li>
-          <a href="ch02.html" class="next">
-            次の章へ&gt;
-          </a>
-        </li>
               </ul>
     </nav>
   </div>

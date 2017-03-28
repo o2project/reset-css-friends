@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Reset CSSは何をリセットしているのか | Reset CSSフレンズ</title>
 
-    <link rel="prev" title="Reset CSSの特色" href="ch02.html">      <link rel="stylesheet" href="style.css">
+  <link rel="next" title="権利情報" href="credit.html">  <link rel="prev" title="Reset CSSの特色" href="ch02.html">      <link rel="stylesheet" href="style.css">
     </head>
 <body>
 <header class="navbar navbar-default">
@@ -28,6 +28,7 @@
 <li><a href="./ch01.html">1 Reset CSSとは</a></li>
 <li><a href="./ch02.html">2 Reset CSSの特色</a></li>
 <li><a href="./ch03.html">3 Reset CSSは何をリセットしているのか</a></li>
+<li><a href="./credit.html">権利情報</a></li>
 </ul>
     </nav>
 
@@ -289,8 +290,7 @@ table {
 }
 </pre>
 </div>
-<p><code class="inline-code tt">border-collapse</code>の値によって表示がどのように変わるかは図3.1で示すとおりです<a id="fnb-table-border-collapse-image" href="#fn-table-border-collapse-image" class="noteref" epub:type="noteref">*6</a>。</p>
-<div class="footnote" epub:type="footnote" id="fn-table-border-collapse-image"><p class="footnote">[*6] 画像の著作権はCC-BY-SA 2.5 © 2005-2017 Mozilla Developer Network &amp; 貢献者各人です</p></div>
+<p><code class="inline-code tt">border-collapse</code>の値によって表示がどのように変わるかは図3.1で示すとおりです。</p>
 <div id="table-border-collapse" class="image">
 <img src="images/table-border-collapse.png" alt="border-collapseの指定によって表示が変わる" />
 <p class="caption">
@@ -344,8 +344,8 @@ q:before, q:after {
 </div>
 
 <h2><a id="h3-10"></a><span class="secno">3.10　</span>input要素</h2>
-<p>input要素はtype属性の値によって、図3.3で示すように挙動が大きく変わります。そのためChromeのユーザーエージェントスタイルシートでは1123行中295行がinput要素関連のスタイル指定です。Safariに至っては1221行中421行がinput要素関連のスタイル指定です<a id="fnb-safari-user-agent-stylesheet-line" href="#fn-safari-user-agent-stylesheet-line" class="noteref" epub:type="noteref">*7</a>。</p>
-<div class="footnote" epub:type="footnote" id="fn-safari-user-agent-stylesheet-line"><p class="footnote">[*7] Safariの場合iOS向けと思われるスタイル指定もあるためChromeと比較して行数が多いのかもしれません</p></div>
+<p>input要素はtype属性の値によって、図3.3で示すように挙動が大きく変わります。そのためChromeのユーザーエージェントスタイルシートでは1123行中295行がinput要素関連のスタイル指定です。Safariに至っては1221行中421行がinput要素関連のスタイル指定です<a id="fnb-safari-user-agent-stylesheet-line" href="#fn-safari-user-agent-stylesheet-line" class="noteref" epub:type="noteref">*6</a>。</p>
+<div class="footnote" epub:type="footnote" id="fn-safari-user-agent-stylesheet-line"><p class="footnote">[*6] Safariの場合iOS向けと思われるスタイル指定もあるためChromeと比較して行数が多いのかもしれません</p></div>
 <p>なおFirefoxは895行中24行がinput要素関連のスタイル指定です。</p>
 <div id="input-types" class="image">
 <img src="images/input-types.png" alt="input要素はtype属性の値によって挙動が大きく変わる" />
@@ -499,8 +499,8 @@ select { /* 1 */
 </div>
 
 <h3 id="select-ress"><a id="h3-11-1"></a>ress</h3>
-<p>normalize.cssやsanitize.cssと違い独自路線なのがressです。<code class="inline-code tt">text-transform: none;</code>も指定されていますが、他にもselect要素らしい見た目を無くす<code class="inline-code tt">appearance</code>やIE独自の疑似要素に対してスタイルを指定しています（リスト3.22）。ちなみに<code class="inline-code tt">::-ms-expand</code>はドロップダウンを表示するためのボタンを表す疑似要素、<code class="inline-code tt">::-ms-value</code>はselect要素内の文字を表す疑似要素です<a id="fnb-ie-pseudo-elements" href="#fn-ie-pseudo-elements" class="noteref" epub:type="noteref">*8</a>。</p>
-<div class="footnote" epub:type="footnote" id="fn-ie-pseudo-elements"><p class="footnote">[*8] http://subtech.g.hatena.ne.jp/mayuki/20110923/1316786871</p></div>
+<p>normalize.cssやsanitize.cssと違い独自路線なのがressです。<code class="inline-code tt">text-transform: none;</code>も指定されていますが、他にもselect要素らしい見た目を無くす<code class="inline-code tt">appearance</code>やIE独自の疑似要素に対してスタイルを指定しています（リスト3.22）。ちなみに<code class="inline-code tt">::-ms-expand</code>はドロップダウンを表示するためのボタンを表す疑似要素、<code class="inline-code tt">::-ms-value</code>はselect要素内の文字を表す疑似要素です<a id="fnb-ie-pseudo-elements" href="#fn-ie-pseudo-elements" class="noteref" epub:type="noteref">*7</a>。</p>
+<div class="footnote" epub:type="footnote" id="fn-ie-pseudo-elements"><p class="footnote">[*7] http://subtech.g.hatena.ne.jp/mayuki/20110923/1316786871</p></div>
 <div class="caption-code">
 <p class="caption">リスト3.22: ressはselect要素でも独自路線</p>
 <pre class="list">/* Style select like a standard input */
@@ -520,8 +520,8 @@ select::-ms-value {
 </div>
 
 <h2><a id="h3-12"></a><span class="secno">3.12　</span>button要素</h2>
-<p>normalize.cssやsanitize.css、ressではWebKitのバグを修正するセレクタ指定やプロパティと値の指定がおこなわれていますリスト3.23。またFirefoxに対してもbutton要素内に画像を配置したときにボタンのborderと画像の間に隙間が空く問題などが修正されています<a id="fnb-firefox-form-button" href="#fn-firefox-form-button" class="noteref" epub:type="noteref">*9</a>。</p>
-<div class="footnote" epub:type="footnote" id="fn-firefox-form-button"><p class="footnote">[*9] http://jeffreyfrancesco.org/weblog/2011062101/</p></div>
+<p>normalize.cssやsanitize.css、ressではWebKitのバグを修正するセレクタ指定やプロパティと値の指定がおこなわれていますリスト3.23。またFirefoxに対してもbutton要素内に画像を配置したときにボタンのborderと画像の間に隙間が空く問題などが修正されています<a id="fnb-firefox-form-button" href="#fn-firefox-form-button" class="noteref" epub:type="noteref">*8</a>。</p>
+<div class="footnote" epub:type="footnote" id="fn-firefox-form-button"><p class="footnote">[*8] http://jeffreyfrancesco.org/weblog/2011062101/</p></div>
 <div class="caption-code">
 <p class="caption">リスト3.23: normalize.cssとsanitize.css、ressの共通指定</p>
 <pre class="list">@mapfile(../codes/reset-css/normalize-css/button.css)
@@ -639,6 +639,11 @@ textarea {
           </a>
         </li>
         
+                <li>
+          <a href="credit.html" class="next">
+            次の章へ&gt;
+          </a>
+        </li>
               </ul>
     </nav>
   </div>
