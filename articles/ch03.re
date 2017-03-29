@@ -4,9 +4,9 @@
 このユーザーエージェントスタイルシートはブラウザ上でどのように指定されているか見ることができます。
 
 #@# prh:disable
-  * Chrome: https://chromium.googlesource.com/chromium/blink/+/master/Source/core/css/html.css
-  * Firefox: https://dxr.mozilla.org/mozilla-central/source/layout/style/res/html.css
-  * Safari: http://trac.webkit.org/browser/trunk/Source/WebCore/css/html.css
+  * Chrome: @<href>{https://chromium.googlesource.com/chromium/blink/+/master/Source/core/css/html.css}
+  * Firefox: @<href>{https://dxr.mozilla.org/mozilla-central/source/layout/style/res/html.css}
+  * Safari: @<href>{http://trac.webkit.org/browser/trunk/Source/WebCore/css/html.css}
 
 このユーザーエージェントスタイルシートですが、ブラウザごとに指定されているスタイルが違います。
 そのため別途Reset CSSを使わなかった場合、ブラウザによって見えかたが違うということが起きます@<fn>{user-agent-stylesheet-diff}。
