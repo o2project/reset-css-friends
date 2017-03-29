@@ -14,7 +14,19 @@
   <link rel="stylesheet" href="<%=h style %>">
   <%   end %>
   <% end %>
+
+  <% if @book.config["analytics"].present? && @book.config["analytics"]["google"].present? %>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga')
+    ga('create', '<%= @book.config["analytics"]["google"] %>', 'auto')
+    ga('send', 'pageview')
+  </script>
+  <% end%>
 </head>
+
 <body<%= @body_ext %>>
 <header class="navbar navbar-default">
   <div class="container">
@@ -29,6 +41,12 @@
 </header>
 
 <div class="book">
+  <div class="container">
+    <p id="ga-optout">
+      当サイトでは、内容の改善や頒布数の決定を目的として、<a href="http://www.google.com/intl/ja_jp/analytics/">Google アナリティクス</a>により、アクセス情報を匿名のトラフィックデータという形で収集し、解析しています。データの収集を無効化したい場合は<a href="javascript:gaOptout()">こちらのリンク</a>より無効にする事ができます。
+    </p>
+  </div>
+
   <div class="container">
     <nav class="book-toc col-md-2">
       <%= @toc %>
@@ -93,5 +111,22 @@
     </div>
   </div>
 </footer>
+
+<% if @book.config["analytics"].present? && @book.config["analytics"]["google"].present? %>
+<script>
+  const gaOptoutProperty = 'ga-disable-<%= @book.config["analytics"]["google"] %>'
+  const gaOptoutInformationElement = document.getElementById('ga-optout')
+
+  if (document.cookie.indexOf(gaOptoutProperty + '=true') > -1) {
+    window[gaOptoutProperty] = true
+    gaOptoutInformationElement.style.display = 'none'
+  }
+
+  function gaOptout() {
+    document.cookie = gaOptoutProperty + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/'
+    gaOptoutInformationElement.style.display = 'none'
+  }
+</script>
+<% end%>
 </body>
 </html>
