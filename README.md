@@ -1,6 +1,8 @@
 # Reset CSSフレンズ
 
-Reset CSSフレンズっていうのは、Reset CSSについてくわしくかくほんだよー！
+[![Build Status](https://travis-ci.org/o2project/reset-css-friends.svg?branch=master)](https://travis-ci.org/o2project/reset-css-friends)
+
+Reset CSSフレンズは、Reset CSSについてくわしくかくほんだよー！
 
 ## いぞんするもの
 
