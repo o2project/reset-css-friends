@@ -89,7 +89,9 @@
 
 <h2><a id="h2-5"></a><span class="secno">2.5　</span>normalize.css</h2>
 <p>normalize.cssはそれまでのReset CSSを代替するReset CSSとして出てきました。</p>
-<p>それまでのReset CSSはブラウザが既定で指定しているスタイルを消すものでした。normalize.cssはブラウザが指定しているスタイルで使えそうなものはそのまま残しているのが特徴です。またInternet Explorerを中心にバグ修正をしています。またソースコードにはなぜそのような指定をしたのか書かれているため、ソースコードを読むだけでも勉強になります。</p>
+<p>それまでのReset CSSはブラウザが既定で指定しているスタイルを消すものでした。normalize.cssはブラウザが指定しているスタイルで使えそうなものはそのまま残しているのが特徴です。後述するsanitize.cssやressと違い、作者の意見が入っていない純粋にブラウザのスタイルを正規化するライブラリです<a id="fnb-normalize-v5" href="#fn-normalize-v5" class="noteref" epub:type="noteref">*6</a>。</p>
+<div class="footnote" epub:type="footnote" id="fn-normalize-v5"><p class="footnote">[*6] v5.0.0まではスタイル指定に作者の意見が含まれていましたが、v6.0.0でそれらがすべて取り除かれました</p></div>
+<p>ソースコードにはなぜそのような指定をしたのか書かれているため、ソースコードを読むだけでも勉強になります。</p>
 
 <h2><a id="h2-6"></a><span class="secno">2.6　</span>sanitize.css</h2>
 <p>normalize.cssをNicolas Gallagherとともに作ったJonathan Nealが作ったReset CSSです。Jonathan NealはそれまでEric Meyer's Reset CSSやnormalize.cssを使っていたようですが、それらを元に大多数が書いたスタイル指定を含んだものがsanitize.cssです。具体的にはリスト2.2のとおり、html要素に<code class="inline-code tt">box-sizing: border-box;</code>を指定して全称セレクタで<code class="inline-code tt">box-sizing: inherit;</code>を指定することです。これによって特定の要素に対してwidthやheightを指定するときに、borderやpaddingの指定を気にせずwidthやheightの値を指定できます。</p>
