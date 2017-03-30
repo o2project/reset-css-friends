@@ -30,7 +30,7 @@ input, textarea, button, select
 いっぽうFirefoxでは@<code>{display: block;}以外にも、@<code>{unicode-bidi: isolate;}という複数の表記方向が混在する文章をどのように扱うか決める定義もされています。
 @<code>{unicode-bidi}プロパティの値によって表示がどう変わるかは@<href>{http://www.osaka-kyoiku.ac.jp/~joho/html5_ref/css/unicode-bidi_css.php}を参照してください。
 
-Reset CSS側ではsanitize.cssとress.cssが、html要素に対し@<code>{box-sizing: border-box;}を指定した上で、全称セレクタへ@<code>{box-sizing: inherit;}を指定しています。
+Reset CSS側ではsanitize.cssとressが、html要素に対し@<code>{box-sizing: border-box;}を指定した上で、全称セレクタへ@<code>{box-sizing: inherit;}を指定しています。
 このことでコンテンツ領域に@<code>{padding}や@<code>{border}の値が入るようになります。
 これによりボックスサイズの計算をより簡単にすることを狙っていると思われます。
 
@@ -48,8 +48,9 @@ body {
 #@end
 //}
 
-Eric Meyer's Reset CSS、normalize.css、sanitize.css、YUI 3 Reset CSSでは@<code>{body}要素へ対し@<code>{margin: 0;}を指定しています。
+Eric Meyer's Reset CSS、sanitize.css、YUI 3 Reset CSSでは@<code>{body}要素へ対し@<code>{margin: 0;}を指定しています。
 Webページを作るときにページの外周へmarginを設定することはほとんど無いため、このような指定がされていると思われます。
+normalize.cssでもv5.0.0まではbody要素に対し同様の指定がされていましたが、v6.0.0で削除されて何も指定されなくなりました。
 
 == セクショニング・コンテンツとh1要素
 
@@ -115,6 +116,11 @@ normalize.cssやsanitize.cssではこの入れ子具合によってスタイル�
 
 //list[h1-normalize][h1要素に対するnormalize.cssやsanitize.cssのスタイル定義]{
 #@mapfile(../codes/reset-css/normalize-css/h1.css)
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
@@ -157,9 +163,14 @@ a要素は各ブラウザのユーザーエージェントスタイルシート�
 
 //list[a-reset][a要素に対するReset CSSのスタイル定義]{
 #@mapfile(../codes/reset-css/a-reset.css)
+/**
+ * 1. Remove the gray background on active links in IE 10.
+ * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
+ */
+
 a {
-  background-color: transparent;
-  -webkit-text-decoration-skip: objects;
+  background-color: transparent; /* 1 */
+  -webkit-text-decoration-skip: objects; /* 2 */
 }
 #@end
 //}
@@ -185,7 +196,19 @@ img {
 #@end
 //}
 
-normalize.cssやsanitize.css、ressではIE 10でリンク内に画像があるとborderが適用されてしまうのを防ぐために、@<code>{border-style: none;}が指定されています。
+normalize.cssやsanitize.css、ressではIE 10でリンク内に画像があるとborderが適用されてしまうのを防ぐために、@<code>{border-style: none;}が指定されています（@<list>{img-normalize}）。
+
+//list[img-normalize][img要素に対する各種Reset CSSのスタイル定義]{
+#@mapfile(../codes/reset-css/normalize-css/img.css)
+/**
+ * Remove the border on images inside links in IE 10-.
+ */
+
+img {
+  border-style: none;
+}
+#@end
+//}
 
 == ul, ol要素
 
@@ -385,14 +408,13 @@ Reset CSSのinput要素に対する指定はnormalize.css、sanitize.css、ress�
 
 ==={input-normalize} normalize.css
 
-input要素に対して作者の意見が反映されているReset CSSがnormalize.cssです。
-@<code>{font-family: sans-serif}、@<code>{font-size: 100%}、@<code>{line-height: 1.15}とそれぞれ指定されています（@<list>{normalize-input}）。
+normalize.cssはinput要素に対してブラウザ間の差異を埋める程度に留めています（@<list>{normalize-input}）。
+これもv6.0.0から作者の意見を入れないようにしたnormalize.cssの特徴を示しているといえます。
 
-//list[normalize-input][作者の意見が反映されているnormalize.css]{
+//list[normalize-input][あくまでブラウザ間の差異を埋める程度に留めるnormalize.css]{
 #@mapfile(../codes/reset-css/normalize-css/input.css)
 /**
- * 1. Change the font styles in all browsers (opinionated).
- * 2. Remove the margin in Firefox and Safari.
+ * Remove the margin in Firefox and Safari.
  */
 
 button,
@@ -400,10 +422,7 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: sans-serif; /* 1 */
-  font-size: 100%; /* 1 */
-  line-height: 1.15; /* 1 */
-  margin: 0; /* 2 */
+  margin: 0;
 }
 
 /**
@@ -418,15 +437,34 @@ input { /* 1 */
 #@end
 //}
 
+ちなみに、バージョン5.0.0まではフォントや行間に作者の意見が反映されていました（@<list>{normalize-input-old}）。
 ほとんどの場合@<code>{font-family: sans-serif}はフォームを構成する要素へ対し指定されることが多い値です。
-そのためnormalize.cssで指定することで、normalize.cssを使う側では指定をしなくて済むことを目指していると思われます。
-@<code>{line-height: 1.15;}は好みでしょうか？
+そのためnormalize.cssで指定することで、normalize.cssを使う側では指定をしなくて済むことを目指していたと思われます。
+
+//list[normalize-input-old][バージョン5.0.0までのnormalize.css]{
+#@mapfile(../codes/reset-css/normalize-css/input-old.css)
+/**
+ * 1. Change the font styles in all browsers (opinionated).
+ */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: sans-serif; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+}
+#@end
+//}
 
 ==={input-sanitize} sanitize.css
 
-normalize.cssの指定を受け継ぎつつ、@<code>{font-size}や@<code>{line-height}の値指定は@<code>{inherit}へ変更されています（@<code>{sanitize-input}）。
+normalize.cssの指定を受け継ぎつつ、@<code>{font-size}や@<code>{line-height}の値として@<code>{inherit}が指定されています（@<code>{sanitize-input}）。
+親要素の指定を継承することにより、自分でスタイル指定することを極力減らそうとしています。
 
-//list[sanitize-input][normalize.cssより主張が少なくなったsanitize.css]{
+//list[sanitize-input][normalize.cssより作者の主張が含まれているsanitize.css]{
 #@mapfile(../codes/reset-css/sanitize-css/input.css)
 /**
 * Remove the margin in Firefox and Safari.
@@ -466,9 +504,6 @@ input { /* 1 */
 #@end
 //}
 
-normalize.cssの場合、作っているWebサイトの指定によっては自分で文字サイズや行間を調整する必要がありました。
-それをsanitize.cssでは親要素の指定を継承することにより、自分でスタイル指定することを極力減らそうとしています。
-
 またinput要素に対する指定として他にないものとしては@<code>{touch-action: manipulation;}があります（@<list>{sanitize-fix-tap-delay}）。
 ページのスクロールとズームのみを許可する指定ですが、IE 10ではタップ時の遅延をなくす指定になります。
 
@@ -496,7 +531,7 @@ textarea,
 
 ==={input-ress} ress
 
-ressもnormalize.css並かそれ以上に作者の意見が反映されています（@<list>{ress-input}）。
+ressもsanitize.css並かそれ以上に作者の意見が反映されています（@<list>{ress-input}）。
 [type="button"]や[type="submit"]、[type="search"]はブラウザのユーザーエージェントスタイルシートで@<code>{border-radius}が指定されていることが多いです。
 その指定をressでは無かったことにしています。
 
@@ -646,25 +681,6 @@ button {
 
 textarea要素はnormalize.cssやsanitize.css、ressでは似通った指定になっています。
 
-==={textarea-yui3} YUI 3 Reset CSS
-
-#@# prh:disable
-書かれた時期が古いため、IE 7以下に適用されるCSSハックが書かれています@<list>{yui3-textarea}。
-この@<code>{*font-size:100%}という書き方については@<href>{http://www.atmarkit.co.jp/fwcr/design/benkyo/csshack02/03.html#13}を見てください。
-
-//list[yui3-textarea][YUI 3のtextarea要素へ対する指定]{
-#@mapfile(../codes/reset-css/yui3/textarea.css)
-input,
-textarea,
-select {
-  font-family:inherit;
-  font-size:inherit;
-  font-weight:inherit;
-  *font-size:100%; /*to enable resizing for IE*/
-}
-#@end
-//}
-
 ==={textarea-normalize} normalize.css
 
 normalize.cssの指定は単純で、IE向けにtextarea要素内のスクロールバーを消すだけの指定がされています（@<list>{normalize-textarea}）。
@@ -695,6 +711,25 @@ sanitize.cssとressでは、normalize.cssでされていた指定に加え、tex
 textarea {
   overflow: auto; /* 1 */
   resize: vertical; /* 2 */
+}
+#@end
+//}
+
+==={textarea-yui3} YUI 3 Reset CSS
+
+#@# prh:disable
+書かれた時期が古いため、IE 7以下に適用されるCSSハックが書かれています@<list>{yui3-textarea}。
+この@<code>{*font-size:100%}という書き方については@<href>{http://www.atmarkit.co.jp/fwcr/design/benkyo/csshack02/03.html#13}を見てください。
+
+//list[yui3-textarea][YUI 3のtextarea要素へ対する指定]{
+#@mapfile(../codes/reset-css/yui3/textarea.css)
+input,
+textarea,
+select {
+  font-family:inherit;
+  font-size:inherit;
+  font-weight:inherit;
+  *font-size:100%; /*to enable resizing for IE*/
 }
 #@end
 //}
