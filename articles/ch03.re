@@ -11,7 +11,7 @@
 このユーザーエージェントスタイルシートですが、ブラウザごとに指定されているスタイルが違います。
 そのため別途Reset CSSを使わなかった場合、ブラウザによって見えかたが違うということが起きます@<fn>{user-agent-stylesheet-diff}。
 
-この章では各Reset CSSがどのような指定をしているか、時折ユーザーエージェントスタイルシートでどのように指定されているか解説しつつ見ていきます。
+この章では各Reset CSSがどのような指定をしているか、ユーザーエージェントスタイルシートでどのように指定されているか一部解説しつつ見ていきます。
 なお、解説するHTML要素は（@<list>{explain-elements}）のみに絞ります。
 //footnote[user-agent-stylesheet-diff][https://developer.mozilla.org/ja/docs/Web/Compatibility_FAQ/Tips_Default_Style_Difference.html]
 
@@ -30,7 +30,7 @@ input, textarea, button, select
 いっぽうFirefoxでは@<code>{display: block;}以外にも、@<code>{unicode-bidi: isolate;}という複数の表記方向が混在する文章をどのように扱うか決める定義もされています。
 @<code>{unicode-bidi}プロパティの値によって表示がどう変わるかは@<href>{http://www.osaka-kyoiku.ac.jp/~joho/html5_ref/css/unicode-bidi_css.php}を参照してください。
 
-Reset CSS側ではsanitize.cssとressが、html要素に対し@<code>{box-sizing: border-box;}を指定した上で、全称セレクタへ@<code>{box-sizing: inherit;}を指定しています。
+Reset CSSではsanitize.cssとressが、html要素へ対し@<code>{box-sizing: border-box;}を指定した上で、全称セレクタへ@<code>{box-sizing: inherit;}を指定しています。
 このことでコンテンツ領域に@<code>{padding}や@<code>{border}の値が入るようになります。
 これによりボックスサイズの計算をより簡単にすることを狙っていると思われます。
 
@@ -55,7 +55,7 @@ normalize.cssでもv5.0.0まではbody要素に対し同様の指定がされて
 == セクショニング・コンテンツとh1要素
 
 h1要素は見出しを表す要素の中でもっともランクが高い要素です。
-また@<code>{section}要素や@<code>{article}要素といったセクショニング・コンテンツへh1要素を入れた場合は、入れ子の深さに応じてスタイルが変わるようになっています。
+また@<code>{section}要素や@<code>{article}要素といったセクショニング・コンテンツへh1要素を入れた場合は、入れ子の深さに応じてスタイルが変わるようになっています（@<list>{h1-element}）。
 
 //list[h1-element][h1要素に対するスタイル定義]{
 #@mapfile(../codes/browser/h1.css)
@@ -74,7 +74,8 @@ h1 {
   -webkit-margin-before: 0.83__qem;
   -webkit-margin-after: 0.83em;
 }
-:-webkit-any(article,aside,nav,section) :-webkit-any(article,aside,nav,section) h1 {
+:-webkit-any(article,aside,nav,section) :-webkit-any(article,aside,nav,section)
+h1 {
   font-size: 1.17em;
   -webkit-margin-before: 1__qem;
   -webkit-margin-after: 1em;
@@ -112,7 +113,7 @@ h1 {
 #@end
 //}
 
-normalize.cssやsanitize.cssではこの入れ子具合によってスタイルが変わるのを無くし、@<list>{h1-normalize}で示すスタイルが適用されるようになっています。
+normalize.cssやsanitize.cssではこの入れ子具合によってスタイルが変わるのを無くしています（@<list>{h1-normalize}）。
 
 //list[h1-normalize][h1要素に対するnormalize.cssやsanitize.cssのスタイル定義]{
 #@mapfile(../codes/reset-css/normalize-css/h1.css)
@@ -159,7 +160,7 @@ YUI 3 Reset CSSやEric Meyer's Reset CSSといった古めのReset CSSでは@<co
 == a要素
 
 a要素は各ブラウザのユーザーエージェントスタイルシートでは特にスタイルが適用されていません。
-ただ、normalize.cssやsanitize.css、ressでは@<list>{a-reset}のようなスタイル定義をしています。
+normalize.cssやsanitize.css、ressではIEやSafariに向けたスタイル定義をしています（@<list>{a-reset}）。
 
 //list[a-reset][a要素に対するReset CSSのスタイル定義]{
 #@mapfile(../codes/reset-css/a-reset.css)
@@ -212,7 +213,7 @@ img {
 
 == ul, ol要素
 
-ulやol要素はFirefoxやChrome、Safariで論理marginとpaddingが指定されています@<list>{ul-firefox}。
+ulやol要素はFirefoxやChrome、Safariで論理marginとpaddingが指定されています（@<list>{ul-firefox}）。
 
 //list[ul-firefox][ul要素に対するSafariのスタイル定義]{
 #@mapfile(../codes/browser/firefox/ul.css)
@@ -227,7 +228,7 @@ ul {
 //}
 
 入れ子になったulやol要素はFirefoxとChrome、Safariで指定しているプロパティは同じですが、セレクタの指定方法が違います。
-Firefoxでは@<code>{:any()}という疑似クラスを使って、@<list>{ul-nested-firefox}のようにul要素やol要素などが入れ子になったときのスタイル指定をおこなっています@<fn>{mdn-any-pseudo-class}。
+Firefoxでは@<code>{:any()}という疑似クラスを使って、ul要素やol要素などが入れ子になったときのスタイル指定をおこなっています@<fn>{mdn-any-pseudo-class}（@<list>{ul-nested-firefox}）。
 この@<code>{:any()}擬似クラスですが、CSS Selectors Level 4では@<code>{:matches()}として仕様策定が進んでいます@<fn>{css-selectors-4-matches}。
 //footnote[mdn-any-pseudo-class][https://developer.mozilla.org/ja/docs/Web/CSS/:any]
 //footnote[css-selectors-4-matches][https://drafts.csswg.org/selectors-4/#matches]
@@ -253,7 +254,7 @@ Firefoxでは@<code>{:any()}という疑似クラスを使って、@<list>{ul-ne
 #@end
 //}
 
-@<code>{:any()}や@<code>{:matches()}の仕様が固まっていないためか、ChromeやSafariでは@<list>{ul-nested-chrome}のように従来どおりの子孫セレクタを使った指定になっています。
+@<code>{:any()}や@<code>{:matches()}の仕様が固まっていないためか、ChromeやSafariでは従来どおりの子孫セレクタを使った指定になっています（@<list>{ul-nested-chrome}）。
 
 //list[ul-nested-chrome][入れ子になったul要素に対するChromeやSafariのスタイル定義]{
 #@mapfile(../codes/browser/chrome/ul-nested.css)
@@ -270,8 +271,8 @@ ul ul ul {
 #@end
 //}
 
-sanitize.cssではnav要素が親要素としてあるときにol要素とul要素に対して@<code>{list-style: none;}の指定をしています@<list>{sanitize-ul-ol}。
-実際に自分が開発しているときも、nav要素内に指定したol要素とul要素に対して@<code>{list-style}の値を指定することは少ないので、自分で書くスタイル指定を減らすことができます。
+sanitize.cssではnav要素が親要素としてあるときにol要素とul要素に対して@<code>{list-style: none;}の指定をしています（@<list>{sanitize-ul-ol}）。
+nav要素内に指定したol要素とul要素に対して@<code>{list-style}の値を指定することは少ないので、自分で書くスタイル指定を減らすことができます。
 
 //list[sanitize-ul-ol][sanitize.cssのulやol要素に対するスタイル指定]{
 #@mapfile(../codes/reset-css/sanitize-css/ul-ol.css)
@@ -347,7 +348,7 @@ table {
 == blockquote要素
 
 blockquote要素はFirefoxで@<code>{[type=cite]}という属性に対するスタイル指定があります（@<list>{blockquote-firefox}）。
-この属性は現在W3Cの仕様には無い仕様ですが、過去にはあったらしくFirefoxではいい感じの見た目になります@<img>{firefox-blockquote-type-cite}。
+この属性は現在W3Cの仕様には無い仕様ですが、過去にはあったらしくFirefoxではいい感じの見た目になります（@<img>{firefox-blockquote-type-cite}）。
 
 //list[blockquote-firefox][blockquote要素に対してのスタイル指定]{
 #@mapfile(../codes/browser/firefox/blockquote.css)
@@ -373,7 +374,7 @@ blockquote[type=cite] {
 #@end
 //}
 
-//image[firefox-blockquote-type-cite][Firefoxでblockquote\[type="cite"\]をプレビューしてみた様子]{
+//image[firefox-blockquote-type-cite][Firefoxでblockquote[type="cite"\]をプレビューしてみた様子]{
 //}
 
 Eric Meyer's Reset CSSではblockquoteやq要素に対し引用符を消すスタイルが指定されています（@<list>{eric-meyers-blockquote}）。
@@ -394,7 +395,7 @@ q:before, q:after {
 
 == input要素
 
-input要素はtype属性の値によって、@<img>{input-types}で示すように挙動が大きく変わります。
+input要素はtype属性の値によって挙動が大きく変わります（@<img>{input-types}）。
 そのためChromeのユーザーエージェントスタイルシートでは1123行中295行がinput要素関連のスタイル指定です。
 Safariに至っては1221行中421行がinput要素関連のスタイル指定です@<fn>{safari-user-agent-stylesheet-line}。
 //footnote[safari-user-agent-stylesheet-line][Safariの場合iOS向けと思われるスタイル指定もあるためChromeと比較して行数が多いのかもしれません]
@@ -461,7 +462,7 @@ textarea {
 
 ==={input-sanitize} sanitize.css
 
-normalize.cssの指定を受け継ぎつつ、@<code>{font-size}や@<code>{line-height}の値として@<code>{inherit}が指定されています（@<code>{sanitize-input}）。
+normalize.cssの指定を受け継ぎつつ、@<code>{font-size}や@<code>{line-height}の値として@<code>{inherit}が指定されています（@<list>{sanitize-input}）。
 親要素の指定を継承することにより、自分でスタイル指定することを極力減らそうとしています。
 
 //list[sanitize-input][normalize.cssより作者の主張が含まれているsanitize.css]{
@@ -532,10 +533,10 @@ textarea,
 ==={input-ress} ress
 
 ressもsanitize.css並かそれ以上に作者の意見が反映されています（@<list>{ress-input}）。
-[type="button"]や[type="submit"]、[type="search"]はブラウザのユーザーエージェントスタイルシートで@<code>{border-radius}が指定されていることが多いです。
+@<code>{[type="button"]}や@<code>{[type="submit"]}、@<code>{[type="search"]}はブラウザのユーザーエージェントスタイルシートで@<code>{border-radius}が指定されていることが多いです。
 その指定をressでは無かったことにしています。
 
-また@<code>{background-color}を透過したり、@<code>{border-style}を無くしたりと大胆な指定をしています。
+また@<code>{background-color}を透過したり、@<code>{border-style}を無くす指定があったりと大胆な指定をしています。
 
 //list[ress-input][normalize.cssと同じく主張が強いress]{
 #@mapfile(../codes/reset-css/ress/input.css)
@@ -586,7 +587,7 @@ select { /* 1 */
 
 normalize.cssやsanitize.cssと違い独自路線なのがressです。
 @<code>{text-transform: none;}も指定されていますが、他にもselect要素らしい見た目を無くす@<code>{appearance}やIE独自の疑似要素に対してスタイルを指定しています（@<list>{ress-select}）。
-ちなみに@<code>{::-ms-expand}はドロップダウンを表示するためのボタンを表す疑似要素、@<code>{::-ms-value}はselect要素内の文字を表す疑似要素です@<fn>{ie-pseudo-elements}。
+IE独自の疑似要素について書くと、@<code>{::-ms-expand}はドロップダウンを表示するためのボタンを表す疑似要素、@<code>{::-ms-value}はselect要素内の文字を表す疑似要素です@<fn>{ie-pseudo-elements}。
 //footnote[ie-pseudo-elements][http://subtech.g.hatena.ne.jp/mayuki/20110923/1316786871]
 
 //list[ress-select][ressはselect要素でも独自路線]{
@@ -609,7 +610,7 @@ select::-ms-value {
 
 == button要素
 
-normalize.cssやsanitize.css、ressではWebKitのバグを修正するセレクタ指定やプロパティと値の指定がおこなわれています@<list>{normalize-button}。
+normalize.cssやsanitize.css、ressではWebKitのバグを修正するセレクタ指定やプロパティと値の指定がおこなわれています（@<list>{normalize-button}）。
 またFirefoxに対してもbutton要素内に画像を配置したときにボタンのborderと画像の間に隙間が空く問題などが修正されています@<fn>{firefox-form-button}。
 #@# prh:disable
 //footnote[firefox-form-button][http://jeffreyfrancesco.org/weblog/2011062101/]
@@ -658,7 +659,7 @@ button:-moz-focusring,
 
 ressはnormalize.cssやsanitize.cssと同じ指定もしていますが、ress独自の指定として@<code>{cursor: pointer;}や@<code>{overflow: visible;}があります（@<list>{ress-button}）。
 @<code>{cursor: pointer;}はユーザーエージェントスタイルシートでカーソルへ対する指定がないため、ress側で指定しています。
-@<code>{overflow: visible;}はコメントにもありますが、IE8-11ではbutton要素へ対して@<code>{hidden}という値が指定されているため、それでは不都合があると考えたのか@<code>{overflow: visible;}が指定されています。
+@<code>{overflow: visible;}はコメントにもありますが、IE8〜11ではbutton要素へ対して@<code>{hidden}という値が指定されているため、それでは不都合があると考えたのか@<code>{overflow: visible;}が指定されています。
 
 //list[ress-button][ressのbutton要素へ対する指定]{
 #@mapfile(../codes/reset-css/ress/button.css)
@@ -679,7 +680,7 @@ button {
 
 == textarea要素
 
-textarea要素はnormalize.cssやsanitize.css、ressでは似通った指定になっています。
+textarea要素はnormalize.cssやsanitize.css、ressで似通った指定になっています。
 
 ==={textarea-normalize} normalize.css
 
@@ -718,7 +719,7 @@ textarea {
 ==={textarea-yui3} YUI 3 Reset CSS
 
 #@# prh:disable
-書かれた時期が古いため、IE 7以下に適用されるCSSハックが書かれています@<list>{yui3-textarea}。
+書かれた時期が古いため、IE 7以下に適用されるCSSハックが書かれています（@<list>{yui3-textarea}）。
 この@<code>{*font-size:100%}という書き方については@<href>{http://www.atmarkit.co.jp/fwcr/design/benkyo/csshack02/03.html#13}を見てください。
 
 //list[yui3-textarea][YUI 3のtextarea要素へ対する指定]{
