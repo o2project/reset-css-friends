@@ -1,8 +1,8 @@
 = Reset CSSの特色
 
-Reset CSSの思想は2004年に生まれ、そこから数多くのReset CSSがでました。
-そんなReset CSSですが、年代によって思想や定義されているスタイルが変わってきました。
-この章では特に有名だと思われる7個のReset CSSから思想や定義されているスタイルを見ていきます。
+Reset CSSの思想は2004年に生まれ、そこから数多くのReset CSSが生まれました。
+Reset CSSは年代によって思想や定義されているスタイルが若干ゃ変わっています。
+この章では特に有名だと思われるReset CSSの思想を7個見ていきます。
 
 == Hard reset
 
@@ -111,6 +111,7 @@ html {
 
 == ress
 
-最後はA modern CSS resetと称するressです。
+最後は@<kw>{A modern CSS reset}と称するressです。
 ressはnormalize.cssの指定を受け継ぎつつ、Hard resetのようにすべてのmarginやpaddingを0にしています。
 またsanitize.cssと同じくすべての要素に対して@<code>{box-sizing: border-box;}を指定しています。
+フォームに関連する要素についても@<kw>{A modern CSS reset}と称しているとおり、大胆にユーザーエージェントスタイルシートの指定をリセットしています。
