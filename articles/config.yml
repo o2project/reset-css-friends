@@ -17,7 +17,7 @@ language: ja
 # 読みを入れる例 booktitle: {name: "Re:VIEW EPUBサンプル", file-as: "リビューイーパブサンプル"}
 booktitle: Reset CSSフレンズ
 
-# 著者名。「, 」で区切って複数宣言できる
+# 著者名。「, 」で区切って複数指定できる
 # 読みを入れる例 aut: [{name: "青木峰郎", file-as: "アオキミネロウ"}, {name: "武藤健志", file-as: "ムトウケンシ"}, {name: "高橋征義", file-as: "タカハシマサヨシ"}, {name: "角征典", file-as: "カドマサノリ"}]
 aut: O2 Project
 edt: kubosho_
@@ -27,24 +27,24 @@ prt: ねこのしっぽ
 
 # 刊行日(省略した場合は実行時の日付)
 date: 2017-04-09
-# 発行年月。YYYY-MM-DD形式による配列宣言。省略した場合はdateを使用する
-# 複数宣言する場合は次のように記述する
+# 発行年月。YYYY-MM-DD形式による配列指定。省略した場合はdateを使用する
+# 複数指定する場合は次のように記述する
 # [["初版第1刷の日付", "初版第2刷の日付"], ["第2版第1刷の日付"]]
 # 日付の後ろを空白文字で区切り、任意の文字列を置くことも可能。
 history: [["2017-04-09"]]
-# 権利表記(配列で複数宣言可)
+# 権利表記(配列で複数指定可)
 rights: (C) 2017 O2 Project
 
 # デバッグフラグ。nullでないときには一時ファイルをカレントディレクトリに作成し、削除もしない
 debug: null
 
-# 固有IDに使用するドメイン。宣言しない場合には、時刻に基づくランダムUUIDが入る
+# 固有IDに使用するドメイン。指定しない場合には、時刻に基づくランダムUUIDが入る
 urnid: urn:uid:http://friends.o2p.jp/
 
-# Webページ用のディレクトリ宣言（既定はwebroot）
+# Webページ用のディレクトリ指定（既定はwebroot）
 docroot: "book"
 
-# CSSファイル(配列で複数宣言可)
+# CSSファイル(配列で複数指定可)
 stylesheet: ["style.css"]
 
 # ePUBのバージョン (2か3)
@@ -56,26 +56,26 @@ htmlversion: 5
 # 目次として抽出する見出しレベル
 toclevel: 2
 
-# 採番の設定。採番させたくない見出しには「==[nonum]」のようにnonum宣言をする
+# 採番の設定。採番させたくない見出しには「==[nonum]」のようにnonum指定をする
 # 本文でセクション番号を表示する見出しレベル
 secnolevel: 2
 
 # 本文中に目次ページを作成するか。省略した場合はnull (作成しない)
 toc: true
 
-# 表紙にするHTMLファイル。ファイル名を宣言すると表紙として入る
+# 表紙にするHTMLファイル。ファイル名を指定すると表紙として入る
 # cover: null
 
-# 裏表紙ファイル (画像はcoversまたはimagesに配置する)。ファイル名を宣言すると裏表紙として入る
+# 裏表紙ファイル (画像はcoversまたはimagesに配置する)。ファイル名を指定すると裏表紙として入る
 # backcover: null
 
 # 表紙に配置し、書籍の影絵にも利用する画像ファイル。省略した場合はnull (画像を使わない)。画像ディレクトリ内に置いてもディレクトリ名は不要(例: cover.jpg)
 coverimage: null
 
-# 奥付を作成するか。デフォルトでは作成されない。trueを宣言するとデフォルトの奥付、ファイル名を宣言するとそれがcolophon.htmlとしてコピーされる
+# 奥付を作成するか。デフォルトでは作成されない。trueを指定するとデフォルトの奥付、ファイル名を指定するとそれがcolophon.htmlとしてコピーされる
 colophon: true
 
-# 1ページの行数文字数と1kbごとのページ数を用紙サイズで宣言する(A5 or B5)。
+# 1ページの行数文字数と1kbごとのページ数を用紙サイズで指定する(A5 or B5)。
 page_metric: B5
 
 epubmaker:
@@ -87,7 +87,7 @@ epubmaker:
 # LaTeX用のスタイルファイル(styディレクトリ以下に置くこと)
 texstyle: techbooster-doujin
 
-# LaTeX用のdocumentclassを宣言する
+# LaTeX用のdocumentclassを指定する
 texdocumentclass: ["jsbook", "b5j,uplatex,twoside,openany"]
 
 pdfmaker:
