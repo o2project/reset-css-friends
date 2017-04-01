@@ -8,14 +8,6 @@
 # major versionが違うときにはエラーを出す。
 review_version: 2.0
 
-# ほかの設定ファイルの継承を指定できる。同じパラメータに異なる値がある場合は、
-# 呼び出し元の値が優先される。
-# A.yml、B.ymlのパラメータを継承する例。A.ymlとB.ymlに同じパラメータがある
-# 場合、B.ymlの値が優先される。さらに今このファイルに同じパラメータがあるなら、
-# その値がB.ymlよりも優先される。
-# 同様にA.yml、B.yml内でさらにinherit:パラメータを使うこともできる。
-# inherit: ["A.yml", "B.yml"]
-
 # ブック名(ファイル名になるもの。ASCII範囲の文字を使用)
 bookname: book
 # 記述言語。省略した場合はja
@@ -42,26 +34,12 @@ date: 2017-04-09
 history: [["2017-04-09"]]
 # 権利表記(配列で複数指定可)
 rights: (C) 2017 O2 Project
-# description: 説明
-# subject: 短い説明用タグ(配列で複数指定可)
-# type: 書籍のカテゴリーなど(配列で複数指定可)
-# format: メディアタイプおよび特徴(配列で複数指定可)
-# source: 出版物生成の重要なリソース情報(配列で複数指定可)
-# relation: 補助的リソース(配列で複数指定可)
-# coverage: 内容の範囲や領域(配列で複数指定可)
 
 # デバッグフラグ。nullでないときには一時ファイルをカレントディレクトリに作成し、削除もしない
 debug: null
 
 # 固有IDに使用するドメイン。指定しない場合には、時刻に基づくランダムUUIDが入る
 urnid: urn:uid:http://friends.o2p.jp/
-#
-# ISBN。省略した場合はurnidが入る
-# isbn: null
-#
-# HTMLファイルの拡張子(省略した場合はhtml)
-# htmlext: html
-#
 
 # Webページ用のディレクトリ指定（既定はwebroot）
 docroot: "book"
@@ -71,7 +49,7 @@ stylesheet: ["style.css"]
 
 # ePUBのバージョン (2か3)
 epubversion: 3
-#
+
 # HTMLのバージョン (4か5。epubversionを3にしたときには5にする)
 htmlversion: 5
 
@@ -79,7 +57,6 @@ htmlversion: 5
 toclevel: 2
 
 # 採番の設定。採番させたくない見出しには「==[nonum]」のようにnonum指定をする
-#
 # 本文でセクション番号を表示する見出しレベル
 secnolevel: 2
 
@@ -88,135 +65,24 @@ toc: true
 
 # 表紙にするHTMLファイル。ファイル名を指定すると表紙として入る
 # cover: null
-#
-# 表紙に配置し、書籍の影絵にも利用する画像ファイル。省略した場合はnull (画像を使わない)。画像ディレクトリ内に置いてもディレクトリ名は不要(例: cover.jpg)
-coverimage: null
-#
-# 権利表記ページファイル。ファイル名を指定すると権利表記として入る
-# creditfile: null
-
-# 奥付を作成するか。デフォルトでは作成されない。trueを指定するとデフォルトの奥付、ファイル名を指定するとそれがcolophon.htmlとしてコピーされる
-colophon: true
 
 # 裏表紙ファイル (画像はcoversまたはimagesに配置する)。ファイル名を指定すると裏表紙として入る
 # backcover: null
 
-# プロフィールページファイル。ファイル名を指定すると著者紹介として入る
-# profile: null
-# プロフィールページの目次上の見出し
-# profiletitle: 著者紹介
+# 表紙に配置し、書籍の影絵にも利用する画像ファイル。省略した場合はnull (画像を使わない)。画像ディレクトリ内に置いてもディレクトリ名は不要(例: cover.jpg)
+coverimage: null
 
-# 取り込む画像が格納されているディレクトリ。省略した場合は以下
-# imagedir: images
-
-# 取り込むフォントが格納されているディレクトリ。省略した場合は以下
-# fontdir: fonts
-
-# imagedir内から取り込まれる対象となるファイル拡張子。省略した場合は以下
-# image_ext: ["png", "gif", "jpg", "jpeg", "svg", "ttf", "woff", "otf"]
-
-# fontdir内から取り込まれる対象となるファイル拡張子。省略した場合は以下
-# font_ext: ["ttf", "woff", "otf"]
-
-# ソースコードハイライトを利用する (pygmentsには外部gemが必要)
-# highlight:
-#   html: "pygments"
-#   latex: "listings"
-
-# カタログファイル名を指定する
-# catalogfile: catalog.yml
+# 奥付を作成するか。デフォルトでは作成されない。trueを指定するとデフォルトの奥付、ファイル名を指定するとそれがcolophon.htmlとしてコピーされる
+colophon: true
 
 # 1ページの行数文字数と1kbごとのページ数を用紙サイズで指定する(A5 or B5)。
-# page_metric: A5
-#
-# あるいは、配列で指定することもできる
-# 各数字の意味は、順にリストの行数、リストの1行字数、テキストの行数、テキストの1行字数、1kバイト毎のページ数
-# page_metric: [40,80,40,80,2]
-
-# ページ送りの送り方向、page-progression-directionの値("ltr"|"rtl"|"default")
-# direction: "ltr"
-
-# EPUBのOPFへの固有の追加ルール
-# <package>要素に追加する名前空間
-# opf_prefix: {ebpaj: "http://www.ebpaj.jp/"}
-# 追加する<meta>要素のプロパティとその値
-# opf_meta: {"ebpaj:guide-version": "1.1.3"}
-
-# 以下のパラメータを有効にするときには、
-# epubmaker:
-#    パラメータ: 値
-#    パラメータ: 値
-#   ...
-# という構成にする必要がある(インデントさせる)
+page_metric: B5
 
 epubmaker:
   # HTMLファイルの拡張子
   htmlext: xhtml
-  #
-  # 目次を要素の階層表現にしない。省略した場合(null)は階層化する。
-  # 特に部扉が入るなどの理由で、構成によっては階層化目次でepubcheckに
-  # パスしない目次ができるが、そのようなときにはこれをtrueにする
-  # flattoc: null
-  #
-  # 目次のインデントレベルをスペース文字で表現する(flattocがtrueのときのみ)
-  # flattocindent: true
-  #
-  # NCX目次の見出しレベルごとの飾り(配列で設定)。EPUB3ではNCXは作られない
-  # ncxindent:
-  #-
-  #- -
-  # フックは、各段階で介入したいときのプログラムを指定する。自動で適切な引数が渡される
-  # プログラムには実行権限が必要
-  # ファイル変換処理の前に実行するプログラム。スタイルシートのコンパイルをしたいときなどに利用する。
-  # 渡される引数1=作業用展開ディレクトリ
-  # hook_beforeprocess: null
-  #
-  # 前付の作成後に実行するプログラム。作業用展開ディレクトリにある目次ファイル(toc-html.txt)を操作したいときなどに利用する。
-  # 渡される引数1=作業用展開ディレクトリ
-  # hook_afterfrontmatter: null
-  #
-  # 本文の変換後に実行するプログラム。作業用展開ディレクトリにある目次ファイル(toc-html.txt)を操作したいときなどに利用する。
-  # 渡される引数1=作業用展開ディレクトリ
-  # hook_afterbody: null
-  #
-  # 後付の作成後に実行するプログラム。作業用展開ディレクトリにある目次ファイル(toc-html.txt)を操作したいときなどに利用する。
-  # 渡される引数1=作業用展開ディレクトリ
-  # hook_afterbackmatter: null
-  #
-  # 画像およびフォントをコピーした後に実行するプログラム。別の画像やフォントを追加したいときなどに利用する。
-  # 渡される引数1=作業用展開ディレクトリ
-  # hook_aftercopyimage: null
-  #
-  # ePUB zipアーカイブ直前に実行するプログラム。メタ情報などを加工したいときなどに利用する。
-  # 渡される引数1=ePUB準備ディレクトリ
-  # hook_prepack: null
-  #
-  # 変換したHTMLファイルおよびCSSを解析して厳密に使用している画像ファイルだけを取り込むか。デフォルトはnull(imagesディレクトリすべてを取り込む)
-  # なお、フォント、カバー、広告についてはこの設定によらずディレクトリ内のものがすべて取り込まれる
-  # verify_target_images: null
-  #
-  # verify_target_imagesがtrueの状態において、解析で発見されなくても強制的に取り込むファイルの相対パスの配列
-  # force_include_images: []
-  #
-  # Re:VIEWファイル名を使わず、前付にpre01,pre02...、本文にchap01,chap02l...、後付にpost01,post02...という名前付けルールにするか
-  # rename_for_legacy: null
-  #
-  # ePUBアーカイブの非圧縮実行
-  # zip_stage1: "zip -0Xq"
-  #
-  # ePUBアーカイブの圧縮実行
-  # zip_stage2: "zip -Xr9Dq"
-  #
-  # ePUBアーカイブに追加するパス(デフォルトはmimetype、META-INF、OEBPS)
-  # zip_addpath: null
-  #
   # EPUBで表紙をコンテンツに含めるか。デフォルトでは作成されない。yesにするとiBooks等でも最初に表紙が表示されるようになる
-  # cover_linear: null
-  #
-  # @<href>タグでの外部リンクを禁止し、地の文にする(falseで禁止する)
-  # externallink: true
-  #
-  # epubmaker:階層を使うものはここまで
+  cover_linear: yes
 
 # LaTeX用のスタイルファイル(styディレクトリ以下に置くこと)
 texstyle: techbooster-doujin
@@ -224,45 +90,8 @@ texstyle: techbooster-doujin
 # LaTeX用のdocumentclassを指定する
 texdocumentclass: ["jsbook", "b5j,uplatex,twoside,openany"]
 
-# LaTeX用のコマンドを指定する
-# texcommand: "uplatex"
-#
-# LaTeXのコマンドに渡すオプションを指定する
-# texoptions: null
-#
-# LaTeX用のdvi変換コマンドを指定する(dvipdfmx)
-# dvicommand: "dvipdfmx"
-#
-# LaTeX用のdvi変換コマンドのオプションを指定する
-# dvioptions: "-d 5"
-
-# 以下のパラメータを有効にするときには、
-# pdfmaker:
-#    パラメータ: 値
-#    パラメータ: 値
-#   ...
-# という構成にする必要がある(インデントさせる)
-#
 pdfmaker:
-  #
-  # TeXコンパイル前に実行するプログラム。変換後のTeXソースを調整したいときに使用する。
-  # 渡される引数1=作業用展開ディレクトリ、引数2=呼び出しを実行したディレクトリ
-  # hook_beforetexcompile: null
-  #
-  # TeXコンパイル後に実行するプログラム。索引作業をして再度コンパイルしたいときなどに使用する。
-  # 渡される引数1=作業用展開ディレクトリ、引数2=呼び出しを実行したディレクトリ
-  # hook_aftertexcompile: null
-  #
-  # PDF(book.pdf)作成後に実行するプログラム。PDFに加工を施したいときに使用する。
-  # 渡される引数1=作業用展開ディレクトリ、引数2=呼び出しを実行したディレクトリ
-  # hook_afterdvipdf: null
-  #
-  # 画像のscale=X.Xという指定を画像拡大縮小率からページ最大幅の相対倍率に変換します。
-  # image_scale2width: true
-  #
-  # 奥付を作成するか。trueを指定するとデフォルトの奥付、ファイル名を指定するとそれがcolophon.htmlとしてコピーされる
   colophon: true
-  # pdfmaker:階層を使うものはここまで
 
 webmaker:
   analytics:
