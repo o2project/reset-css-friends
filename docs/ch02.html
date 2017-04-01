@@ -68,7 +68,7 @@
 <p>これが出てきたのは2004年で、おそらく最初のReset CSSだと思われます<a id="fnb-fight-the-power-default" href="#fn-fight-the-power-default" class="noteref" epub:type="noteref">*1</a>。なお公式ではHard resetと名乗っていません。Hard resetという名称は「A Comprehensive Guide to CSS Resets<a id="fnb-a-comprehensive-guide-to-css-resets" href="#fn-a-comprehensive-guide-to-css-resets" class="noteref" epub:type="noteref">*2</a>」という記事で出てきました。自分は2004年当時Webサイトを作っていなかったため、当時の状況はよく分からないので次の段落は憶測を含みます。</p>
 <div class="footnote" epub:type="footnote" id="fn-fight-the-power-default"><p class="footnote">[*1] https://web.archive.org/web/20150905184045/http://leftjustified.net/journal/2004/10/07/css-negotiation/</p></div>
 <div class="footnote" epub:type="footnote" id="fn-a-comprehensive-guide-to-css-resets"><p class="footnote">[*2] http://sixrevisions.com/css/a-comprehensive-guide-to-css-resets/</p></div>
-<p>このHard resetが発表された当時、ブラウザ間でmarginやpaddingの指定に差があることに対し大きな関心を持っていたようです。そのため、全称セレクタでmarginとpaddingを0にすることで、ブラウザによってmarginやpaddingの指定に差があることを無かったことにしようと試みたようです。</p>
+<p>このHard resetが発表された当時、ブラウザ間で<code class="inline-code tt">margin</code>や<code class="inline-code tt">padding</code>の指定に差があることに対し大きな関心を持っていたようです。そのため、全称セレクタで<code class="inline-code tt">margin</code>と<code class="inline-code tt">padding</code>を<code class="inline-code tt">0</code>にすることで、ブラウザによって<code class="inline-code tt">margin</code>や<code class="inline-code tt">padding</code>の指定に差があることを無かったことにしようと試みたようです。</p>
 
 <h2><a id="h2-2"></a><span class="secno">2.2　</span>Eric Meyer's Reset CSS</h2>
 <p>Eric MeyerというCSSへ対しとても貢献している人がいます。彼の功績を挙げると次のとおりです<a id="fnb-eric-meyer-linkedin" href="#fn-eric-meyer-linkedin" class="noteref" epub:type="noteref">*3</a>。</p>
@@ -91,12 +91,12 @@
 <div class="footnote" epub:type="footnote" id="fn-css-color-module-level-4"><p class="footnote">[*11] https://drafts.csswg.org/css-color/#named-colors</p></div>
 <p>そのEric MeyerがHard resetの問題点を指摘した上で作ったReset CSSがEric Meyer's Reset CSSです。</p>
 <p>Eric Meyer's Reset CSSのソースコードは<a href="http://meyerweb.com/eric/tools/css/reset/" class="link">http://meyerweb.com/eric/tools/css/reset/</a>にあります。</p>
-<p>Hard resetの問題点ですが、全称セレクタを使ってmarginやpaddingを0にするやり方は、フォーム関連の要素に対してどういった影響があるか分からないと書いてあります。そしてmarginやpaddingを0にするだけでなく、一貫したフォントに関わるスタイル宣言をしたかったとも書いてあります。そのため明示的に要素を指定して個別にリセットしていくことで、問題を解決できると思って書かれたのがEric Meyer's Reset CSSです。</p>
+<p>Hard resetの問題点ですが、全称セレクタを使って<code class="inline-code tt">margin</code>や<code class="inline-code tt">padding</code>を<code class="inline-code tt">0</code>にするやり方は、フォーム関連の要素に対してどういった影響があるか分からないと書いてあります。そして<code class="inline-code tt">margin</code>や<code class="inline-code tt">padding</code>を<code class="inline-code tt">0</code>にするだけでなく、一貫したフォントに関わるスタイル宣言をしたかったとも書いてあります。そのため明示的に要素を指定して個別にリセットしていくことで、問題を解決できると思って書かれたのがEric Meyer's Reset CSSです。</p>
 
 <h2><a id="h2-3"></a><span class="secno">2.3　</span>YUI 3 Reset CSS</h2>
 <p>Yahoo!が主に開発していたYUI library<a id="fnb-yui-deprecate" href="#fn-yui-deprecate" class="noteref" epub:type="noteref">*12</a>の中に含まれるReset CSSです。</p>
 <div class="footnote" epub:type="footnote" id="fn-yui-deprecate"><p class="footnote">[*12] なおYUI 3はこれからメンテナンスをおこなわないというアナウンスをしています</p></div>
-<p>YUI 3 Reset CSSはhtml要素に対しcolorプロパティやbackgroundプロパティが指定されています。またarticle要素やheader要素といったHTML5で追加された要素に対する指定がありません。これはYUI 2の時代からReset CSSがほぼ更新されていないためです<a id="fnb-yui2-reset" href="#fn-yui2-reset" class="noteref" epub:type="noteref">*13</a>。</p>
+<p>YUI 3 Reset CSSはhtml要素に対し<code class="inline-code tt">color</code>プロパティや<code class="inline-code tt">background</code>プロパティが指定されています。またarticle要素やheader要素といったHTML5で追加された要素に対する指定がありません。これはYUI 2の時代からReset CSSがほぼ更新されていないためです<a id="fnb-yui2-reset" href="#fn-yui2-reset" class="noteref" epub:type="noteref">*13</a>。</p>
 <div class="footnote" epub:type="footnote" id="fn-yui2-reset"><p class="footnote">[*13] https://github.com/yui/yui2/blob/master/src/reset/css/reset.css</p></div>
 
 <h2><a id="h2-4"></a><span class="secno">2.4　</span>HTML5 Docter Reset CSS</h2>
@@ -110,7 +110,7 @@
 <p>ソースコードにはなぜそのような指定をしたのか書かれているため、ソースコードを読むだけでも勉強になります。</p>
 
 <h2><a id="h2-6"></a><span class="secno">2.6　</span>sanitize.css</h2>
-<p>normalize.cssをNicolas Gallagherとともに作ったJonathan Nealが作ったReset CSSです。Jonathan NealはそれまでEric Meyer's Reset CSSやnormalize.cssを使っていたようですが、それらを元に大多数が書いたスタイル宣言を含んだものがsanitize.cssです。具体的にはリスト2.2のとおり、html要素に<code class="inline-code tt">box-sizing: border-box;</code>を指定して全称セレクタで<code class="inline-code tt">box-sizing: inherit;</code>を指定することです。これによって特定の要素に対してwidthやheightを指定するときに、borderやpaddingの指定を気にせずwidthやheightの値を指定できます。</p>
+<p>normalize.cssをNicolas Gallagherとともに作ったJonathan Nealが作ったReset CSSです。Jonathan NealはそれまでEric Meyer's Reset CSSやnormalize.cssを使っていたようですが、それらを元に大多数が書いたスタイル宣言を含んだものがsanitize.cssです。具体的にはhtml要素に<code class="inline-code tt">box-sizing: border-box;</code>を指定して全称セレクタで<code class="inline-code tt">box-sizing: inherit;</code>を指定することです（リスト2.2）。これによって特定の要素に対してwidthやheightを指定するときに、borderやpaddingの指定を気にせずwidthやheightの値を指定できます。</p>
 <div class="caption-code">
 <p class="caption">リスト2.2: sanitize.cssのhtml要素に対する指定</p>
 <pre class="list">/**
@@ -141,7 +141,7 @@ html {
 </div>
 
 <h2><a id="h2-7"></a><span class="secno">2.7　</span>ress</h2>
-<p>最後は<b class="kw">A modern CSS reset</b><!-- IDX:A modern CSS reset -->と称するressです。ressはnormalize.cssの指定を受け継ぎつつ、Hard resetのようにすべてのmarginやpaddingを0にしています。またsanitize.cssと同じくすべての要素に対して<code class="inline-code tt">box-sizing: border-box;</code>を指定しています。フォームに関連する要素についても<b class="kw">A modern CSS reset</b><!-- IDX:A modern CSS reset -->と称しているとおり、大胆にユーザーエージェントスタイルシートの指定をリセットしています。</p>
+<p>最後は<b class="kw">A modern CSS reset</b><!-- IDX:A modern CSS reset -->と称するressです。ressはnormalize.cssの指定を受け継ぎつつ、Hard resetのようにすべての<code class="inline-code tt">margin</code>や<code class="inline-code tt">padding</code>を<code class="inline-code tt">0</code>にしています。またsanitize.cssと同じくすべての要素に対して<code class="inline-code tt">box-sizing: border-box;</code>を指定しています。フォームに関連する要素についても<b class="kw">A modern CSS reset</b><!-- IDX:A modern CSS reset -->と称しているとおり、大胆にユーザーエージェントスタイルシートの指定をリセットしています。</p>
     </main>
 
     <nav class="book-navi">

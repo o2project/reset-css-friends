@@ -87,10 +87,10 @@ input, textarea, button, select
 }
 </pre>
 </div>
-<p>Eric Meyer's Reset CSS、sanitize.css、YUI 3 Reset CSSでは<code class="inline-code tt">body</code>要素へ対し<code class="inline-code tt">margin: 0;</code>を指定しています。Webページを作るときにページの外周へmarginを設定することはほとんど無いため、このような指定がされていると思われます。normalize.cssでもv5.0.0まではbody要素に対し同様の指定がされていましたが、v6.0.0で削除されて何も指定されなくなりました。</p>
+<p>Eric Meyer's Reset CSS、sanitize.css、YUI 3 Reset CSSではbody要素へ対し<code class="inline-code tt">margin: 0;</code>を指定しています。Webページを作るときにページの外周へ<code class="inline-code tt">margin</code>を設定することはほとんど無いため、このような指定がされていると思われます。normalize.cssでもv5.0.0まではbody要素に対し同様の指定がされていましたが、v6.0.0で削除されて何も指定されなくなりました。</p>
 
 <h2><a id="h3-3"></a><span class="secno">3.3　</span>セクショニング・コンテンツとh1要素</h2>
-<p>h1要素は見出しを表す要素の中でもっともランクが高い要素です。また<code class="inline-code tt">section</code>要素や<code class="inline-code tt">article</code>要素といったセクショニング・コンテンツへh1要素を入れた場合は、入れ子の深さに応じてスタイルが変わるようになっています（リスト3.3）。</p>
+<p>h1要素は見出しを表す要素の中でもっともランクが高い要素です。またsection要素やarticle要素といったセクショニング・コンテンツへh1要素を入れた場合は、入れ子の深さに応じてスタイルが変わるようになっています（リスト3.3）。</p>
 <div class="caption-code">
 <p class="caption">リスト3.3: h1要素に対するスタイル定義</p>
 <pre class="list">/* Chrome, Safari */
@@ -174,7 +174,7 @@ h1 {
 
 <h2><a id="h3-4"></a><span class="secno">3.4　</span>p要素</h2>
 <p>Firefoxでは文字のレイアウト方向や向き、文字が流れる方向を元にマージンを設定する<code class="inline-code tt">margin-block-start</code>や<code class="inline-code tt">margin-block-end</code>が定義されています。ちなみにCSSのプロパティでは、文字のレイアウト方向は<code class="inline-code tt">writing-mode</code>、文字の向きは<code class="inline-code tt">text-orientation</code>、文字の流れる方向は<code class="inline-code tt">direction</code>に対応しています。</p>
-<p>ChromeやSafariでは、<code class="inline-code tt">margin-before</code>や<code class="inline-code tt">margin-after</code>といったプロパティが定義され、値として<code class="inline-code tt">1__qem</code>が定義されています。これは、互換性モードで表示するときにmarginの相殺をおこなわないようにするものです。</p>
+<p>ChromeやSafariでは、<code class="inline-code tt">margin-before</code>や<code class="inline-code tt">margin-after</code>といったプロパティが定義され、値として<code class="inline-code tt">1__qem</code>が定義されています。これは、互換性モードで表示するときに<code class="inline-code tt">margin</code>の相殺をおこなわないようにするものです。</p>
 <p>YUI 3 Reset CSSやEric Meyer's Reset CSSといった古めのReset CSSでは<code class="inline-code tt">margin</code>と<code class="inline-code tt">padding</code>が0と指定されています。しかし、他のReset CSSでは特に指定がなくユーザーエージェントスタイルシートをそのまま使うようにしています。</p>
 <p>これは新しく縦書きという概念が出てきたのに従い、Reset CSSで文字の方向や向き、流れる方向を意識するようになったためです。その結果ユーザーエージェントスタイルシートをそのまま使ったほうが良いという結論に至ったと思われます。</p>
 
@@ -224,7 +224,7 @@ img {
 </div>
 
 <h2><a id="h3-7"></a><span class="secno">3.7　</span>ul, ol要素</h2>
-<p>ulやol要素はFirefoxやChrome、Safariで論理marginとpaddingが指定されています（リスト3.9）。</p>
+<p>ulやol要素はFirefoxやChrome、Safariで<code class="inline-code tt">論理margin</code>と<code class="inline-code tt">padding</code>が指定されています（リスト3.9）。</p>
 <div class="caption-code">
 <p class="caption">リスト3.9: ul要素に対するSafariのスタイル定義</p>
 <pre class="list">ul {
@@ -319,7 +319,7 @@ table &gt; form:-moz-is-html {
 }
 </pre>
 </div>
-<p>sanitize.cssでは<code class="inline-code tt">border-collapse: collapse;</code>の指定がされています（リスト3.15）。これはtableのborderをセル同士で共有する指定になります。表を表示するときにセルを分けて表示することは少ないので、余計なスタイル宣言を減らすことができます。</p>
+<p>sanitize.cssでは<code class="inline-code tt">border-collapse: collapse;</code>の指定がされています（リスト3.15）。これはtableの<code class="inline-code tt">border</code>をセル同士で共有する指定になります。表を表示するときにセルを分けて表示することは少ないので、余計なスタイル宣言を減らすことができます。</p>
 <div class="caption-code">
 <p class="caption">リスト3.15: sanitize.cssのtable要素に対する指定</p>
 <pre class="list">/**
@@ -573,7 +573,7 @@ select::-ms-value {
 </div>
 
 <h2><a id="h3-12"></a><span class="secno">3.12　</span>button要素</h2>
-<p>normalize.cssやsanitize.css、ressではWebKitのバグを修正するセレクタ指定やプロパティと値の指定がおこなわれています（リスト3.25）。またFirefoxに対してもbutton要素内に画像を配置したときにボタンのborderと画像の間に隙間が空く問題などが修正されています<a id="fnb-firefox-form-button" href="#fn-firefox-form-button" class="noteref" epub:type="noteref">*8</a>。</p>
+<p>normalize.cssやsanitize.css、ressではWebKitのバグを修正するセレクタ指定やプロパティと値の指定がおこなわれています（リスト3.25）。またFirefoxに対してもbutton要素内に画像を配置したときにボタンの<code class="inline-code tt">border</code>と画像の間に隙間が空く問題などが修正されています<a id="fnb-firefox-form-button" href="#fn-firefox-form-button" class="noteref" epub:type="noteref">*8</a>。</p>
 <div class="footnote" epub:type="footnote" id="fn-firefox-form-button"><p class="footnote">[*8] http://jeffreyfrancesco.org/weblog/2011062101/</p></div>
 <div class="caption-code">
 <p class="caption">リスト3.25: normalize.cssとsanitize.css、ressの共通指定</p>
