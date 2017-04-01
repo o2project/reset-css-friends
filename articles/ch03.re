@@ -48,14 +48,14 @@ body {
 #@end
 //}
 
-Eric Meyer's Reset CSS、sanitize.css、YUI 3 Reset CSSでは@<code>{body}要素へ対し@<code>{margin: 0;}を指定しています。
-Webページを作るときにページの外周へmarginを設定することはほとんど無いため、このような指定がされていると思われます。
+Eric Meyer's Reset CSS、sanitize.css、YUI 3 Reset CSSではbody要素へ対し@<code>{margin: 0;}を指定しています。
+Webページを作るときにページの外周へ@<code>{margin}を設定することはほとんど無いため、このような指定がされていると思われます。
 normalize.cssでもv5.0.0まではbody要素に対し同様の指定がされていましたが、v6.0.0で削除されて何も指定されなくなりました。
 
 == セクショニング・コンテンツとh1要素
 
 h1要素は見出しを表す要素の中でもっともランクが高い要素です。
-また@<code>{section}要素や@<code>{article}要素といったセクショニング・コンテンツへh1要素を入れた場合は、入れ子の深さに応じてスタイルが変わるようになっています（@<list>{h1-element}）。
+またsection要素やarticle要素といったセクショニング・コンテンツへh1要素を入れた場合は、入れ子の深さに応じてスタイルが変わるようになっています（@<list>{h1-element}）。
 
 //list[h1-element][h1要素に対するスタイル定義]{
 #@mapfile(../codes/browser/h1.css)
@@ -148,7 +148,7 @@ Firefoxでは文字のレイアウト方向や向き、文字が流れる方向�
 ちなみにCSSのプロパティでは、文字のレイアウト方向は@<code>{writing-mode}、文字の向きは@<code>{text-orientation}、文字の流れる方向は@<code>{direction}に対応しています。
 
 ChromeやSafariでは、@<code>{margin-before}や@<code>{margin-after}といったプロパティが定義され、値として@<code>{1__qem}が定義されています。
-これは、互換性モードで表示するときにmarginの相殺をおこなわないようにするものです。
+これは、互換性モードで表示するときに@<code>{margin}の相殺をおこなわないようにするものです。
 
 YUI 3 Reset CSSやEric Meyer's Reset CSSといった古めのReset CSSでは@<code>{margin}と@<code>{padding}が0と指定されています。
 しかし、他のReset CSSでは特に指定がなくユーザーエージェントスタイルシートをそのまま使うようにしています。
@@ -213,7 +213,7 @@ img {
 
 == ul, ol要素
 
-ulやol要素はFirefoxやChrome、Safariで論理marginとpaddingが指定されています（@<list>{ul-firefox}）。
+ulやol要素はFirefoxやChrome、Safariで@<code>{論理margin}と@<code>{padding}が指定されています（@<list>{ul-firefox}）。
 
 //list[ul-firefox][ul要素に対するSafariのスタイル定義]{
 #@mapfile(../codes/browser/firefox/ul.css)
@@ -326,7 +326,7 @@ table > form:-moz-is-html {
 //}
 
 sanitize.cssでは@<code>{border-collapse: collapse;}の指定がされています（@<list>{sanitize-table}）。
-これはtableのborderをセル同士で共有する指定になります。表を表示するときにセルを分けて表示することは少ないので、余計なスタイル宣言を減らすことができます。
+これはtableの@<code>{border}をセル同士で共有する指定になります。表を表示するときにセルを分けて表示することは少ないので、余計なスタイル宣言を減らすことができます。
 
 //list[sanitize-table][sanitize.cssのtable要素に対する指定]{
 #@mapfile(../codes/reset-css/sanitize-css/table.css)
@@ -611,7 +611,7 @@ select::-ms-value {
 == button要素
 
 normalize.cssやsanitize.css、ressではWebKitのバグを修正するセレクタ指定やプロパティと値の指定がおこなわれています（@<list>{normalize-button}）。
-またFirefoxに対してもbutton要素内に画像を配置したときにボタンのborderと画像の間に隙間が空く問題などが修正されています@<fn>{firefox-form-button}。
+またFirefoxに対してもbutton要素内に画像を配置したときにボタンの@<code>{border}と画像の間に隙間が空く問題などが修正されています@<fn>{firefox-form-button}。
 #@# prh:disable
 //footnote[firefox-form-button][http://jeffreyfrancesco.org/weblog/2011062101/]
 

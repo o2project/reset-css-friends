@@ -24,8 +24,8 @@ Hard resetは@<list>{hard-reset}のように書くだけの簡単なReset CSSで
 //footnote[fight-the-power-default][https://web.archive.org/web/20150905184045/http://leftjustified.net/journal/2004/10/07/css-negotiation/]
 //footnote[a-comprehensive-guide-to-css-resets][http://sixrevisions.com/css/a-comprehensive-guide-to-css-resets/]
 
-このHard resetが発表された当時、ブラウザ間でmarginやpaddingの指定に差があることに対し大きな関心を持っていたようです。
-そのため、全称セレクタでmarginとpaddingを0にすることで、ブラウザによってmarginやpaddingの指定に差があることを無かったことにしようと試みたようです。
+このHard resetが発表された当時、ブラウザ間で@<code>{margin}や@<code>{padding}の指定に差があることに対し大きな関心を持っていたようです。
+そのため、全称セレクタで@<code>{margin}と@<code>{padding}を@<code>{0}にすることで、ブラウザによって@<code>{margin}や@<code>{padding}の指定に差があることを無かったことにしようと試みたようです。
 
 == Eric Meyer's Reset CSS
 
@@ -57,8 +57,8 @@ Eric MeyerというCSSへ対しとても貢献している人がいます。彼�
 #@# prh:disable
 Eric Meyer's Reset CSSのソースコードは@<href>{http://meyerweb.com/eric/tools/css/reset/}にあります。
 
-Hard resetの問題点ですが、全称セレクタを使ってmarginやpaddingを0にするやり方は、フォーム関連の要素に対してどういった影響があるか分からないと書いてあります。
-そしてmarginやpaddingを0にするだけでなく、一貫したフォントに関わるスタイル宣言をしたかったとも書いてあります。
+Hard resetの問題点ですが、全称セレクタを使って@<code>{margin}や@<code>{padding}を@<code>{0}にするやり方は、フォーム関連の要素に対してどういった影響があるか分からないと書いてあります。
+そして@<code>{margin}や@<code>{padding}を@<code>{0}にするだけでなく、一貫したフォントに関わるスタイル宣言をしたかったとも書いてあります。
 そのため明示的に要素を指定して個別にリセットしていくことで、問題を解決できると思って書かれたのがEric Meyer's Reset CSSです。
 
 == YUI 3 Reset CSS
@@ -66,7 +66,7 @@ Hard resetの問題点ですが、全称セレクタを使ってmarginやpadding
 Yahoo!が主に開発していたYUI library@<fn>{yui-deprecate}の中に含まれるReset CSSです。
 //footnote[yui-deprecate][なおYUI 3はこれからメンテナンスをおこなわないというアナウンスをしています]
 
-YUI 3 Reset CSSはhtml要素に対しcolorプロパティやbackgroundプロパティが指定されています。
+YUI 3 Reset CSSはhtml要素に対し@<code>{color}プロパティや@<code>{background}プロパティが指定されています。
 またarticle要素やheader要素といったHTML5で追加された要素に対する指定がありません。
 これはYUI 2の時代からReset CSSがほぼ更新されていないためです@<fn>{yui2-reset}。
 //footnote[yui2-reset][https://github.com/yui/yui2/blob/master/src/reset/css/reset.css]
@@ -96,7 +96,7 @@ normalize.cssはブラウザが指定しているスタイルで使えそうな�
 
 normalize.cssをNicolas Gallagherとともに作ったJonathan Nealが作ったReset CSSです。
 Jonathan NealはそれまでEric Meyer's Reset CSSやnormalize.cssを使っていたようですが、それらを元に大多数が書いたスタイル宣言を含んだものがsanitize.cssです。
-具体的には@<list>{sanitize-html}のとおり、html要素に@<code>{box-sizing: border-box;}を指定して全称セレクタで@<code>{box-sizing: inherit;}を指定することです。
+具体的にはhtml要素に@<code>{box-sizing: border-box;}を指定して全称セレクタで@<code>{box-sizing: inherit;}を指定することです（@<list>{sanitize-html}）。
 これによって特定の要素に対してwidthやheightを指定するときに、borderやpaddingの指定を気にせずwidthやheightの値を指定できます。
 
 //list[sanitize-html][sanitize.cssのhtml要素に対する指定]{
@@ -131,6 +131,6 @@ html {
 == ress
 
 最後は@<kw>{A modern CSS reset}と称するressです。
-ressはnormalize.cssの指定を受け継ぎつつ、Hard resetのようにすべてのmarginやpaddingを0にしています。
+ressはnormalize.cssの指定を受け継ぎつつ、Hard resetのようにすべての@<code>{margin}や@<code>{padding}を@<code>{0}にしています。
 またsanitize.cssと同じくすべての要素に対して@<code>{box-sizing: border-box;}を指定しています。
 フォームに関連する要素についても@<kw>{A modern CSS reset}と称しているとおり、大胆にユーザーエージェントスタイルシートの指定をリセットしています。
