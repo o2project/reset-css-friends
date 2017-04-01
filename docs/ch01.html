@@ -80,7 +80,8 @@
 <p>ユーザーエージェントスタイルシートの宣言より作者による宣言、つまりHTMLファイルからリンクされたCSSなどの宣言が優先されるため、ユーザーエージェントスタイルシートのスタイル宣言を上書きできます。</p>
 
 <h2><a id="h1-2"></a><span class="secno">1.2　</span>なぜReset CSSを使うのか</h2>
-<p>Reset CSSが使われる理由は、ブラウザが既定で読み込むユーザーエージェントスタイルシートがブラウザ間で差異があるためです。例として<code class="inline-code tt">h1</code>要素と<code class="inline-code tt">p</code>要素のみ定義したHTMLをブラウザで見てみると、Firefoxではセリフがないフォントで表示されています（図1.1）が、Safariではセリフがあるフォントで表示されます（図1.2）。</p>
+<p>Reset CSSが使われる理由は、ブラウザが既定で読み込むユーザーエージェントスタイルシートがブラウザ間で差異があるためです。例として<code class="inline-code tt">h1</code>要素と<code class="inline-code tt">p</code>要素のみ定義したHTMLをブラウザで見てみます。Firefoxはセリフ<a id="fnb-font-serif" href="#fn-font-serif" class="noteref" epub:type="noteref">*1</a>がないフォントで表示されます（図1.1）が、Safariはセリフがあるフォントで表示されます（図1.2）。</p>
+<div class="footnote" epub:type="footnote" id="fn-font-serif"><p class="footnote">[*1] 文字の線の端にある小さな飾りのことです</p></div>
 <div id="firefox-font" class="image">
 <img src="images/firefox-font.png" alt="Firefoxでプレビューしたときの見た目" />
 <p class="caption">
