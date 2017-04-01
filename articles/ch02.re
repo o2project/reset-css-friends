@@ -17,15 +17,15 @@ Hard resetは@<list>{hard-reset}のように書くだけの簡単なReset CSSで
 #@end
 //}
 
-これが出てきたのは2004年で、おそらく最初のReset CSSだと思われます@<fn>{fight-the-power-default}。
-なお公式ではHard resetと名乗っていません。Hard resetという名称は「A Comprehensive Guide to CSS Resets@<fn>{a-comprehensive-guide-to-css-resets}」という記事で出てきました。
-自分は2004年当時Webサイトを作っていなかったため、当時の状況はよく分からないので次の段落は憶測を含みます。
+Hard resetは2004年に発表されました、おそらく最初のReset CSSだと思われます@<fn>{fight-the-power-default}。
+公式ではHard resetと名乗っていません。Hard resetという名称は「A Comprehensive Guide to CSS Resets@<fn>{a-comprehensive-guide-to-css-resets}」という記事で出てきました。
+2004年当時、自分はWebサイトを作っていなかったため状況をよく知りません。そのため次の段落は憶測を含みます。
 #@# prh:disable
 //footnote[fight-the-power-default][https://web.archive.org/web/20150905184045/http://leftjustified.net/journal/2004/10/07/css-negotiation/]
 //footnote[a-comprehensive-guide-to-css-resets][http://sixrevisions.com/css/a-comprehensive-guide-to-css-resets/]
 
-このHard resetが発表された当時、ブラウザ間で@<code>{margin}や@<code>{padding}の指定に差があることに対し大きな関心を持っていたようです。
-そのため、全称セレクタで@<code>{margin}と@<code>{padding}を@<code>{0}にすることで、ブラウザによって@<code>{margin}や@<code>{padding}の指定に差があることを無かったことにしようと試みたようです。
+このHard resetが発表された当時はブラウザ間で@<code>{margin}や@<code>{padding}の宣言に差があることに対し大きな関心を持っていたようです。
+そのためユニバーサルセレクタで@<code>{margin}と@<code>{padding}を@<code>{0}にすることで、ブラウザによって@<code>{margin}や@<code>{padding}の宣言に差があるのを無かったことにしようと試みたようです。
 
 == Eric Meyer's Reset CSS
 
@@ -46,7 +46,7 @@ Eric MeyerというCSSへ対しとても貢献している人がいます。彼�
 #@# prh:disable
 //footnote[s5][https://en.wikipedia.org/wiki/S5_(file_format)]
 
-最近ではその功績にコミュニティが敬意を払い、彼の6歳で夭折した娘の名前をCSSの色名（@<code>{beccapurple}）として追加しようと提議されました@<fn>{becca-purple}。
+最近ではその功績にコミュニティが敬意を払い、彼の6歳で夭折した娘の名前をCSSの色名@<code>{beccapurple}として追加しようと提議されました@<fn>{becca-purple}。
 そして本人と夭折した娘の要望@<fn>{rebecca-purple}により@<code>{rebeccapurple}としてCSS Color Module Level 4@<fn>{css-color-module-level-4}に追加されました。
 //footnote[becca-purple][https://discourse.wicg.io/t/name-663399-becca-purple-in-css4-color/225]
 #@# prh:disable
@@ -57,49 +57,50 @@ Eric MeyerというCSSへ対しとても貢献している人がいます。彼�
 #@# prh:disable
 Eric Meyer's Reset CSSのソースコードは@<href>{http://meyerweb.com/eric/tools/css/reset/}にあります。
 
-Hard resetの問題点ですが、全称セレクタを使って@<code>{margin}や@<code>{padding}を@<code>{0}にするやり方は、フォーム関連の要素に対してどういった影響があるか分からないと書いてあります。
-そして@<code>{margin}や@<code>{padding}を@<code>{0}にするだけでなく、一貫したフォントに関わるスタイル宣言をしたかったとも書いてあります。
-そのため明示的に要素を指定して個別にリセットしていくことで、問題を解決できると思って書かれたのがEric Meyer's Reset CSSです。
+Hard resetの問題点ですが、ユニバーサルセレクタを使って@<code>{margin}や@<code>{padding}を@<code>{0}にするやり方は、フォーム関連の要素に対してどういった影響があるか分からないと書いてあります。
+そして@<code>{margin}や@<code>{padding}を@<code>{0}にするだけでなく、フォントに関わる一貫したスタイル宣言をしたかったとも書いてあります。
+そのため明示的に要素を宣言して個別にリセットしていくようにしたのがEric Meyer's Reset CSSです。
 
 == YUI 3 Reset CSS
 
-Yahoo!が主に開発していたYUI library@<fn>{yui-deprecate}の中に含まれるReset CSSです。
+Yahoo!が主に開発していたYUI library@<fn>{yui-deprecate}に含まれるReset CSSです。
 //footnote[yui-deprecate][なおYUI 3はこれからメンテナンスをおこなわないというアナウンスをしています]
 
-YUI 3 Reset CSSはhtml要素に対し@<code>{color}プロパティや@<code>{background}プロパティが指定されています。
-またarticle要素やheader要素といったHTML5で追加された要素に対する指定がありません。
-これはYUI 2の時代からReset CSSがほぼ更新されていないためです@<fn>{yui2-reset}。
+YUI 3 Reset CSSはhtml要素に対し@<code>{color}プロパティや@<code>{background}プロパティが宣言されています。
+ただしYUI 2の時代からReset CSSがほぼ更新されていない@<fn>{yui2-2008-1}@<fn>{yui2-2008-2}ため、article要素やheader要素といったHTML5で追加された要素に対する宣言はありません@<fn>{yui2-reset}。
+//footnote[yui2-2008-1][YUI 2のReset CSSを見てみると2008年から指定内容がほぼ変わっていません]
+//footnote[yui2-2008-2][https://github.com/yui/yui2/blob/324b3755ea4f3ac643572eb839d85c09801aac5f/build/reset/reset.css]
 //footnote[yui2-reset][https://github.com/yui/yui2/blob/master/src/reset/css/reset.css]
 
 == HTML5 Docter Reset CSS
 
-HTML5 DocterというHTML5を使った開発について発信していたWebサイトがありました。そのWebサイトで提唱されたReset CSSです。
+HTML5を使った開発について発信していた@<kw>{HTML5 Docter}で提唱されたReset CSSです。
 HTML5 Docter Reset CSSのソースコードは@<href>{http://html5doctor.com/html-5-reset-stylesheet/}にあります。
 
 HTML5 Docter Reset CSSはEric Meyer's Reset CSSのv1.0を元に作られたものです。
-Eric Meyer's Reset CSSのv1.0は作られた時期が2008年2月12日なので、HTML5に関わる要素のスタイル宣言がありませんでした。
-HTML5 Docter Reset CSSはそこにHTML5で追加されたarticle要素やheader要素に対するスタイル宣言を追加しています。
-またins要素やmark要素、hr要素などに独自のスタイルが適用されています。
+Eric Meyer's Reset CSSのv1.0は作られた時期が2008年2月12日のため、HTML5で追加された要素のスタイル宣言がありませんでした。
+HTML5 Docter Reset CSSはそこにarticle要素やheader要素などHTML5で追加された要素のスタイル宣言を追加しています。
+他にもins要素やmark要素、hr要素などに独自のスタイルが定義されています。
 
 == normalize.css
 
 normalize.cssはそれまでのReset CSSを代替するReset CSSとして出てきました。
 
-それまでのReset CSSはブラウザが既定で指定しているスタイルを消すものでした。
-normalize.cssはブラウザが指定しているスタイルで使えそうなものはそのまま残しているのが特徴です。
+それまでのReset CSSはブラウザが既定で宣言しているスタイルをほぼすべてリセットするものでした。
+normalize.cssはブラウザが宣言しているスタイルで使えそうなものを残しているのが特徴です。
 後述するsanitize.cssやressと違い、作者の意見が入っていない純粋にブラウザのスタイルを正規化するライブラリです@<fn>{normalize-v5}。
 //footnote[normalize-v5][v5.0.0まではスタイル宣言に作者の意見が含まれていましたが、v6.0.0でそれらがすべて取り除かれました]
 
-ソースコードにはなぜそのような指定をしたのか書かれているため、ソースコードを読むだけでも勉強になります。
+ソースコードにはなぜその宣言をしたのか書かれているため、ソースコードを読むだけでも勉強になります。
 
 == sanitize.css
 
 normalize.cssをNicolas Gallagherとともに作ったJonathan Nealが作ったReset CSSです。
-Jonathan NealはそれまでEric Meyer's Reset CSSやnormalize.cssを使っていたようですが、それらを元に大多数が書いたスタイル宣言を含んだものがsanitize.cssです。
-具体的にはhtml要素に@<code>{box-sizing: border-box;}を指定して全称セレクタで@<code>{box-sizing: inherit;}を指定することです（@<list>{sanitize-html}）。
-これによって特定の要素に対してwidthやheightを指定するときに、borderやpaddingの指定を気にせずwidthやheightの値を指定できます。
+Jonathan NealはEric Meyer's Reset CSSやnormalize.cssを使っていましたが、それらを元に大多数が書いたスタイル宣言を含んだのがsanitize.cssです。
+一例を挙げるとhtml要素に@<code>{box-sizing: border-box;}を宣言してユニバーサルセレクタで@<code>{box-sizing: inherit;}を宣言しています（@<list>{sanitize-html}）。
+これにより特定の要素に対してwidthやheightを宣言するときに、borderやpaddingの宣言を気にせずwidthやheightの値を宣言できます。
 
-//list[sanitize-html][sanitize.cssのhtml要素に対する指定]{
+//list[sanitize-html][sanitize.cssのhtml要素に対する宣言]{
 #@mapfile(../codes/reset-css/sanitize-css/html.css)
 /**
  * 1. Remove repeating backgrounds in all browsers (opinionated).
@@ -130,7 +131,6 @@ html {
 
 == ress
 
-最後は@<kw>{A modern CSS reset}と称するressです。
-ressはnormalize.cssの指定を受け継ぎつつ、Hard resetのようにすべての@<code>{margin}や@<code>{padding}を@<code>{0}にしています。
-またsanitize.cssと同じくすべての要素に対して@<code>{box-sizing: border-box;}を指定しています。
-フォームに関連する要素についても@<kw>{A modern CSS reset}と称しているとおり、大胆にユーザーエージェントスタイルシートの指定をリセットしています。
+最後は@<kw>{A modern CSS reset}と称するressです。ressはnormalize.cssの宣言を受け継ぎつつ、Hard resetのようにユニバーサルセレクタを使ってすべての要素に対し@<code>{margin}や@<code>{padding}を@<code>{0}にしています。
+またsanitize.cssと同じくすべての要素に対して@<code>{box-sizing: border-box;}を宣言しています。
+フォームに関連する要素についても@<kw>{A modern CSS reset}と称しているとおり、大胆にユーザーエージェントスタイルシートの宣言をリセットしています。
