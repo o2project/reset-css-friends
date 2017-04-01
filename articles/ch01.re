@@ -35,7 +35,9 @@ CSS Cascading and Inheritance Level 3（@<href>{https://www.w3.org/TR/css-cascad
 == なぜReset CSSを使うのか
 
 Reset CSSが使われる理由は、ブラウザが既定で読み込むユーザーエージェントスタイルシートがブラウザ間で差異があるためです。
-例として@<code>{h1}要素と@<code>{p}要素のみ定義したHTMLをブラウザで見てみると、Firefoxではセリフがないフォントで表示されています（@<img>{firefox-font}）が、Safariではセリフがあるフォントで表示されます（@<img>{safari-font}）。
+例として@<code>{h1}要素と@<code>{p}要素のみ定義したHTMLをブラウザで見てみます。
+Firefoxはセリフ@<fn>{font-serif}がないフォントで表示されます（@<img>{firefox-font}）が、Safariはセリフがあるフォントで表示されます（@<img>{safari-font}）。
+//footnote[font-serif][文字の線の端にある小さな飾りのことです]
 
 //image[firefox-font][Firefoxでプレビューしたときの見た目]{
 //}
