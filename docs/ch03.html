@@ -236,7 +236,7 @@ img {
 }
 </pre>
 </div>
-<p>入れ子になったulやol要素はFirefoxとChrome、Safariで指定しているプロパティは同じですが、セレクタの指定方法が違います。Firefoxでは<code class="inline-code tt">:any()</code>という疑似クラスを使って、ul要素やol要素などが入れ子になったときのスタイル指定をおこなっています<a id="fnb-mdn-any-pseudo-class" href="#fn-mdn-any-pseudo-class" class="noteref" epub:type="noteref">*3</a>（リスト3.10）。この<code class="inline-code tt">:any()</code>擬似クラスですが、CSS Selectors Level 4では<code class="inline-code tt">:matches()</code>として仕様策定が進んでいます<a id="fnb-css-selectors-4-matches" href="#fn-css-selectors-4-matches" class="noteref" epub:type="noteref">*4</a>。</p>
+<p>入れ子になったulやol要素はFirefoxとChrome、Safariで指定しているプロパティは同じですが、セレクタの指定方法が違います。Firefoxでは<code class="inline-code tt">:any()</code>という疑似クラスを使って、ul要素やol要素などが入れ子になったときのスタイル宣言をおこなっています<a id="fnb-mdn-any-pseudo-class" href="#fn-mdn-any-pseudo-class" class="noteref" epub:type="noteref">*3</a>（リスト3.10）。この<code class="inline-code tt">:any()</code>擬似クラスですが、CSS Selectors Level 4では<code class="inline-code tt">:matches()</code>として仕様策定が進んでいます<a id="fnb-css-selectors-4-matches" href="#fn-css-selectors-4-matches" class="noteref" epub:type="noteref">*4</a>。</p>
 <div class="footnote" epub:type="footnote" id="fn-mdn-any-pseudo-class"><p class="footnote">[*3] https://developer.mozilla.org/ja/docs/Web/CSS/:any</p></div>
 <div class="footnote" epub:type="footnote" id="fn-css-selectors-4-matches"><p class="footnote">[*4] https://drafts.csswg.org/selectors-4/#matches</p></div>
 <div class="caption-code">
@@ -274,9 +274,9 @@ ul ul ul {
 }
 </pre>
 </div>
-<p>sanitize.cssではnav要素が親要素としてあるときにol要素とul要素に対して<code class="inline-code tt">list-style: none;</code>の指定をしています（リスト3.12）。nav要素内に指定したol要素とul要素に対して<code class="inline-code tt">list-style</code>の値を指定することは少ないので、自分で書くスタイル指定を減らすことができます。</p>
+<p>sanitize.cssではnav要素が親要素としてあるときにol要素とul要素に対して<code class="inline-code tt">list-style: none;</code>の指定をしています（リスト3.12）。nav要素内に指定したol要素とul要素に対して<code class="inline-code tt">list-style</code>の値を指定することは少ないので、自分で書くスタイル宣言を減らすことができます。</p>
 <div class="caption-code">
-<p class="caption">リスト3.12: sanitize.cssのulやol要素に対するスタイル指定</p>
+<p class="caption">リスト3.12: sanitize.cssのulやol要素に対するスタイル宣言</p>
 <pre class="list">/**
  * Remove the list style on navigation lists in all browsers (opinionated).
  */
@@ -289,9 +289,9 @@ nav ul {
 </div>
 
 <h2><a id="h3-8"></a><span class="secno">3.8　</span>table要素</h2>
-<p>table要素のスタイル指定ですが、Firefoxでは非推奨となった属性にもスタイル指定をおこなっているのが特色です。たとえば<code class="inline-code tt">align</code>や<code class="inline-code tt">frame</code>、<code class="inline-code tt">rules</code>といった属性が挙げられます（リスト3.13）。</p>
+<p>table要素のスタイル宣言ですが、Firefoxでは非推奨となった属性にもスタイル宣言をおこなっているのが特色です。たとえば<code class="inline-code tt">align</code>や<code class="inline-code tt">frame</code>、<code class="inline-code tt">rules</code>といった属性が挙げられます（リスト3.13）。</p>
 <div class="caption-code">
-<p class="caption">リスト3.13: Firefoxで指定されている非推奨の属性に対してのスタイル指定（一部）</p>
+<p class="caption">リスト3.13: Firefoxで指定されている非推奨の属性に対してのスタイル宣言（一部）</p>
 <pre class="list">table[align=&quot;left&quot;] {
   float: left;
 }
@@ -319,7 +319,7 @@ table &gt; form:-moz-is-html {
 }
 </pre>
 </div>
-<p>sanitize.cssでは<code class="inline-code tt">border-collapse: collapse;</code>の指定がされています（リスト3.15）。これはtableのborderをセル同士で共有する指定になります。表を表示するときにセルを分けて表示することは少ないので、余計なスタイル指定を減らすことができます。</p>
+<p>sanitize.cssでは<code class="inline-code tt">border-collapse: collapse;</code>の指定がされています（リスト3.15）。これはtableのborderをセル同士で共有する指定になります。表を表示するときにセルを分けて表示することは少ないので、余計なスタイル宣言を減らすことができます。</p>
 <div class="caption-code">
 <p class="caption">リスト3.15: sanitize.cssのtable要素に対する指定</p>
 <pre class="list">/**
@@ -340,9 +340,9 @@ table {
 </div>
 
 <h2><a id="h3-9"></a><span class="secno">3.9　</span>blockquote要素</h2>
-<p>blockquote要素はFirefoxで<code class="inline-code tt">[type=cite]</code>という属性に対するスタイル指定があります（リスト3.16）。この属性は現在W3Cの仕様には無い仕様ですが、過去にはあったらしくFirefoxではいい感じの見た目になります（図3.2）。</p>
+<p>blockquote要素はFirefoxで<code class="inline-code tt">[type=cite]</code>という属性に対するスタイル宣言があります（リスト3.16）。この属性は現在W3Cの仕様には無い仕様ですが、過去にはあったらしくFirefoxではいい感じの見た目になります（図3.2）。</p>
 <div class="caption-code">
-<p class="caption">リスト3.16: blockquote要素に対してのスタイル指定</p>
+<p class="caption">リスト3.16: blockquote要素に対してのスタイル宣言</p>
 <pre class="list">blockquote {
   display: block;
   margin-block-start: 1em;
@@ -372,7 +372,7 @@ blockquote[type=cite] {
 </div>
 <p>Eric Meyer's Reset CSSではblockquoteやq要素に対し引用符を消すスタイルが指定されています（リスト3.17）。なお、他のReset CSSには特徴的な指定がありません。</p>
 <div class="caption-code">
-<p class="caption">リスト3.17: Eric Meyer's Reset CSSのblockquote要素に対するスタイル指定</p>
+<p class="caption">リスト3.17: Eric Meyer's Reset CSSのblockquote要素に対するスタイル宣言</p>
 <pre class="list">blockquote, q {
   quotes: none;
 }
@@ -385,9 +385,9 @@ q:before, q:after {
 </div>
 
 <h2><a id="h3-10"></a><span class="secno">3.10　</span>input要素</h2>
-<p>input要素はtype属性の値によって挙動が大きく変わります（図3.3）。そのためChromeのユーザーエージェントスタイルシートでは1123行中295行がinput要素関連のスタイル指定です。Safariに至っては1221行中421行がinput要素関連のスタイル指定です<a id="fnb-safari-user-agent-stylesheet-line" href="#fn-safari-user-agent-stylesheet-line" class="noteref" epub:type="noteref">*6</a>。</p>
-<div class="footnote" epub:type="footnote" id="fn-safari-user-agent-stylesheet-line"><p class="footnote">[*6] Safariの場合iOS向けと思われるスタイル指定もあるためChromeと比較して行数が多いのかもしれません</p></div>
-<p>なおFirefoxは895行中24行がinput要素関連のスタイル指定です。</p>
+<p>input要素はtype属性の値によって挙動が大きく変わります（図3.3）。そのためChromeのユーザーエージェントスタイルシートでは1123行中295行がinput要素関連のスタイル宣言です。Safariに至っては1221行中421行がinput要素関連のスタイル宣言です<a id="fnb-safari-user-agent-stylesheet-line" href="#fn-safari-user-agent-stylesheet-line" class="noteref" epub:type="noteref">*6</a>。</p>
+<div class="footnote" epub:type="footnote" id="fn-safari-user-agent-stylesheet-line"><p class="footnote">[*6] Safariの場合iOS向けと思われるスタイル宣言もあるためChromeと比較して行数が多いのかもしれません</p></div>
+<p>なおFirefoxは895行中24行がinput要素関連のスタイル宣言です。</p>
 <div id="input-types" class="image">
 <img src="images/input-types.png" alt="input要素はtype属性の値によって挙動が大きく変わる" />
 <p class="caption">
@@ -443,7 +443,7 @@ textarea {
 </div>
 
 <h3 id="input-sanitize"><a id="h3-10-2"></a>sanitize.css</h3>
-<p>normalize.cssの指定を受け継ぎつつ、<code class="inline-code tt">font-size</code>や<code class="inline-code tt">line-height</code>の値として<code class="inline-code tt">inherit</code>が指定されています（リスト3.20）。親要素の指定を継承することにより、自分でスタイル指定することを極力減らそうとしています。</p>
+<p>normalize.cssの指定を受け継ぎつつ、<code class="inline-code tt">font-size</code>や<code class="inline-code tt">line-height</code>の値として<code class="inline-code tt">inherit</code>が指定されています（リスト3.20）。親要素の指定を継承することにより、自分でスタイル宣言することを極力減らそうとしています。</p>
 <div class="caption-code">
 <p class="caption">リスト3.20: normalize.cssより作者の主張が含まれているsanitize.css</p>
 <pre class="list">/**
