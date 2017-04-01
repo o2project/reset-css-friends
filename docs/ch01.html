@@ -46,14 +46,14 @@
 <li><a href="./index.html">はじめに</a></li>
 <li><a href="./ch01.html">1 Reset CSSとは何か</a></li>
 <li><a href="./ch02.html">2 Reset CSSの特色</a></li>
-<li><a href="./ch03.html">3 Reset CSSは何をリセットしているのか</a></li>
+<li><a href="./ch03.html">3 Reset CSSでどのような宣言がされているか</a></li>
 <li><a href="./credit.html">権利情報</a></li>
 </ul>
     </nav>
 
     <main class="book-body col-md-10">
       <h1><a id="h1"></a><span class="secno">第1章　</span>Reset CSSとは何か</h1>
-<p>Reset CSSは、Web上のページを読み込んだときに既定で適用されるスタイル宣言（ユーザーエージェントスタイルシートとも呼ばれます）をリセットするためのものです。Reset CSSは<b class="kw">Hard reset</b><!-- IDX:Hard reset -->とも呼ばれるユニバーサルセレクタを使ってすべてのmarginとpaddingを0にする手法から始まりました（リスト1.1）。そして今日にいたるまでさまざまな手法が開発されています。</p>
+<p>Reset CSSは、Web上のページを読み込んだときに既定で適用されるスタイル宣言（ユーザーエージェントスタイルシートとも呼ばれます）をリセットするものです。Reset CSSは<b class="kw">Hard reset</b><!-- IDX:Hard reset -->と呼ばれる「ユニバーサル（全称）セレクタを使ってすべてのmarginとpaddingを0にする」手法から始まりました（リスト1.1）。そこから今日にいたるまでさまざまな手法が開発されています。</p>
 <div class="caption-code">
 <p class="caption">リスト1.1: 初期のReset CSSであるHard reset</p>
 <pre class="list">* {
@@ -64,7 +64,7 @@
 </div>
 
 <h2><a id="h1-1"></a><span class="secno">1.1　</span>なぜReset CSSはユーザーエージェントスタイルシートを上書きできるか</h2>
-<p>Reset CSSはユーザーエージェントスタイルシートでの指定を上書きすることにより、スタイル宣言をリセットしています。なぜリセットできるのでしょうか？それはスタイル宣言がされた場所（オリジン）によって適用されるスタイルの優先順位があるためです。CSS Cascading and Inheritance Level 3（<a href="https://www.w3.org/TR/css-cascade-3/#cascading" class="link">https://www.w3.org/TR/css-cascade-3/#cascading</a>）から優先順を引用すると次のとおりです。</p>
+<p>Reset CSSはユーザーエージェントスタイルシートでの宣言を上書きすることにより、スタイル宣言をリセットしています。なぜリセットできるのでしょうか？それはスタイル宣言がされた場所（オリジン）によって適用されるスタイルの優先順位があるためです。CSS Cascading and Inheritance Level 3（<a href="https://www.w3.org/TR/css-cascade-3/#cascading" class="link">https://www.w3.org/TR/css-cascade-3/#cascading</a>）から優先順を引用すると次のとおりです。</p>
 <ol>
 <li>transitionの宣言</li>
 <li>!important付きのユーザーエージェントスタイルシートでの宣言</li>
@@ -77,10 +77,10 @@
 <li>利用者による宣言</li>
 <li>ユーザーエージェントスタイルシートでの宣言</li>
 </ol>
-<p>ユーザーエージェントスタイルシートの宣言より作者による宣言、つまりHTMLファイルからリンクされたCSSなどの宣言が優先されるため、ユーザーエージェントスタイルシートでのスタイル宣言を上書きできます。</p>
+<p>ユーザーエージェントスタイルシートの宣言より作者による宣言、つまりHTMLファイルからリンクされたCSSなどの宣言が優先されるため、ユーザーエージェントスタイルシートのスタイル宣言を上書きできます。</p>
 
 <h2><a id="h1-2"></a><span class="secno">1.2　</span>なぜReset CSSを使うのか</h2>
-<p>Reset CSSが使われる理由としてはブラウザが既定で定義するユーザーエージェントスタイルシートがブラウザによって差異があるためです。例として<code class="inline-code tt">h1</code>要素と<code class="inline-code tt">p</code>要素を定義しただけのHTMLをブラウザで見てみます。するとFirefoxではセリフがないフォントで表示されています（図1.1）が、Safariではセリフがあるフォントで表示されます（図1.2）。</p>
+<p>Reset CSSが使われる理由は、ブラウザが既定で読み込むユーザーエージェントスタイルシートがブラウザ間で差異があるためです。例として<code class="inline-code tt">h1</code>要素と<code class="inline-code tt">p</code>要素のみ定義したHTMLをブラウザで見てみると、Firefoxではセリフがないフォントで表示されています（図1.1）が、Safariではセリフがあるフォントで表示されます（図1.2）。</p>
 <div id="firefox-font" class="image">
 <img src="images/firefox-font.png" alt="Firefoxでプレビューしたときの見た目" />
 <p class="caption">
@@ -93,10 +93,10 @@
 図1.2: Safariでプレビューしたときの見た目
 </p>
 </div>
-<p>このようにフォント1つとっても差異があります。h1要素やp要素の他にも差異はあるため、それを吸収するために何らかのReset CSSライブラリを使うか、自分で差異を吸収する必要があります。</p>
+<p>このように単純なHTMLでも見た目に差異があります。h1要素やp要素の他にも差異はあるため、それを吸収するために何らかのReset CSSライブラリを使うか自分で差異を吸収する必要があります。</p>
 
 <h2><a id="h1-3"></a><span class="secno">1.3　</span>Reset CSSを使わない場面</h2>
-<p>Reset CSSを使う理由として「ブラウザが既定で定義しているCSSの差異を吸収するため」と書きました。そのためNW.jsやElectronといったChromiumしか存在しない環境ではReset CSSを使う必要はなく、必要に応じて各要素をリセットしたほうがよいです。</p>
+<p>Reset CSSを使う理由として「ブラウザの既定で適用されるスタイル定義の差異を吸収するため」と書きました。そのため<b class="kw">NW.js</b><!-- IDX:NW.js -->や<b class="kw">Electron</b><!-- IDX:Electron -->といったChromiumしか存在しない環境ではReset CSSを使う必要はなく、必要に応じてユーザーエージェントスタイルシートのスタイル定義をリセットするとよいです。</p>
     </main>
 
     <nav class="book-navi">

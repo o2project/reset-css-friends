@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="generator" content="Re:VIEW" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Reset CSSは何をリセットしているのか | Reset CSSフレンズ</title>
+  <title>Reset CSSでどのような宣言がされているか | Reset CSSフレンズ</title>
 
   <link rel="next" title="権利情報" href="credit.html">  <link rel="prev" title="Reset CSSの特色" href="ch02.html">      <link rel="stylesheet" href="style.css">
     
@@ -46,21 +46,21 @@
 <li><a href="./index.html">はじめに</a></li>
 <li><a href="./ch01.html">1 Reset CSSとは何か</a></li>
 <li><a href="./ch02.html">2 Reset CSSの特色</a></li>
-<li><a href="./ch03.html">3 Reset CSSは何をリセットしているのか</a></li>
+<li><a href="./ch03.html">3 Reset CSSでどのような宣言がされているか</a></li>
 <li><a href="./credit.html">権利情報</a></li>
 </ul>
     </nav>
 
     <main class="book-body col-md-10">
-      <h1><a id="h3"></a><span class="secno">第3章　</span>Reset CSSは何をリセットしているのか</h1>
-<p>ブラウザがWeb上のページを読み込むときに既定で使うCSSとして、<b class="kw">ユーザーエージェントスタイルシート</b><!-- IDX:ユーザーエージェントスタイルシート -->があります。このユーザーエージェントスタイルシートはブラウザ上でどのように指定されているか見ることができます。</p>
+      <h1><a id="h3"></a><span class="secno">第3章　</span>Reset CSSでどのような宣言がされているか</h1>
+<p>ブラウザがWeb上のページを読み込むときに既定で適用されるスタイルとして、<b class="kw">ユーザーエージェントスタイルシート</b><!-- IDX:ユーザーエージェントスタイルシート -->があります。ユーザーエージェントスタイルシートがどのように宣言されているかはブラウザごとに次のURLで見られます。</p>
 <ul>
 <li>Chrome: <a href="https://chromium.googlesource.com/chromium/blink/+/master/Source/core/css/html.css" class="link">https://chromium.googlesource.com/chromium/blink/+/master/Source/core/css/html.css</a></li>
 <li>Firefox: <a href="https://dxr.mozilla.org/mozilla-central/source/layout/style/res/html.css" class="link">https://dxr.mozilla.org/mozilla-central/source/layout/style/res/html.css</a></li>
 <li>Safari: <a href="http://trac.webkit.org/browser/trunk/Source/WebCore/css/html.css" class="link">http://trac.webkit.org/browser/trunk/Source/WebCore/css/html.css</a></li>
 </ul>
-<p>このユーザーエージェントスタイルシートですが、ブラウザごとに指定されているスタイルが違います。そのため別途Reset CSSを使わなかった場合、ブラウザによって見えかたが違うということが起きます<a id="fnb-user-agent-stylesheet-diff" href="#fn-user-agent-stylesheet-diff" class="noteref" epub:type="noteref">*1</a>。</p>
-<p>この章では各Reset CSSがどのような指定をしているか、ユーザーエージェントスタイルシートでどのように指定されているか一部解説しつつ見ていきます。なお、解説するHTML要素は（リスト3.1）のみに絞ります。</p>
+<p>ユーザーエージェントスタイルシートはブラウザごとに定義されているスタイルが違うため、Reset CSSを使わなかった場合ブラウザによって適用されるスタイルが違います<a id="fnb-user-agent-stylesheet-diff" href="#fn-user-agent-stylesheet-diff" class="noteref" epub:type="noteref">*1</a>。</p>
+<p>この章では各Reset CSSがどのような宣言をしているか、ユーザーエージェントスタイルシートでどのように宣言されているか一部解説しつつ見ていきます。なお、解説するHTML要素は（リスト3.1）のみに絞ります。</p>
 <div class="footnote" epub:type="footnote" id="fn-user-agent-stylesheet-diff"><p class="footnote">[*1] https://developer.mozilla.org/ja/docs/Web/Compatibility_FAQ/Tips_Default_Style_Difference.html</p></div>
 <div class="caption-code">
 <p class="caption">リスト3.1: 解説するHTML要素一覧</p>
@@ -74,11 +74,11 @@ input, textarea, button, select
 </div>
 
 <h2><a id="h3-1"></a><span class="secno">3.1　</span>html要素</h2>
-<p>まずはhtml要素です。ChromeとSafariでは<code class="inline-code tt">display: block;</code>の指定だけがあります。いっぽうFirefoxでは<code class="inline-code tt">display: block;</code>以外にも、<code class="inline-code tt">unicode-bidi: isolate;</code>という複数の表記方向が混在する文章をどのように扱うか決める定義もされています。<code class="inline-code tt">unicode-bidi</code>プロパティの値によって表示がどう変わるかは<a href="http://www.osaka-kyoiku.ac.jp/~joho/html5_ref/css/unicode-bidi_css.php" class="link">http://www.osaka-kyoiku.ac.jp/~joho/html5_ref/css/unicode-bidi_css.php</a>を参照してください。</p>
-<p>Reset CSSではsanitize.cssとressが、html要素へ対し<code class="inline-code tt">box-sizing: border-box;</code>を指定した上で、全称セレクタへ<code class="inline-code tt">box-sizing: inherit;</code>を指定しています。このことでコンテンツ領域に<code class="inline-code tt">padding</code>や<code class="inline-code tt">border</code>の値が入るようになります。これによりボックスサイズの計算をより簡単にすることを狙っていると思われます。</p>
+<p>まずはhtml要素です。ChromeとSafariでは<code class="inline-code tt">display: block;</code>の宣言だけがあります。いっぽうFirefoxでは<code class="inline-code tt">display: block;</code>以外にも、<code class="inline-code tt">unicode-bidi: isolate;</code>という複数の表記方向が混在する文章をどのように扱うか決める定義もされています。<code class="inline-code tt">unicode-bidi</code>プロパティの値によって表示がどう変わるかは<a href="http://www.osaka-kyoiku.ac.jp/~joho/html5_ref/css/unicode-bidi_css.php" class="link">http://www.osaka-kyoiku.ac.jp/~joho/html5_ref/css/unicode-bidi_css.php</a>を参照してください。</p>
+<p>Reset CSSではsanitize.cssとressが、html要素へ対し<code class="inline-code tt">box-sizing: border-box;</code>を宣言した上で、ユニバーサルセレクタへ<code class="inline-code tt">box-sizing: inherit;</code>を宣言しています。このことでコンテンツ領域に<code class="inline-code tt">padding</code>や<code class="inline-code tt">border</code>の値が入るようになります。これによりボックスサイズの計算をより簡単にすることを狙っていると思われます。</p>
 
 <h2><a id="h3-2"></a><span class="secno">3.2　</span>body要素</h2>
-<p>body要素はChrome・Firefox・Safariで同様のスタイル定義がおこなわれています（リスト3.2）。ただし<code class="inline-code tt">margin: 8px;</code>の指定は多くのWebサイトにおいて不要な指定となるため、Reset CSSでは<code class="inline-code tt">margin: 0;</code>と指定されていることが多いです。</p>
+<p>body要素はChrome・Firefox・Safariで同様のスタイル定義がおこなわれています（リスト3.2）。ただし<code class="inline-code tt">margin: 8px;</code>の宣言は多くのWebサイトにおいて不要な宣言となるため、Reset CSSでは<code class="inline-code tt">margin: 0;</code>と宣言されることが多いです。</p>
 <div class="caption-code">
 <p class="caption">リスト3.2: body要素に対するスタイル定義</p>
 <pre class="list">body {
@@ -87,7 +87,7 @@ input, textarea, button, select
 }
 </pre>
 </div>
-<p>Eric Meyer's Reset CSS、sanitize.css、YUI 3 Reset CSSではbody要素へ対し<code class="inline-code tt">margin: 0;</code>を指定しています。Webページを作るときにページの外周へ<code class="inline-code tt">margin</code>を設定することはほとんど無いため、このような指定がされていると思われます。normalize.cssでもv5.0.0まではbody要素に対し同様の指定がされていましたが、v6.0.0で削除されて何も指定されなくなりました。</p>
+<p>Eric Meyer's Reset CSS、sanitize.css、YUI 3 Reset CSSではbody要素へ対し<code class="inline-code tt">margin: 0;</code>を宣言しています。Webページを作るときにページの外周へ<code class="inline-code tt">margin</code>を設定することはほとんど無いため、このような宣言がされていると思われます。normalize.cssでもv5.0.0まではbody要素に対し同様の宣言がされていましたが、v6.0.0で削除されて何も宣言されなくなりました。</p>
 
 <h2><a id="h3-3"></a><span class="secno">3.3　</span>セクショニング・コンテンツとh1要素</h2>
 <p>h1要素は見出しを表す要素の中でもっともランクが高い要素です。またsection要素やarticle要素といったセクショニング・コンテンツへh1要素を入れた場合は、入れ子の深さに応じてスタイルが変わるようになっています（リスト3.3）。</p>
@@ -146,7 +146,7 @@ h1 {
 }
 </pre>
 </div>
-<p>normalize.cssやsanitize.cssではこの入れ子具合によってスタイルが変わるのを無くしています（リスト3.4）。</p>
+<p>normalize.cssやsanitize.cssでは入れ子具合によってスタイルが変わるのを無くしています（リスト3.4）。</p>
 <div class="caption-code">
 <p class="caption">リスト3.4: h1要素に対するnormalize.cssやsanitize.cssのスタイル定義</p>
 <pre class="list">/**
@@ -160,7 +160,7 @@ h1 {
 }
 </pre>
 </div>
-<p>また、YUI 3 Reset CSSやEric Meyer's Reset CSSでは見出しらしいスタイル定義をすべて無かったことにしています（リスト3.5）。</p>
+<p>また、YUI 3 Reset CSSやEric Meyer's Reset CSSでは見出しらしいスタイル定義をすべて無くしています（リスト3.5）。</p>
 <div class="caption-code">
 <p class="caption">リスト3.5: h1要素に対するYUI 3 Reset CSSやEric Meyer's Reset CSSのスタイル定義</p>
 <pre class="list">h1 {
@@ -173,13 +173,13 @@ h1 {
 </div>
 
 <h2><a id="h3-4"></a><span class="secno">3.4　</span>p要素</h2>
-<p>Firefoxでは文字のレイアウト方向や向き、文字が流れる方向を元にマージンを設定する<code class="inline-code tt">margin-block-start</code>や<code class="inline-code tt">margin-block-end</code>が定義されています。ちなみにCSSのプロパティでは、文字のレイアウト方向は<code class="inline-code tt">writing-mode</code>、文字の向きは<code class="inline-code tt">text-orientation</code>、文字の流れる方向は<code class="inline-code tt">direction</code>に対応しています。</p>
-<p>ChromeやSafariでは、<code class="inline-code tt">margin-before</code>や<code class="inline-code tt">margin-after</code>といったプロパティが定義され、値として<code class="inline-code tt">1__qem</code>が定義されています。これは、互換性モードで表示するときに<code class="inline-code tt">margin</code>の相殺をおこなわないようにするものです。</p>
-<p>YUI 3 Reset CSSやEric Meyer's Reset CSSといった古めのReset CSSでは<code class="inline-code tt">margin</code>と<code class="inline-code tt">padding</code>が0と指定されています。しかし、他のReset CSSでは特に指定がなくユーザーエージェントスタイルシートをそのまま使うようにしています。</p>
-<p>これは新しく縦書きという概念が出てきたのに従い、Reset CSSで文字の方向や向き、流れる方向を意識するようになったためです。その結果ユーザーエージェントスタイルシートをそのまま使ったほうが良いという結論に至ったと思われます。</p>
+<p>Firefoxでは文字のレイアウト方向や向き、文字が流れる方向を元にmarginを設定する<code class="inline-code tt">margin-block-start</code>や<code class="inline-code tt">margin-block-end</code>が定義されています。ちなみにCSSのプロパティでは、文字のレイアウト方向は<code class="inline-code tt">writing-mode</code>、文字の向きは<code class="inline-code tt">text-orientation</code>、文字の流れる方向は<code class="inline-code tt">direction</code>に対応しています。</p>
+<p>ChromeやSafariでは、<code class="inline-code tt">margin-before</code>や<code class="inline-code tt">margin-after</code>といったプロパティが定義され、値として<code class="inline-code tt">1__qem</code>が定義されています。これは、互換性モードで表示する際<code class="inline-code tt">margin</code>の相殺をおこなわないようにするものです。</p>
+<p>YUI 3 Reset CSSやEric Meyer's Reset CSSといった古めのReset CSSでは<code class="inline-code tt">margin</code>と<code class="inline-code tt">padding</code>が0と宣言されています。しかし新しめのReset CSSでは特に宣言がなく、ユーザーエージェントスタイルシートをそのまま使うようにしています。</p>
+<p>これは新しく縦書きという概念が出てきたため、Reset CSSで文字の方向や向き、流れる方向を意識するようになったからです。その結果ユーザーエージェントスタイルシートをそのまま使ったほうが良いという結論に至ったと思われます。</p>
 
 <h2><a id="h3-5"></a><span class="secno">3.5　</span>a要素</h2>
-<p>a要素は各ブラウザのユーザーエージェントスタイルシートでは特にスタイルが適用されていません。normalize.cssやsanitize.css、ressではIEやSafariに向けたスタイル定義をしています（リスト3.6）。</p>
+<p>a要素は各ブラウザのユーザーエージェントスタイルシートでは特にスタイルが定義されていません。normalize.cssやsanitize.css、ressではIEやSafariに向けたスタイル定義をしています（リスト3.6）。</p>
 <div class="caption-code">
 <p class="caption">リスト3.6: a要素に対するReset CSSのスタイル定義</p>
 <pre class="list">/**
@@ -193,7 +193,7 @@ a {
 }
 </pre>
 </div>
-<p><code class="inline-code tt">background-color: transparent;</code>が指定されている理由としては、IE 10上でリンクをクリックしたときにグレーの背景がついてしまうのを無くすために定義されています。また<code class="inline-code tt">-webkit-text-decoration-skip: objects;</code>という指定は、英語の<b class="kw">p</b><!-- IDX:p -->や<b class="kw">y</b><!-- IDX:y -->、一部のロシア語をリンクの文字にした場合、リンクの下線が途切れてしまうのを防ぐためです<a id="fnb-normalize-issue-573" href="#fn-normalize-issue-573" class="noteref" epub:type="noteref">*2</a>。</p>
+<p><code class="inline-code tt">background-color: transparent;</code>が宣言されている理由としては、IE 10上でリンクをクリックしたときにグレーの背景がついてしまうのを無くすために定義されています。また<code class="inline-code tt">-webkit-text-decoration-skip: objects;</code>という宣言は、英語の<b class="kw">p</b><!-- IDX:p -->や<b class="kw">y</b><!-- IDX:y -->、一部のロシア語をリンクの文字にした場合、リンクの下線が途切れてしまうのを防ぐためです<a id="fnb-normalize-issue-573" href="#fn-normalize-issue-573" class="noteref" epub:type="noteref">*2</a>。</p>
 <div class="footnote" epub:type="footnote" id="fn-normalize-issue-573"><p class="footnote">[*2] https://github.com/necolas/normalize.css/pull/573</p></div>
 
 <h2><a id="h3-6"></a><span class="secno">3.6　</span>img要素</h2>
@@ -210,7 +210,7 @@ img {
 #endif
 </pre>
 </div>
-<p>normalize.cssやsanitize.css、ressではIE 10でリンク内に画像があるとborderが適用されてしまうのを防ぐために、<code class="inline-code tt">border-style: none;</code>が指定されています（リスト3.8）。</p>
+<p>normalize.cssやsanitize.css、ressではIE 10でリンク内に画像があるとborderが適用されてしまうのを防ぐために、<code class="inline-code tt">border-style: none;</code>が宣言されています（リスト3.8）。</p>
 <div class="caption-code">
 <p class="caption">リスト3.8: img要素に対する各種Reset CSSのスタイル定義</p>
 <pre class="list">/**
@@ -224,7 +224,7 @@ img {
 </div>
 
 <h2><a id="h3-7"></a><span class="secno">3.7　</span>ul, ol要素</h2>
-<p>ulやol要素はFirefoxやChrome、Safariで<code class="inline-code tt">論理margin</code>と<code class="inline-code tt">padding</code>が指定されています（リスト3.9）。</p>
+<p>ulやol要素はFirefoxやChrome、Safariで<code class="inline-code tt">論理margin</code>と<code class="inline-code tt">padding</code>が宣言されています（リスト3.9）。</p>
 <div class="caption-code">
 <p class="caption">リスト3.9: ul要素に対するSafariのスタイル定義</p>
 <pre class="list">ul {
@@ -236,7 +236,7 @@ img {
 }
 </pre>
 </div>
-<p>入れ子になったulやol要素はFirefoxとChrome、Safariで指定しているプロパティは同じですが、セレクタの指定方法が違います。Firefoxでは<code class="inline-code tt">:any()</code>という疑似クラスを使って、ul要素やol要素などが入れ子になったときのスタイル宣言をおこなっています<a id="fnb-mdn-any-pseudo-class" href="#fn-mdn-any-pseudo-class" class="noteref" epub:type="noteref">*3</a>（リスト3.10）。この<code class="inline-code tt">:any()</code>擬似クラスですが、CSS Selectors Level 4では<code class="inline-code tt">:matches()</code>として仕様策定が進んでいます<a id="fnb-css-selectors-4-matches" href="#fn-css-selectors-4-matches" class="noteref" epub:type="noteref">*4</a>。</p>
+<p>入れ子になったulやol要素はFirefoxとChrome、Safariで宣言しているプロパティは同じですが、セレクタの宣言方法が違います。Firefoxでは<code class="inline-code tt">:any()</code>という疑似クラスを使って、ul要素やol要素などが入れ子になったときのスタイル宣言をおこなっています<a id="fnb-mdn-any-pseudo-class" href="#fn-mdn-any-pseudo-class" class="noteref" epub:type="noteref">*3</a>（リスト3.10）。この<code class="inline-code tt">:any()</code>擬似クラスですが、CSS Selectors Level 4では<code class="inline-code tt">:matches()</code>として仕様策定が進んでいます<a id="fnb-css-selectors-4-matches" href="#fn-css-selectors-4-matches" class="noteref" epub:type="noteref">*4</a>。</p>
 <div class="footnote" epub:type="footnote" id="fn-mdn-any-pseudo-class"><p class="footnote">[*3] https://developer.mozilla.org/ja/docs/Web/CSS/:any</p></div>
 <div class="footnote" epub:type="footnote" id="fn-css-selectors-4-matches"><p class="footnote">[*4] https://drafts.csswg.org/selectors-4/#matches</p></div>
 <div class="caption-code">
@@ -259,7 +259,7 @@ img {
 }
 </pre>
 </div>
-<p><code class="inline-code tt">:any()</code>や<code class="inline-code tt">:matches()</code>の仕様が固まっていないためか、ChromeやSafariでは従来どおりの子孫セレクタを使った指定になっています（リスト3.11）。</p>
+<p><code class="inline-code tt">:any()</code>や<code class="inline-code tt">:matches()</code>の仕様が固まっていないためか、ChromeやSafariでは従来どおりの子孫セレクタを使った宣言になっています（リスト3.11）。</p>
 <div class="caption-code">
 <p class="caption">リスト3.11: 入れ子になったul要素に対するChromeやSafariのスタイル定義</p>
 <pre class="list">ul ul,
@@ -274,7 +274,7 @@ ul ul ul {
 }
 </pre>
 </div>
-<p>sanitize.cssではnav要素が親要素としてあるときにol要素とul要素に対して<code class="inline-code tt">list-style: none;</code>の指定をしています（リスト3.12）。nav要素内に指定したol要素とul要素に対して<code class="inline-code tt">list-style</code>の値を指定することは少ないので、自分で書くスタイル宣言を減らすことができます。</p>
+<p>sanitize.cssではnav要素が親要素としてあるときにol要素とul要素に対して<code class="inline-code tt">list-style: none;</code>の宣言をしています（リスト3.12）。nav要素内に宣言したol要素とul要素に対して<code class="inline-code tt">list-style</code>の値を宣言することは少ないので、自分で書くスタイル宣言を減らせます。</p>
 <div class="caption-code">
 <p class="caption">リスト3.12: sanitize.cssのulやol要素に対するスタイル宣言</p>
 <pre class="list">/**
@@ -291,7 +291,7 @@ nav ul {
 <h2><a id="h3-8"></a><span class="secno">3.8　</span>table要素</h2>
 <p>table要素のスタイル宣言ですが、Firefoxでは非推奨となった属性にもスタイル宣言をおこなっているのが特色です。たとえば<code class="inline-code tt">align</code>や<code class="inline-code tt">frame</code>、<code class="inline-code tt">rules</code>といった属性が挙げられます（リスト3.13）。</p>
 <div class="caption-code">
-<p class="caption">リスト3.13: Firefoxで指定されている非推奨の属性に対してのスタイル宣言（一部）</p>
+<p class="caption">リスト3.13: Firefoxで宣言されている非推奨の属性に対してのスタイル宣言（一部）</p>
 <pre class="list">table[align=&quot;left&quot;] {
   float: left;
 }
@@ -307,7 +307,7 @@ table[rules] {
 }
 </pre>
 </div>
-<p>またFirefox特有の指定として<code class="inline-code tt">-moz-is-html</code>という擬似クラスのようなセレクタ指定があります（リスト3.14）。この指定が何を示すのかJSFiddleで見てみようとしましたが、特に表示は変わりなく謎のままでした<a id="fnb-form-firefox" href="#fn-form-firefox" class="noteref" epub:type="noteref">*5</a>。</p>
+<p>またFirefox特有の宣言として<code class="inline-code tt">-moz-is-html</code>という擬似クラスのようなセレクタ宣言があります（リスト3.14）。この宣言が何を示すのかJSFiddleで見てみようとしましたが、特に表示は変わりなく謎のままでした<a id="fnb-form-firefox" href="#fn-form-firefox" class="noteref" epub:type="noteref">*5</a>。</p>
 <div class="footnote" epub:type="footnote" id="fn-form-firefox"><p class="footnote">[*5] https://jsfiddle.net/f3rp4kmu/</p></div>
 <div class="caption-code">
 <p class="caption">リスト3.14: -moz-is-htmlという謎の擬似クラスっぽいセレクタ</p>
@@ -319,9 +319,9 @@ table &gt; form:-moz-is-html {
 }
 </pre>
 </div>
-<p>sanitize.cssでは<code class="inline-code tt">border-collapse: collapse;</code>の指定がされています（リスト3.15）。これはtableの<code class="inline-code tt">border</code>をセル同士で共有する指定になります。表を表示するときにセルを分けて表示することは少ないので、余計なスタイル宣言を減らすことができます。</p>
+<p>sanitize.cssでは<code class="inline-code tt">border-collapse: collapse;</code>の宣言がされています（リスト3.15）。これはtableの<code class="inline-code tt">border</code>をセル同士で共有する宣言になります。表を表示するときにセルを分けて表示することは少ないため、余計なスタイル宣言を減らせます。</p>
 <div class="caption-code">
-<p class="caption">リスト3.15: sanitize.cssのtable要素に対する指定</p>
+<p class="caption">リスト3.15: sanitize.cssのtable要素に対する宣言</p>
 <pre class="list">/**
  * Collapse border spacing
  */
@@ -333,9 +333,9 @@ table {
 </div>
 <p><code class="inline-code tt">border-collapse</code>の値によって表示がどのように変わるかは図3.1で示すとおりです。</p>
 <div id="table-border-collapse" class="image">
-<img src="images/table-border-collapse.png" alt="border-collapseの指定によって表示が変わる" />
+<img src="images/table-border-collapse.png" alt="border-collapseの宣言によって表示が変わる" />
 <p class="caption">
-図3.1: border-collapseの指定によって表示が変わる
+図3.1: border-collapseの宣言によって表示が変わる
 </p>
 </div>
 
@@ -370,7 +370,7 @@ blockquote[type=cite] {
 図3.2: Firefoxでblockquote[type=&quot;cite&quot;]をプレビューしてみた様子
 </p>
 </div>
-<p>Eric Meyer's Reset CSSではblockquoteやq要素に対し引用符を消すスタイルが指定されています（リスト3.17）。なお、他のReset CSSには特徴的な指定がありません。</p>
+<p>Eric Meyer's Reset CSSではblockquoteやq要素に対し引用符を消すスタイルが宣言されています（リスト3.17）。なお、他のReset CSSには特徴的な宣言がありません。</p>
 <div class="caption-code">
 <p class="caption">リスト3.17: Eric Meyer's Reset CSSのblockquote要素に対するスタイル宣言</p>
 <pre class="list">blockquote, q {
@@ -394,7 +394,7 @@ q:before, q:after {
 図3.3: input要素はtype属性の値によって挙動が大きく変わる
 </p>
 </div>
-<p>Reset CSSのinput要素に対する指定はnormalize.css、sanitize.css、ressそれぞれで似通っているのですが微妙に違います。この項ではそれぞれのライブラリでどのように指定されているかを解説します。</p>
+<p>Reset CSSのinput要素に対する宣言はnormalize.css、sanitize.css、ressそれぞれで似通っているのですが微妙に違います。この項ではそれぞれのライブラリでどのように宣言されているかを解説します。</p>
 
 <h3 id="input-normalize"><a id="h3-10-1"></a>normalize.css</h3>
 <p>normalize.cssはinput要素に対してブラウザ間の差異を埋める程度に留めています（リスト3.18）。これもv6.0.0から作者の意見を入れないようにしたnormalize.cssの特徴を示しているといえます。</p>
@@ -423,7 +423,7 @@ input { /* 1 */
 }
 </pre>
 </div>
-<p>ちなみに、バージョン5.0.0まではフォントや行間に作者の意見が反映されていました（リスト3.19）。ほとんどの場合<code class="inline-code tt">font-family: sans-serif</code>はフォームを構成する要素へ対し指定されることが多い値です。そのためnormalize.cssで指定することで、normalize.cssを使う側では指定をしなくて済むことを目指していたと思われます。</p>
+<p>ちなみに、バージョン5.0.0まではフォントや行間に作者の意見が反映されていました（リスト3.19）。ほとんどの場合<code class="inline-code tt">font-family: sans-serif</code>はフォームを構成する要素へ対し宣言されることが多い値です。そのためnormalize.cssで宣言することで、normalize.cssを使う側では宣言をしなくて済むことを目指していたと思われます。</p>
 <div class="caption-code">
 <p class="caption">リスト3.19: バージョン5.0.0までのnormalize.css</p>
 <pre class="list">/**
@@ -443,7 +443,7 @@ textarea {
 </div>
 
 <h3 id="input-sanitize"><a id="h3-10-2"></a>sanitize.css</h3>
-<p>normalize.cssの指定を受け継ぎつつ、<code class="inline-code tt">font-size</code>や<code class="inline-code tt">line-height</code>の値として<code class="inline-code tt">inherit</code>が指定されています（リスト3.20）。親要素の指定を継承することにより、自分でスタイル宣言することを極力減らそうとしています。</p>
+<p>normalize.cssの宣言を受け継ぎつつ、<code class="inline-code tt">font-size</code>や<code class="inline-code tt">line-height</code>の値として<code class="inline-code tt">inherit</code>が宣言されています（リスト3.20）。親要素の宣言を継承することにより、自分でスタイル宣言することを極力減らそうとしています。</p>
 <div class="caption-code">
 <p class="caption">リスト3.20: normalize.cssより作者の主張が含まれているsanitize.css</p>
 <pre class="list">/**
@@ -483,7 +483,7 @@ input { /* 1 */
 }
 </pre>
 </div>
-<p>またinput要素に対する指定として他にないものとしては<code class="inline-code tt">touch-action: manipulation;</code>があります（リスト3.21）。ページのスクロールとズームのみを許可する指定ですが、IE 10ではタップ時の遅延をなくす指定になります。</p>
+<p>またinput要素に対する宣言として他にないものとしては<code class="inline-code tt">touch-action: manipulation;</code>があります（リスト3.21）。ページのスクロールとズームのみを許可する宣言ですが、IE 10ではタップ時の遅延をなくす宣言になります。</p>
 <div class="caption-code">
 <p class="caption">リスト3.21: IE 10でタップ時の遅延を無くすCSS</p>
 <pre class="list">/*
@@ -507,8 +507,8 @@ textarea,
 </div>
 
 <h3 id="input-ress"><a id="h3-10-3"></a>ress</h3>
-<p>ressもsanitize.css並かそれ以上に作者の意見が反映されています（リスト3.22）。<code class="inline-code tt">[type=&quot;button&quot;]</code>や<code class="inline-code tt">[type=&quot;submit&quot;]</code>、<code class="inline-code tt">[type=&quot;search&quot;]</code>はブラウザのユーザーエージェントスタイルシートで<code class="inline-code tt">border-radius</code>が指定されていることが多いです。その指定をressでは無かったことにしています。</p>
-<p>また<code class="inline-code tt">background-color</code>を透過したり、<code class="inline-code tt">border-style</code>を無くす指定があったりと大胆な指定をしています。</p>
+<p>ressもsanitize.css並かそれ以上に作者の意見が反映されています（リスト3.22）。<code class="inline-code tt">[type=&quot;button&quot;]</code>や<code class="inline-code tt">[type=&quot;submit&quot;]</code>、<code class="inline-code tt">[type=&quot;search&quot;]</code>はブラウザのユーザーエージェントスタイルシートで<code class="inline-code tt">border-radius</code>と宣言されていますが、ressでは無かったことにしています。</p>
+<p>また<code class="inline-code tt">background-color</code>を透過したり、<code class="inline-code tt">border-style</code>を無くす宣言があったりと大胆な宣言をしています。</p>
 <div class="caption-code">
 <p class="caption">リスト3.22: normalize.cssと同じく主張が強いress</p>
 <pre class="list">input {
@@ -536,9 +536,9 @@ textarea {
 </div>
 
 <h2><a id="h3-11"></a><span class="secno">3.11　</span>select要素</h2>
-<p>select要素はChromeとSafariで<code class="inline-code tt">text-transform: none;</code>という指定がされています。しかしEdgeとFirefoxでは指定がないため、normalize.cssとsanitize.cssでは同様の指定をしています（リスト3.23）。</p>
+<p>select要素はChromeとSafariで<code class="inline-code tt">text-transform: none;</code>という宣言がされています。しかしEdgeとFirefoxでは宣言がないため、normalize.cssとsanitize.cssでは同様の宣言をしています（リスト3.23）。</p>
 <div class="caption-code">
-<p class="caption">リスト3.23: normalize.cssとsanitize.cssではtext-transform: none;の指定だけ</p>
+<p class="caption">リスト3.23: normalize.cssとsanitize.cssではtext-transform: none;の宣言だけ</p>
 <pre class="list">/**
  * Remove the inheritance of text transform in Edge, Firefox, and IE.
  * 1. Remove the inheritance of text transform in Firefox.
@@ -552,7 +552,7 @@ select { /* 1 */
 </div>
 
 <h3 id="select-ress"><a id="h3-11-1"></a>ress</h3>
-<p>normalize.cssやsanitize.cssと違い独自路線なのがressです。<code class="inline-code tt">text-transform: none;</code>も指定されていますが、他にもselect要素らしい見た目を無くす<code class="inline-code tt">appearance</code>やIE独自の疑似要素に対してスタイルを指定しています（リスト3.24）。IE独自の疑似要素について書くと、<code class="inline-code tt">::-ms-expand</code>はドロップダウンを表示するためのボタンを表す疑似要素、<code class="inline-code tt">::-ms-value</code>はselect要素内の文字を表す疑似要素です<a id="fnb-ie-pseudo-elements" href="#fn-ie-pseudo-elements" class="noteref" epub:type="noteref">*7</a>。</p>
+<p>normalize.cssやsanitize.cssと違い独自路線なのがressです。<code class="inline-code tt">text-transform: none;</code>も宣言されていますが、他にもselect要素らしい見た目を無くす<code class="inline-code tt">appearance</code>やIE独自の疑似要素に対してスタイルを宣言しています（リスト3.24）。IE独自の疑似要素について書くと、<code class="inline-code tt">::-ms-expand</code>はドロップダウンを表示するためのボタンを表す疑似要素、<code class="inline-code tt">::-ms-value</code>はselect要素内の文字を表す疑似要素です<a id="fnb-ie-pseudo-elements" href="#fn-ie-pseudo-elements" class="noteref" epub:type="noteref">*7</a>。</p>
 <div class="footnote" epub:type="footnote" id="fn-ie-pseudo-elements"><p class="footnote">[*7] http://subtech.g.hatena.ne.jp/mayuki/20110923/1316786871</p></div>
 <div class="caption-code">
 <p class="caption">リスト3.24: ressはselect要素でも独自路線</p>
@@ -573,10 +573,10 @@ select::-ms-value {
 </div>
 
 <h2><a id="h3-12"></a><span class="secno">3.12　</span>button要素</h2>
-<p>normalize.cssやsanitize.css、ressではWebKitのバグを修正するセレクタ指定やプロパティと値の指定がおこなわれています（リスト3.25）。またFirefoxに対してもbutton要素内に画像を配置したときにボタンの<code class="inline-code tt">border</code>と画像の間に隙間が空く問題などが修正されています<a id="fnb-firefox-form-button" href="#fn-firefox-form-button" class="noteref" epub:type="noteref">*8</a>。</p>
+<p>normalize.cssやsanitize.css、ressではWebKitのバグを修正するセレクタ宣言やプロパティと値の宣言がおこなわれています（リスト3.25）。またFirefoxに対してもbutton要素内に画像を配置したときにボタンの<code class="inline-code tt">border</code>と画像の間に隙間が空く問題などが修正されています<a id="fnb-firefox-form-button" href="#fn-firefox-form-button" class="noteref" epub:type="noteref">*8</a>。</p>
 <div class="footnote" epub:type="footnote" id="fn-firefox-form-button"><p class="footnote">[*8] http://jeffreyfrancesco.org/weblog/2011062101/</p></div>
 <div class="caption-code">
-<p class="caption">リスト3.25: normalize.cssとsanitize.css、ressの共通指定</p>
+<p class="caption">リスト3.25: normalize.cssとsanitize.css、ressの共通宣言</p>
 <pre class="list">@mapfile(../codes/reset-css/normalize-css/button.css)
 /**
  * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
@@ -617,9 +617,9 @@ button:-moz-focusring,
 </div>
 
 <h3 id="button-ress"><a id="h3-12-1"></a>ress</h3>
-<p>ressはnormalize.cssやsanitize.cssと同じ指定もしていますが、ress独自の指定として<code class="inline-code tt">cursor: pointer;</code>や<code class="inline-code tt">overflow: visible;</code>があります（リスト3.26）。<code class="inline-code tt">cursor: pointer;</code>はユーザーエージェントスタイルシートでカーソルへ対する指定がないため、ress側で指定しています。<code class="inline-code tt">overflow: visible;</code>はコメントにもありますが、IE8〜11ではbutton要素へ対して<code class="inline-code tt">hidden</code>という値が指定されているため、それでは不都合があると考えたのか<code class="inline-code tt">overflow: visible;</code>が指定されています。</p>
+<p>ressはnormalize.cssやsanitize.cssと同じ宣言もしていますが、ress独自の宣言として<code class="inline-code tt">cursor: pointer;</code>や<code class="inline-code tt">overflow: visible;</code>があります（リスト3.26）。<code class="inline-code tt">cursor: pointer;</code>はユーザーエージェントスタイルシートでカーソルへ対する宣言がないため、ress側で宣言しています。<code class="inline-code tt">overflow: visible;</code>はコメントにもありますが、IE8〜11ではbutton要素へ対して<code class="inline-code tt">hidden</code>という値が宣言されているため、それでは不都合があると考えたのか<code class="inline-code tt">overflow: visible;</code>が宣言されています。</p>
 <div class="caption-code">
-<p class="caption">リスト3.26: ressのbutton要素へ対する指定</p>
+<p class="caption">リスト3.26: ressのbutton要素へ対する宣言</p>
 <pre class="list">/* Apply cursor pointer to button elements */
 button,
 [type=&quot;button&quot;],
@@ -636,12 +636,12 @@ button {
 </div>
 
 <h2><a id="h3-13"></a><span class="secno">3.13　</span>textarea要素</h2>
-<p>textarea要素はnormalize.cssやsanitize.css、ressで似通った指定になっています。</p>
+<p>textarea要素はnormalize.cssやsanitize.css、ressで似通った宣言になっています。</p>
 
 <h3 id="textarea-normalize"><a id="h3-13-1"></a>normalize.css</h3>
-<p>normalize.cssの指定は単純で、IE向けにtextarea要素内のスクロールバーを消すだけの指定がされています（リスト3.27）。</p>
+<p>normalize.cssの宣言は単純で、IE向けにtextarea要素内のスクロールバーを消すだけの宣言がされています（リスト3.27）。</p>
 <div class="caption-code">
-<p class="caption">リスト3.27: normalize.cssのtextarea要素へ対する指定</p>
+<p class="caption">リスト3.27: normalize.cssのtextarea要素へ対する宣言</p>
 <pre class="list">/**
  * Remove the default vertical scrollbar in IE.
  */
@@ -653,9 +653,9 @@ textarea {
 </div>
 
 <h3 id="textarea-sanitize-and-ress"><a id="h3-13-2"></a>sanitize.cssとress</h3>
-<p>sanitize.cssとressでは、normalize.cssでされていた指定に加え、textarea要素のリサイズできる方向を縦方向にのみ制限する指定がされています（リスト3.28）。</p>
+<p>sanitize.cssとressでは、normalize.cssでされていた宣言に加え、textarea要素のリサイズできる方向を縦方向にのみ制限する宣言がされています（リスト3.28）。</p>
 <div class="caption-code">
-<p class="caption">リスト3.28: sanitize.cssとressのtextarea要素へ対する指定</p>
+<p class="caption">リスト3.28: sanitize.cssとressのtextarea要素へ対する宣言</p>
 <pre class="list">/**
  * 1. Remove the default vertical scrollbar in IE.
  * 2. Change the resize direction on textareas in all browsers (opinionated).
@@ -671,7 +671,7 @@ textarea {
 <h3 id="textarea-yui3"><a id="h3-13-3"></a>YUI 3 Reset CSS</h3>
 <p>書かれた時期が古いため、IE 7以下に適用されるCSSハックが書かれています（リスト3.29）。この<code class="inline-code tt">*font-size:100%</code>という書き方については<a href="http://www.atmarkit.co.jp/fwcr/design/benkyo/csshack02/03.html#13" class="link">http://www.atmarkit.co.jp/fwcr/design/benkyo/csshack02/03.html#13</a>を見てください。</p>
 <div class="caption-code">
-<p class="caption">リスト3.29: YUI 3のtextarea要素へ対する指定</p>
+<p class="caption">リスト3.29: YUI 3のtextarea要素へ対する宣言</p>
 <pre class="list">input,
 textarea,
 select {
@@ -684,7 +684,7 @@ select {
 </div>
 
 <h2><a id="h3-14"></a><span class="secno">3.14　</span>まとめ</h2>
-<p>Reset CSSといってもライブラリによって思想や指定内容が違います。その中から自分が作ろうとしているものに応じてReset CSSを選択することが重要です。</p>
+<p>Reset CSSといってもライブラリによって思想や宣言内容が違います。その中から自分が作ろうとしているものに応じてReset CSSを選択するのが重要です。</p>
 <p>個人的な意見としては、Eric Meyer's Reset CSSやnormalize.css、sanitize.cssはブラウザ既定の見た目を大幅に上書きしない場面で使えます。たとえば、企業の公式Webサイトや1ページで収まるようなキャンペーンサイトが挙げられます。</p>
 <p>ressはその逆で、大幅にブラウザ既定の見た目を書き換えたい場合に使えます。たとえばWebアプリやElectronなどで作るデスクトップアプリなどが挙げられます。</p>
     </main>
