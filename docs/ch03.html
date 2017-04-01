@@ -74,7 +74,8 @@ input, textarea, button, select
 </div>
 
 <h2><a id="h3-1"></a><span class="secno">3.1　</span>html要素</h2>
-<p>まずはhtml要素です。ChromeとSafariでは<code class="inline-code tt">display: block;</code>の宣言だけがあります。いっぽうFirefoxでは<code class="inline-code tt">display: block;</code>以外にも、<code class="inline-code tt">unicode-bidi: isolate;</code>という複数の表記方向が混在する文章をどのように扱うか決める定義もされています。<code class="inline-code tt">unicode-bidi</code>プロパティの値によって表示がどう変わるかは<a href="http://www.osaka-kyoiku.ac.jp/~joho/html5_ref/css/unicode-bidi_css.php" class="link">http://www.osaka-kyoiku.ac.jp/~joho/html5_ref/css/unicode-bidi_css.php</a>を参照してください。</p>
+<p>まずはhtml要素です。ChromeとSafariでは<code class="inline-code tt">display: block;</code>の宣言だけがあります。いっぽうFirefoxでは<code class="inline-code tt">display: block;</code>以外にも、<code class="inline-code tt">unicode-bidi: isolate;</code>という複数の表記方向が混在する文章をどのように扱うか決める定義もされています。<code class="inline-code tt">unicode-bidi</code>プロパティの値によって表示がどう変わるかは「CSS: unicode-bidi プロパティ - Unicode文字の表記方向<a id="fnb-unicode-bidi" href="#fn-unicode-bidi" class="noteref" epub:type="noteref">*2</a>」を参照してください。</p>
+<div class="footnote" epub:type="footnote" id="fn-unicode-bidi"><p class="footnote">[*2] http://www.osaka-kyoiku.ac.jp/~joho/html5_ref/css/unicode-bidi_css.php</p></div>
 <p>Reset CSSではsanitize.cssとressが、html要素へ対し<code class="inline-code tt">box-sizing: border-box;</code>を宣言した上で、ユニバーサルセレクタへ<code class="inline-code tt">box-sizing: inherit;</code>を宣言しています。このことでコンテンツ領域に<code class="inline-code tt">padding</code>や<code class="inline-code tt">border</code>の値が入るようになります。これによりボックスサイズの計算をより簡単にすることを狙っていると思われます。</p>
 
 <h2><a id="h3-2"></a><span class="secno">3.2　</span>body要素</h2>
@@ -193,8 +194,8 @@ a {
 }
 </pre>
 </div>
-<p><code class="inline-code tt">background-color: transparent;</code>が宣言されている理由としては、IE 10上でリンクをクリックしたときにグレーの背景がついてしまうのを無くすために定義されています。また<code class="inline-code tt">-webkit-text-decoration-skip: objects;</code>という宣言は、英語の<b class="kw">p</b><!-- IDX:p -->や<b class="kw">y</b><!-- IDX:y -->、一部のロシア語をリンクの文字にした場合、リンクの下線が途切れてしまうのを防ぐためです<a id="fnb-normalize-issue-573" href="#fn-normalize-issue-573" class="noteref" epub:type="noteref">*2</a>。</p>
-<div class="footnote" epub:type="footnote" id="fn-normalize-issue-573"><p class="footnote">[*2] https://github.com/necolas/normalize.css/pull/573</p></div>
+<p><code class="inline-code tt">background-color: transparent;</code>が宣言されている理由としては、IE 10上でリンクをクリックしたときにグレーの背景がついてしまうのを無くすために定義されています。また<code class="inline-code tt">-webkit-text-decoration-skip: objects;</code>という宣言は、英語の<b class="kw">p</b><!-- IDX:p -->や<b class="kw">y</b><!-- IDX:y -->、一部のロシア語をリンクの文字にした場合、リンクの下線が途切れてしまうのを防ぐためです<a id="fnb-normalize-issue-573" href="#fn-normalize-issue-573" class="noteref" epub:type="noteref">*3</a>。</p>
+<div class="footnote" epub:type="footnote" id="fn-normalize-issue-573"><p class="footnote">[*3] https://github.com/necolas/normalize.css/pull/573</p></div>
 
 <h2><a id="h3-6"></a><span class="secno">3.6　</span>img要素</h2>
 <p>img要素はiOSのSafari上でタップしたときにハイライトが適用されないようになっています（リスト3.7）。</p>
@@ -236,9 +237,9 @@ img {
 }
 </pre>
 </div>
-<p>入れ子になったulやol要素はFirefoxとChrome、Safariで宣言しているプロパティは同じですが、セレクタの宣言方法が違います。Firefoxでは<code class="inline-code tt">:any()</code>という疑似クラスを使って、ul要素やol要素などが入れ子になったときのスタイル宣言をおこなっています<a id="fnb-mdn-any-pseudo-class" href="#fn-mdn-any-pseudo-class" class="noteref" epub:type="noteref">*3</a>（リスト3.10）。この<code class="inline-code tt">:any()</code>擬似クラスですが、CSS Selectors Level 4では<code class="inline-code tt">:matches()</code>として仕様策定が進んでいます<a id="fnb-css-selectors-4-matches" href="#fn-css-selectors-4-matches" class="noteref" epub:type="noteref">*4</a>。</p>
-<div class="footnote" epub:type="footnote" id="fn-mdn-any-pseudo-class"><p class="footnote">[*3] https://developer.mozilla.org/ja/docs/Web/CSS/:any</p></div>
-<div class="footnote" epub:type="footnote" id="fn-css-selectors-4-matches"><p class="footnote">[*4] https://drafts.csswg.org/selectors-4/#matches</p></div>
+<p>入れ子になったulやol要素はFirefoxとChrome、Safariで宣言しているプロパティは同じですが、セレクタの宣言方法が違います。Firefoxでは<code class="inline-code tt">:any()</code>という疑似クラスを使って、ul要素やol要素などが入れ子になったときのスタイル宣言をおこなっています<a id="fnb-mdn-any-pseudo-class" href="#fn-mdn-any-pseudo-class" class="noteref" epub:type="noteref">*4</a>（リスト3.10）。この<code class="inline-code tt">:any()</code>擬似クラスですが、CSS Selectors Level 4では<code class="inline-code tt">:matches()</code>として仕様策定が進んでいます<a id="fnb-css-selectors-4-matches" href="#fn-css-selectors-4-matches" class="noteref" epub:type="noteref">*5</a>。</p>
+<div class="footnote" epub:type="footnote" id="fn-mdn-any-pseudo-class"><p class="footnote">[*4] https://developer.mozilla.org/ja/docs/Web/CSS/:any</p></div>
+<div class="footnote" epub:type="footnote" id="fn-css-selectors-4-matches"><p class="footnote">[*5] https://drafts.csswg.org/selectors-4/#matches</p></div>
 <div class="caption-code">
 <p class="caption">リスト3.10: 入れ子になったul要素に対するFirefoxのスタイル定義</p>
 <pre class="list">/* nested lists have no top/bottom margins */
@@ -307,8 +308,8 @@ table[rules] {
 }
 </pre>
 </div>
-<p>またFirefox特有の宣言として<code class="inline-code tt">-moz-is-html</code>という擬似クラスのようなセレクタ宣言があります（リスト3.14）。この宣言が何を示すのかJSFiddleで見てみようとしましたが、特に表示は変わりなく謎のままでした<a id="fnb-form-firefox" href="#fn-form-firefox" class="noteref" epub:type="noteref">*5</a>。</p>
-<div class="footnote" epub:type="footnote" id="fn-form-firefox"><p class="footnote">[*5] https://jsfiddle.net/f3rp4kmu/</p></div>
+<p>またFirefox特有の宣言として<code class="inline-code tt">-moz-is-html</code>という擬似クラスのようなセレクタ宣言があります（リスト3.14）。この宣言が何を示すのかJSFiddleで見てみようとしましたが、特に表示は変わりなく謎のままでした<a id="fnb-form-firefox" href="#fn-form-firefox" class="noteref" epub:type="noteref">*6</a>。</p>
+<div class="footnote" epub:type="footnote" id="fn-form-firefox"><p class="footnote">[*6] https://jsfiddle.net/f3rp4kmu/</p></div>
 <div class="caption-code">
 <p class="caption">リスト3.14: -moz-is-htmlという謎の擬似クラスっぽいセレクタ</p>
 <pre class="list">tr &gt; form:-moz-is-html, tbody &gt; form:-moz-is-html,
@@ -385,8 +386,8 @@ q:before, q:after {
 </div>
 
 <h2><a id="h3-10"></a><span class="secno">3.10　</span>input要素</h2>
-<p>input要素はtype属性の値によって挙動が大きく変わります（図3.3）。そのためChromeのユーザーエージェントスタイルシートでは1123行中295行がinput要素関連のスタイル宣言です。Safariに至っては1221行中421行がinput要素関連のスタイル宣言です<a id="fnb-safari-user-agent-stylesheet-line" href="#fn-safari-user-agent-stylesheet-line" class="noteref" epub:type="noteref">*6</a>。</p>
-<div class="footnote" epub:type="footnote" id="fn-safari-user-agent-stylesheet-line"><p class="footnote">[*6] Safariの場合iOS向けと思われるスタイル宣言もあるためChromeと比較して行数が多いのかもしれません</p></div>
+<p>input要素はtype属性の値によって挙動が大きく変わります（図3.3）。そのためChromeのユーザーエージェントスタイルシートでは1123行中295行がinput要素関連のスタイル宣言です。Safariに至っては1221行中421行がinput要素関連のスタイル宣言です<a id="fnb-safari-user-agent-stylesheet-line" href="#fn-safari-user-agent-stylesheet-line" class="noteref" epub:type="noteref">*7</a>。</p>
+<div class="footnote" epub:type="footnote" id="fn-safari-user-agent-stylesheet-line"><p class="footnote">[*7] Safariの場合iOS向けと思われるスタイル宣言もあるためChromeと比較して行数が多いのかもしれません</p></div>
 <p>なおFirefoxは895行中24行がinput要素関連のスタイル宣言です。</p>
 <div id="input-types" class="image">
 <img src="images/input-types.png" alt="input要素はtype属性の値によって挙動が大きく変わる" />
@@ -552,8 +553,8 @@ select { /* 1 */
 </div>
 
 <h3 id="select-ress"><a id="h3-11-1"></a>ress</h3>
-<p>normalize.cssやsanitize.cssと違い独自路線なのがressです。<code class="inline-code tt">text-transform: none;</code>も宣言されていますが、他にもselect要素らしい見た目を無くす<code class="inline-code tt">appearance</code>やIE独自の疑似要素に対してスタイルを宣言しています（リスト3.24）。IE独自の疑似要素について書くと、<code class="inline-code tt">::-ms-expand</code>はドロップダウンを表示するためのボタンを表す疑似要素、<code class="inline-code tt">::-ms-value</code>はselect要素内の文字を表す疑似要素です<a id="fnb-ie-pseudo-elements" href="#fn-ie-pseudo-elements" class="noteref" epub:type="noteref">*7</a>。</p>
-<div class="footnote" epub:type="footnote" id="fn-ie-pseudo-elements"><p class="footnote">[*7] http://subtech.g.hatena.ne.jp/mayuki/20110923/1316786871</p></div>
+<p>normalize.cssやsanitize.cssと違い独自路線なのがressです。<code class="inline-code tt">text-transform: none;</code>も宣言されていますが、他にもselect要素らしい見た目を無くす<code class="inline-code tt">appearance</code>やIE独自の疑似要素に対してスタイルを宣言しています（リスト3.24）。IE独自の疑似要素について書くと、<code class="inline-code tt">::-ms-expand</code>はドロップダウンを表示するためのボタンを表す疑似要素、<code class="inline-code tt">::-ms-value</code>はselect要素内の文字を表す疑似要素です<a id="fnb-ie-pseudo-elements" href="#fn-ie-pseudo-elements" class="noteref" epub:type="noteref">*8</a>。</p>
+<div class="footnote" epub:type="footnote" id="fn-ie-pseudo-elements"><p class="footnote">[*8] http://subtech.g.hatena.ne.jp/mayuki/20110923/1316786871</p></div>
 <div class="caption-code">
 <p class="caption">リスト3.24: ressはselect要素でも独自路線</p>
 <pre class="list">/* Style select like a standard input */
@@ -573,8 +574,8 @@ select::-ms-value {
 </div>
 
 <h2><a id="h3-12"></a><span class="secno">3.12　</span>button要素</h2>
-<p>normalize.cssやsanitize.css、ressではWebKitのバグを修正するセレクタ宣言やプロパティと値の宣言がおこなわれています（リスト3.25）。またFirefoxに対してもbutton要素内に画像を配置したときにボタンの<code class="inline-code tt">border</code>と画像の間に隙間が空く問題などが修正されています<a id="fnb-firefox-form-button" href="#fn-firefox-form-button" class="noteref" epub:type="noteref">*8</a>。</p>
-<div class="footnote" epub:type="footnote" id="fn-firefox-form-button"><p class="footnote">[*8] http://jeffreyfrancesco.org/weblog/2011062101/</p></div>
+<p>normalize.cssやsanitize.css、ressではWebKitのバグを修正するセレクタ宣言やプロパティと値の宣言がおこなわれています（リスト3.25）。またFirefoxに対してもbutton要素内に画像を配置したときにボタンの<code class="inline-code tt">border</code>と画像の間に隙間が空く問題などが修正されています<a id="fnb-firefox-form-button" href="#fn-firefox-form-button" class="noteref" epub:type="noteref">*9</a>。</p>
+<div class="footnote" epub:type="footnote" id="fn-firefox-form-button"><p class="footnote">[*9] http://jeffreyfrancesco.org/weblog/2011062101/</p></div>
 <div class="caption-code">
 <p class="caption">リスト3.25: normalize.cssとsanitize.css、ressの共通宣言</p>
 <pre class="list">@mapfile(../codes/reset-css/normalize-css/button.css)
@@ -669,7 +670,8 @@ textarea {
 </div>
 
 <h3 id="textarea-yui3"><a id="h3-13-3"></a>YUI 3 Reset CSS</h3>
-<p>書かれた時期が古いため、IE 7以下に適用されるCSSハックが書かれています（リスト3.29）。この<code class="inline-code tt">*font-size:100%</code>という書き方については<a href="http://www.atmarkit.co.jp/fwcr/design/benkyo/csshack02/03.html#13" class="link">http://www.atmarkit.co.jp/fwcr/design/benkyo/csshack02/03.html#13</a>を見てください。</p>
+<p>書かれた時期が古いため、IE 7以下に適用されるCSSハックが書かれています（リスト3.29）。この<code class="inline-code tt">*font-size:100%</code>という書き方については@ITの「IE 6とIE 7のCSSハック16選」内にあるアスタリスクハック<a id="fnb-atmarkit-css" href="#fn-atmarkit-css" class="noteref" epub:type="noteref">*10</a>を見てください。</p>
+<div class="footnote" epub:type="footnote" id="fn-atmarkit-css"><p class="footnote">[*10] http://www.atmarkit.co.jp/fwcr/design/benkyo/csshack02/03.html#13</p></div>
 <div class="caption-code">
 <p class="caption">リスト3.29: YUI 3のtextarea要素へ対する宣言</p>
 <pre class="list">input,
