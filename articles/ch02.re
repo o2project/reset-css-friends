@@ -37,7 +37,7 @@ Eric Meyer's Reset CSSのソースコードは@<href>{http://meyerweb.com/eric/t
 //footnote[rebeccapurple][https://cpplover.blogspot.jp/2014/06/rebeccapurplecss-4-color.html]
 
 Hard resetの問題点ですが、全称セレクタを使ってmarginやpaddingを0にするやり方は、フォーム関連の要素に対してどういった影響があるか分からないと書いてあります。
-そしてmarginやpaddingを0にするだけでなく、一貫したフォントに関わるスタイル指定をしたかったとも書いてあります。
+そしてmarginやpaddingを0にするだけでなく、一貫したフォントに関わるスタイル宣言をしたかったとも書いてあります。
 また全称セレクタは名前空間が指定されていない場合はすべての要素にマッチしてしまうため、とても処理コストが高いセレクタです。
 
 そのため明示的に要素を指定して個別にリセットしていくことで、そういった問題を解決できると思って書かれたのがEric Meyer's Reset CSSです。
@@ -58,8 +58,8 @@ HTML5 DocterというHTML5を使った開発について発信していたWebサ
 HTML5 Docter Reset CSSのソースコードは@<href>{http://html5doctor.com/html-5-reset-stylesheet/}にあります。
 
 HTML5 Docter Reset CSSはEric Meyer's Reset CSSのv1.0を元に作られたものです。
-Eric Meyer's Reset CSSのv1.0は作られた時期が2008年2月12日なので、HTML5に関わる要素のスタイル指定がありませんでした。
-HTML5 Docter Reset CSSはそこにHTML5で追加されたarticle要素やheader要素に対するスタイル指定を追加しています。
+Eric Meyer's Reset CSSのv1.0は作られた時期が2008年2月12日なので、HTML5に関わる要素のスタイル宣言がありませんでした。
+HTML5 Docter Reset CSSはそこにHTML5で追加されたarticle要素やheader要素に対するスタイル宣言を追加しています。
 またins要素やmark要素、hr要素などに独自のスタイルが適用されています。
 
 == normalize.css
@@ -69,14 +69,14 @@ normalize.cssはそれまでのReset CSSを代替するReset CSSとして出て�
 それまでのReset CSSはブラウザが既定で指定しているスタイルを消すものでした。
 normalize.cssはブラウザが指定しているスタイルで使えそうなものはそのまま残しているのが特徴です。
 後述するsanitize.cssやressと違い、作者の意見が入っていない純粋にブラウザのスタイルを正規化するライブラリです@<fn>{normalize-v5}。
-//footnote[normalize-v5][v5.0.0まではスタイル指定に作者の意見が含まれていましたが、v6.0.0でそれらがすべて取り除かれました]
+//footnote[normalize-v5][v5.0.0まではスタイル宣言に作者の意見が含まれていましたが、v6.0.0でそれらがすべて取り除かれました]
 
 ソースコードにはなぜそのような指定をしたのか書かれているため、ソースコードを読むだけでも勉強になります。
 
 == sanitize.css
 
 normalize.cssをNicolas Gallagherとともに作ったJonathan Nealが作ったReset CSSです。
-Jonathan NealはそれまでEric Meyer's Reset CSSやnormalize.cssを使っていたようですが、それらを元に大多数が書いたスタイル指定を含んだものがsanitize.cssです。
+Jonathan NealはそれまでEric Meyer's Reset CSSやnormalize.cssを使っていたようですが、それらを元に大多数が書いたスタイル宣言を含んだものがsanitize.cssです。
 具体的には@<list>{sanitize-html}のとおり、html要素に@<code>{box-sizing: border-box;}を指定して全称セレクタで@<code>{box-sizing: inherit;}を指定することです。
 これによって特定の要素に対してwidthやheightを指定するときに、borderやpaddingの指定を気にせずwidthやheightの値を指定できます。
 

@@ -228,7 +228,7 @@ ul {
 //}
 
 入れ子になったulやol要素はFirefoxとChrome、Safariで指定しているプロパティは同じですが、セレクタの指定方法が違います。
-Firefoxでは@<code>{:any()}という疑似クラスを使って、ul要素やol要素などが入れ子になったときのスタイル指定をおこなっています@<fn>{mdn-any-pseudo-class}（@<list>{ul-nested-firefox}）。
+Firefoxでは@<code>{:any()}という疑似クラスを使って、ul要素やol要素などが入れ子になったときのスタイル宣言をおこなっています@<fn>{mdn-any-pseudo-class}（@<list>{ul-nested-firefox}）。
 この@<code>{:any()}擬似クラスですが、CSS Selectors Level 4では@<code>{:matches()}として仕様策定が進んでいます@<fn>{css-selectors-4-matches}。
 //footnote[mdn-any-pseudo-class][https://developer.mozilla.org/ja/docs/Web/CSS/:any]
 //footnote[css-selectors-4-matches][https://drafts.csswg.org/selectors-4/#matches]
@@ -272,9 +272,9 @@ ul ul ul {
 //}
 
 sanitize.cssではnav要素が親要素としてあるときにol要素とul要素に対して@<code>{list-style: none;}の指定をしています（@<list>{sanitize-ul-ol}）。
-nav要素内に指定したol要素とul要素に対して@<code>{list-style}の値を指定することは少ないので、自分で書くスタイル指定を減らすことができます。
+nav要素内に指定したol要素とul要素に対して@<code>{list-style}の値を指定することは少ないので、自分で書くスタイル宣言を減らすことができます。
 
-//list[sanitize-ul-ol][sanitize.cssのulやol要素に対するスタイル指定]{
+//list[sanitize-ul-ol][sanitize.cssのulやol要素に対するスタイル宣言]{
 #@mapfile(../codes/reset-css/sanitize-css/ul-ol.css)
 /**
  * Remove the list style on navigation lists in all browsers (opinionated).
@@ -289,10 +289,10 @@ nav ul {
 
 == table要素
 
-table要素のスタイル指定ですが、Firefoxでは非推奨となった属性にもスタイル指定をおこなっているのが特色です。
+table要素のスタイル宣言ですが、Firefoxでは非推奨となった属性にもスタイル宣言をおこなっているのが特色です。
 たとえば@<code>{align}や@<code>{frame}、@<code>{rules}といった属性が挙げられます（@<list>{table-firefox-1}）。
 
-//list[table-firefox-1][Firefoxで指定されている非推奨の属性に対してのスタイル指定（一部）]{
+//list[table-firefox-1][Firefoxで指定されている非推奨の属性に対してのスタイル宣言（一部）]{
 #@mapfile(../codes/browser/firefox/table-1.css)
 table[align="left"] {
   float: left;
@@ -326,7 +326,7 @@ table > form:-moz-is-html {
 //}
 
 sanitize.cssでは@<code>{border-collapse: collapse;}の指定がされています（@<list>{sanitize-table}）。
-これはtableのborderをセル同士で共有する指定になります。表を表示するときにセルを分けて表示することは少ないので、余計なスタイル指定を減らすことができます。
+これはtableのborderをセル同士で共有する指定になります。表を表示するときにセルを分けて表示することは少ないので、余計なスタイル宣言を減らすことができます。
 
 //list[sanitize-table][sanitize.cssのtable要素に対する指定]{
 #@mapfile(../codes/reset-css/sanitize-css/table.css)
@@ -347,10 +347,10 @@ table {
 
 == blockquote要素
 
-blockquote要素はFirefoxで@<code>{[type=cite]}という属性に対するスタイル指定があります（@<list>{blockquote-firefox}）。
+blockquote要素はFirefoxで@<code>{[type=cite]}という属性に対するスタイル宣言があります（@<list>{blockquote-firefox}）。
 この属性は現在W3Cの仕様には無い仕様ですが、過去にはあったらしくFirefoxではいい感じの見た目になります（@<img>{firefox-blockquote-type-cite}）。
 
-//list[blockquote-firefox][blockquote要素に対してのスタイル指定]{
+//list[blockquote-firefox][blockquote要素に対してのスタイル宣言]{
 #@mapfile(../codes/browser/firefox/blockquote.css)
 blockquote {
   display: block;
@@ -380,7 +380,7 @@ blockquote[type=cite] {
 Eric Meyer's Reset CSSではblockquoteやq要素に対し引用符を消すスタイルが指定されています（@<list>{eric-meyers-blockquote}）。
 なお、他のReset CSSには特徴的な指定がありません。
 
-//list[eric-meyers-blockquote][Eric Meyer's Reset CSSのblockquote要素に対するスタイル指定]{
+//list[eric-meyers-blockquote][Eric Meyer's Reset CSSのblockquote要素に対するスタイル宣言]{
 #@mapfile(../codes/reset-css/eric-meyers-blockquote.css)
 blockquote, q {
   quotes: none;
@@ -396,10 +396,10 @@ q:before, q:after {
 == input要素
 
 input要素はtype属性の値によって挙動が大きく変わります（@<img>{input-types}）。
-そのためChromeのユーザーエージェントスタイルシートでは1123行中295行がinput要素関連のスタイル指定です。
-Safariに至っては1221行中421行がinput要素関連のスタイル指定です@<fn>{safari-user-agent-stylesheet-line}。
-//footnote[safari-user-agent-stylesheet-line][Safariの場合iOS向けと思われるスタイル指定もあるためChromeと比較して行数が多いのかもしれません]
-なおFirefoxは895行中24行がinput要素関連のスタイル指定です。
+そのためChromeのユーザーエージェントスタイルシートでは1123行中295行がinput要素関連のスタイル宣言です。
+Safariに至っては1221行中421行がinput要素関連のスタイル宣言です@<fn>{safari-user-agent-stylesheet-line}。
+//footnote[safari-user-agent-stylesheet-line][Safariの場合iOS向けと思われるスタイル宣言もあるためChromeと比較して行数が多いのかもしれません]
+なおFirefoxは895行中24行がinput要素関連のスタイル宣言です。
 
 //image[input-types][input要素はtype属性の値によって挙動が大きく変わる]{
 //}
@@ -463,7 +463,7 @@ textarea {
 ==={input-sanitize} sanitize.css
 
 normalize.cssの指定を受け継ぎつつ、@<code>{font-size}や@<code>{line-height}の値として@<code>{inherit}が指定されています（@<list>{sanitize-input}）。
-親要素の指定を継承することにより、自分でスタイル指定することを極力減らそうとしています。
+親要素の指定を継承することにより、自分でスタイル宣言することを極力減らそうとしています。
 
 //list[sanitize-input][normalize.cssより作者の主張が含まれているsanitize.css]{
 #@mapfile(../codes/reset-css/sanitize-css/input.css)
