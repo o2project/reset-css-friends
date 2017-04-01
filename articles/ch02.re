@@ -29,18 +29,37 @@ Hard resetは@<list>{hard-reset}のように書くだけの簡単なReset CSSで
 
 == Eric Meyer's Reset CSS
 
-Eric MeyerというCSSへ対しとても貢献している人がいます。
-最近だとその貢献が認められ、CSS Color Module Level 4に彼の亡くなってしまった娘の名前を元にした「rebeccapurple」という色の名前が入ったということでも有名です@<fn>{rebeccapurple}。
+Eric MeyerというCSSへ対しとても貢献している人がいます。彼の功績を挙げると次のとおりです@<fn>{eric-meyer-linkedin}。
+
+  * オライリーから出版された@<kw>{CSS: The Definitive Guide}@<fn>{css-the-definitive-guide}（日本語版は@<kw>{CSS完全ガイド}@<fn>{css-complete-guide}）を執筆
+  * 上記の本以外にも多数の本を執筆@<fn>{eric-meyer-biblio}
+  * css-discuss.orgの立ち上げ@<fn>{css-discuss}
+  * スライドショー用のファイルフォーマット@<kw>{S5}を考案@<fn>{s5}
+  * Netscape DevEdgeやCase Western Reserve University、Encyclopedia of Cleveland Historyのプロジェクトリーダーとデザイナーだった
+
+#@# prh:disable
+//footnote[eric-meyer-linkedin][https://www.linkedin.com/in/meyerweb/]
+//footnote[css-the-definitive-guide][http://shop.oreilly.com/product/9780596527334.do]
+//footnote[css-complete-guide][https://www.oreilly.co.jp/books/487311232X/]
+//footnote[eric-meyer-biblio][https://en.wikipedia.org/wiki/Eric_A._Meyer#Bibliography]
+//footnote[css-discuss][http://www.css-discuss.org/]
+#@# prh:disable
+//footnote[s5][https://en.wikipedia.org/wiki/S5_(file_format)]
+
+最近ではその功績にコミュニティが敬意を払い、彼の6歳で夭折した娘の名前をCSSの色名（@<code>{beccapurple}）として追加しようと提議されました@<fn>{becca-purple}。
+そして本人と夭折した娘の要望@<fn>{rebecca-purple}により@<code>{rebeccapurple}としてCSS Color Module Level 4@<fn>{css-color-module-level-4}に追加されました。
+//footnote[becca-purple][https://discourse.wicg.io/t/name-663399-becca-purple-in-css4-color/225]
+#@# prh:disable
+//footnote[rebecca-purple][http://meyerweb.com/eric/thoughts/2014/06/19/rebeccapurple/]
+//footnote[css-color-module-level-4][https://drafts.csswg.org/css-color/#named-colors]
+
 そのEric MeyerがHard resetの問題点を指摘した上で作ったReset CSSがEric Meyer's Reset CSSです。
 #@# prh:disable
 Eric Meyer's Reset CSSのソースコードは@<href>{http://meyerweb.com/eric/tools/css/reset/}にあります。
-//footnote[rebeccapurple][https://cpplover.blogspot.jp/2014/06/rebeccapurplecss-4-color.html]
 
 Hard resetの問題点ですが、全称セレクタを使ってmarginやpaddingを0にするやり方は、フォーム関連の要素に対してどういった影響があるか分からないと書いてあります。
 そしてmarginやpaddingを0にするだけでなく、一貫したフォントに関わるスタイル宣言をしたかったとも書いてあります。
-また全称セレクタは名前空間が指定されていない場合はすべての要素にマッチしてしまうため、とても処理コストが高いセレクタです。
-
-そのため明示的に要素を指定して個別にリセットしていくことで、そういった問題を解決できると思って書かれたのがEric Meyer's Reset CSSです。
+そのため明示的に要素を指定して個別にリセットしていくことで、問題を解決できると思って書かれたのがEric Meyer's Reset CSSです。
 
 == YUI 3 Reset CSS
 
