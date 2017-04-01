@@ -27,7 +27,8 @@ input, textarea, button, select
 
 まずはhtml要素です。ChromeとSafariでは@<code>{display: block;}の宣言だけがあります。
 いっぽうFirefoxでは@<code>{display: block;}以外にも、@<code>{unicode-bidi: isolate;}という複数の表記方向が混在する文章をどのように扱うか決める定義もされています。
-@<code>{unicode-bidi}プロパティの値によって表示がどう変わるかは@<href>{http://www.osaka-kyoiku.ac.jp/~joho/html5_ref/css/unicode-bidi_css.php}を参照してください。
+@<code>{unicode-bidi}プロパティの値によって表示がどう変わるかは「CSS: unicode-bidi プロパティ - Unicode文字の表記方向@<fn>{unicode-bidi}」を参照してください。
+//footnote[unicode-bidi][http://www.osaka-kyoiku.ac.jp/~joho/html5_ref/css/unicode-bidi_css.php]
 
 Reset CSSではsanitize.cssとressが、html要素へ対し@<code>{box-sizing: border-box;}を宣言した上で、ユニバーサルセレクタへ@<code>{box-sizing: inherit;}を宣言しています。
 このことでコンテンツ領域に@<code>{padding}や@<code>{border}の値が入るようになります。
@@ -718,7 +719,8 @@ textarea {
 
 #@# prh:disable
 書かれた時期が古いため、IE 7以下に適用されるCSSハックが書かれています（@<list>{yui3-textarea}）。
-この@<code>{*font-size:100%}という書き方については@<href>{http://www.atmarkit.co.jp/fwcr/design/benkyo/csshack02/03.html#13}を見てください。
+この@<code>{*font-size:100%}という書き方については@ITの「IE 6とIE 7のCSSハック16選」内にあるアスタリスクハック@<fn>{atmarkit-css}を見てください。
+//footnote[atmarkit-css][http://www.atmarkit.co.jp/fwcr/design/benkyo/csshack02/03.html#13]
 
 //list[yui3-textarea][YUI 3のtextarea要素へ対する宣言]{
 #@mapfile(../codes/reset-css/yui3/textarea.css)
