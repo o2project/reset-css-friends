@@ -15,10 +15,6 @@
  1. Reset CSSの特色
  1. Reset CSSでどのような宣言がされているか
 
-== O2 Projectとは
-
-O2 Projectは「自分達にとってかけがえのないもの」を作るプロジェクトです。
-
 == お問い合わせ先
 
 本書に関するお問い合わせはta2+friends@o2p.jp、もしくはTwitterで@o2pjp宛へお問い合わせください。
