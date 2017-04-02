@@ -1,18 +1,20 @@
 = Reset CSSでどのような宣言がされているか
 
-ブラウザがWeb上のページを読み込むときに既定で適用されるスタイルとして、@<kw>{ユーザーエージェントスタイルシート}があります。
-ユーザーエージェントスタイルシートがどのように宣言されているかはブラウザごとに次のURLで見られます。
+われわれはかしこいのでReset CSSでどのような宣言があるか教えるです。その前に教えてほしければ料理をよこすのです。
+
+…満腹、満足です。解説が終わったらおかわりをよこすのです。
+
+ブラウザがWeb上のページを読み込むときに既定で適用されるスタイルとして、@<kw>{ユーザーエージェントスタイルシート}があるです。
+ユーザーエージェントスタイルシートの内容はブラウザごとに次のURLで見られるのです。
 
 #@# prh:disable
   * Chrome: @<href>{https://chromium.googlesource.com/chromium/blink/+/master/Source/core/css/html.css}
   * Firefox: @<href>{https://dxr.mozilla.org/mozilla-central/source/layout/style/res/html.css}
   * Safari: @<href>{http://trac.webkit.org/browser/trunk/Source/WebCore/css/html.css}
 
-ユーザーエージェントスタイルシートはブラウザごとに定義されているスタイルが違うため、Reset CSSを使わなかった場合ブラウザによって適用されるスタイルが違います@<fn>{user-agent-stylesheet-diff}。
-
-この章では各Reset CSSがどのような宣言をしているか、ユーザーエージェントスタイルシートでどのように宣言されているか一部解説しつつ見ていきます。
-なお、解説するHTML要素は（@<list>{explain-elements}）のみに絞ります。
-//footnote[user-agent-stylesheet-diff][https://developer.mozilla.org/ja/docs/Web/Compatibility_FAQ/Tips_Default_Style_Difference.html]
+Reset CSSはユーザーエージェントスタイルシートの宣言をリセットするためにあるです。
+これからReset CSSのスタイル宣言を一部ユーザーエージェントスタイルシートでの宣言も教えつつ見ていくのです。
+ちなみに解説するHTMLの要素は（@<list>{explain-elements}）のみに絞るです。
 
 //list[explain-elements][解説するHTML要素一覧]{
 html, body, img,
@@ -25,19 +27,17 @@ input, textarea, button, select
 
 == html要素
 
-まずはhtml要素です。ChromeとSafariでは@<code>{display: block;}の宣言だけがあります。
-いっぽうFirefoxでは@<code>{display: block;}以外にも、@<code>{unicode-bidi: isolate;}という複数の表記方向が混在する文章をどのように扱うか決める定義もされています。
-@<code>{unicode-bidi}プロパティの値によって表示がどう変わるかは「CSS: unicode-bidi プロパティ - Unicode文字の表記方向@<fn>{unicode-bidi}」を参照してください。
+まずはhtml要素です。ChromeとSafariでは@<code>{display: block;}の宣言だけなのです。
+Firefoxでは@<code>{display: block;}以外にも、@<code>{unicode-bidi: isolate;}という複数の表記方向が混ざる文章をどのように扱うか決める宣言もされているのです。
+@<code>{unicode-bidi}プロパティの値が表示にどう影響をあたえるかは「CSS: unicode-bidi プロパティ - Unicode文字の表記方向@<fn>{unicode-bidi}」を見るです。
 //footnote[unicode-bidi][http://www.osaka-kyoiku.ac.jp/~joho/html5_ref/css/unicode-bidi_css.php]
 
-Reset CSSではsanitize.cssとressが、html要素へ対し@<code>{box-sizing: border-box;}を宣言した上で、ユニバーサルセレクタへ@<code>{box-sizing: inherit;}を宣言しています。
-このことでコンテンツ領域に@<code>{padding}や@<code>{border}の値が入るようになります。
-これによりボックスサイズの計算をより簡単にすることを狙っていると思われます。
+sanitize.cssとressは、html要素へ対し@<code>{box-sizing: border-box;}を宣言した上で、ユニバーサルセレクタへ@<code>{box-sizing: inherit;}を宣言しているです。
+これでコンテンツ領域に@<code>{padding}や@<code>{border}の値が入るようになるのです。これでボックスサイズの計算がより簡単になるのです。
 
 == body要素
 
-body要素はChrome・Firefox・Safariで同様のスタイル定義がおこなわれています（@<list>{body-element}）。
-ただし@<code>{margin: 8px;}の宣言は多くのWebサイトにおいて不要な宣言となるため、Reset CSSでは@<code>{margin: 0;}と宣言されることが多いです。
+body要素はChrome・Firefox・Safariで同じスタイル宣言なのです（@<list>{body-element}）。
 
 //list[body-element][body要素に対するスタイル定義]{
 #@mapfile(../codes/browser/body.css)
@@ -48,13 +48,14 @@ body {
 #@end
 //}
 
-Eric Meyer's Reset CSS、sanitize.css、YUI 3 Reset CSSではbody要素へ対し@<code>{margin: 0;}を宣言しています。
-Webページを作るときにページの外周へ@<code>{margin}を設定することはほとんど無いため、このような宣言がされていると思われます。
-normalize.cssでもv5.0.0まではbody要素に対し同様の宣言がされていましたが、v6.0.0で削除されて何も宣言されなくなりました。
+@<code>{margin: 8px;}の宣言は多くのWebサイトでいらない宣言なので、Reset CSSで@<code>{margin: 0;}と宣言されることが多いのです。
+@<code>{margin: 0;}と宣言しているReset CSSはEric Meyer's Reset CSS、sanitize.css、YUI 3 Reset CSSがあるです。
+normalize.cssもv5.0.0まではbody要素に同じ宣言があったです。v6.0.0で削除されて何もなくなったのです。
 
 == セクショニング・コンテンツとh1要素
 
-h1要素は見出しを表す要素の中でもっともランクが高い要素です。またsection要素やarticle要素といったセクショニング・コンテンツへh1要素を入れた場合は、入れ子の深さに応じてスタイルが変わるようになっています（@<list>{h1-element}）。
+h1要素は見出しを表す要素の中でもっともランクが高い要素です。
+section要素やarticle要素といったセクショニング・コンテンツへh1要素を入れ子した場合は、深さに応じてスタイルが変わるのです（@<list>{h1-element}）。
 
 //list[h1-element][h1要素に対するスタイル定義]{
 #@mapfile(../codes/browser/h1.css)
@@ -112,7 +113,7 @@ h1 {
 #@end
 //}
 
-normalize.cssやsanitize.cssでは入れ子具合によってスタイルが変わるのを無くしています（@<list>{h1-normalize}）。
+normalize.cssやsanitize.cssでは入れ子の深さによってスタイルが変わるのを無くしているです（@<list>{h1-normalize}）。
 
 //list[h1-normalize][h1要素に対するnormalize.cssやsanitize.cssのスタイル定義]{
 #@mapfile(../codes/reset-css/normalize-css/h1.css)
@@ -128,7 +129,7 @@ h1 {
 #@end
 //}
 
-また、YUI 3 Reset CSSやEric Meyer's Reset CSSでは見出しらしいスタイル定義をすべて無くしています（@<list>{h1-yui3}）。
+YUI 3 Reset CSSやEric Meyer's Reset CSSでは見出しらしいスタイルをすべて無くしているのです（@<list>{h1-yui3}）。
 
 //list[h1-yui3][h1要素に対するYUI 3 Reset CSSやEric Meyer's Reset CSSのスタイル定義]{
 #@mapfile(../codes/reset-css/yui3/h1.css)
@@ -143,23 +144,19 @@ h1 {
 
 == p要素
 
-Firefoxでは文字のレイアウト方向や向き、文字が流れる方向を元にmarginを設定する@<code>{margin-block-start}や@<code>{margin-block-end}が定義されています。
-ちなみにCSSのプロパティでは、文字のレイアウト方向は@<code>{writing-mode}、文字の向きは@<code>{text-orientation}、文字の流れる方向は@<code>{direction}に対応しています。
+Firefoxでは文字のレイアウト方向や向き、文字が流れる方向を元にmarginを適用する@<code>{margin-block-start}や@<code>{margin-block-end}を宣言しているです。
+CSSのプロパティはそれぞれ、文字のレイアウト方向は@<code>{writing-mode}、文字の向きは@<code>{text-orientation}、文字の流れる方向は@<code>{direction}に対応しているのです。
+ChromeやSafariでは@<code>{margin-before}や@<code>{margin-after}といったプロパティが宣言されて、値に@<code>{1__qem}が指定されているのです。
+互換性モードで表示するときに@<code>{margin}の相殺をおこなわないためなのです。
 
-ChromeやSafariでは、@<code>{margin-before}や@<code>{margin-after}といったプロパティが定義され、値として@<code>{1__qem}が定義されています。
-これは、互換性モードで表示する際@<code>{margin}の相殺をおこなわないようにするものです。
-
-YUI 3 Reset CSSやEric Meyer's Reset CSSといった古めのReset CSSでは@<code>{margin}と@<code>{padding}が0と宣言されています。
-しかし新しめのReset CSSでは特に宣言がなく、ユーザーエージェントスタイルシートをそのまま使うようにしています。
-
-#@# prh:disable
-これは新しく縦書きという概念が出てきたため、Reset CSSで文字の方向や向き、流れる方向を意識するようになったからです。
-その結果ユーザーエージェントスタイルシートをそのまま使ったほうが良いという結論に至ったと思われます。
+YUI 3 Reset CSSやEric Meyer's Reset CSSなど古めのReset CSSでは@<code>{margin}と@<code>{padding}が0になっているのです。
+新しいReset CSSでは特に宣言がないのです。これは新しく縦書きという概念が出てきたので、Reset CSSで文字の方向や向き、流れる方向を意識しだしたからです。
+結果としてユーザーエージェントスタイルシートをそのまま使ったほうがいいとなったのです。
 
 == a要素
 
-a要素は各ブラウザのユーザーエージェントスタイルシートでは特にスタイルが定義されていません。
-normalize.cssやsanitize.css、ressではIEやSafariに向けたスタイル定義をしています（@<list>{a-reset}）。
+a要素は各ブラウザのユーザーエージェントスタイルシートではスタイル宣言がないのです。
+normalize.cssやsanitize.css、ressではIEとSafari向けのスタイル宣言をしているです（@<list>{a-reset}）。
 
 //list[a-reset][a要素に対するReset CSSのスタイル定義]{
 #@mapfile(../codes/reset-css/a-reset.css)
@@ -175,13 +172,13 @@ a {
 #@end
 //}
 
-@<code>{background-color: transparent;}が宣言されている理由としては、IE 10上でリンクをクリックしたときにグレーの背景がついてしまうのを無くすために定義されています。
-また@<code>{-webkit-text-decoration-skip: objects;}という宣言は、英語の@<kw>{p}や@<kw>{y}、一部のロシア語をリンクの文字にした場合、リンクの下線が途切れてしまうのを防ぐためです@<fn>{normalize-issue-573}。
+@<code>{background-color: transparent;}が宣言されているのは、IE 10でリンクをクリックしたときにグレーの背景がついてしまうのを防ぐためです。
+@<code>{-webkit-text-decoration-skip: objects;}という宣言は、英語やロシア語という言葉の一部文字をリンクの文字に指定したとき、下線が途切れてしまうのを防ぐためなのです@<fn>{normalize-issue-573}。
 //footnote[normalize-issue-573][https://github.com/necolas/normalize.css/pull/573]
 
 == img要素
 
-img要素はiOSのSafari上でタップしたときにハイライトが適用されないようになっています（@<list>{img-safari}）。
+img要素はiOSのSafariでタップしたときにハイライトを適用しないようにしているのです（@<list>{img-safari}）。
 
 //list[img-safari][img要素に対するSafariのスタイル定義]{
 #@mapfile(../codes/browser/safari/img.css)
@@ -196,7 +193,7 @@ img {
 #@end
 //}
 
-normalize.cssやsanitize.css、ressではIE 10でリンク内に画像があるとborderが適用されてしまうのを防ぐために、@<code>{border-style: none;}が宣言されています（@<list>{img-normalize}）。
+normalize.cssやsanitize.css、ressではIE 10でリンク内に画像があるとborderが適用されるのを防ぐため、@<code>{border-style: none;}が宣言されているです（@<list>{img-normalize}）。
 
 //list[img-normalize][img要素に対する各種Reset CSSのスタイル定義]{
 #@mapfile(../codes/reset-css/normalize-css/img.css)
@@ -212,7 +209,7 @@ img {
 
 == ul, ol要素
 
-ulやol要素はFirefoxやChrome、Safariで@<code>{論理margin}と@<code>{padding}が宣言されています（@<list>{ul-firefox}）。
+ulやol要素はFirefoxやChrome、Safariで@<code>{論理margin}と@<code>{論理padding}が宣言されているです（@<list>{ul-firefox}）。
 
 //list[ul-firefox][ul要素に対するSafariのスタイル定義]{
 #@mapfile(../codes/browser/firefox/ul.css)
@@ -226,9 +223,9 @@ ul {
 #@end
 //}
 
-入れ子になったulやol要素はFirefoxとChrome、Safariで宣言しているプロパティは同じですが、セレクタの宣言方法が違います。
-Firefoxでは@<code>{:any()}という疑似クラスを使って、ul要素やol要素などが入れ子になったときのスタイル宣言をおこなっています@<fn>{mdn-any-pseudo-class}（@<list>{ul-nested-firefox}）。
-この@<code>{:any()}擬似クラスですが、CSS Selectors Level 4では@<code>{:matches()}として仕様策定が進んでいます@<fn>{css-selectors-4-matches}。
+ulやol要素が入れ子になったとき、FirefoxとChrome、Safariで宣言しているプロパティは同じなのですが、セレクタの宣言方法が違うのです。
+Firefoxでは@<code>{:any()}という疑似クラスを使って、ulやol要素などが入れ子になったときのスタイル宣言をおこなっているです@<fn>{mdn-any-pseudo-class}（@<list>{ul-nested-firefox}）。
+@<code>{:any()}擬似クラスは、@<kw>{CSS Selectors Level 4}では@<code>{:matches()}として仕様策定が進んでいるのです@<fn>{css-selectors-4-matches}。
 //footnote[mdn-any-pseudo-class][https://developer.mozilla.org/ja/docs/Web/CSS/:any]
 //footnote[css-selectors-4-matches][https://drafts.csswg.org/selectors-4/#matches]
 
@@ -253,7 +250,7 @@ Firefoxでは@<code>{:any()}という疑似クラスを使って、ul要素やol
 #@end
 //}
 
-@<code>{:any()}や@<code>{:matches()}の仕様が固まっていないためか、ChromeやSafariでは従来どおりの子孫セレクタを使った宣言になっています（@<list>{ul-nested-chrome}）。
+ただ@<code>{:any()}や@<code>{:matches()}の仕様が固まっていないので、ChromeやSafariでは従来どおりの子孫セレクタを使った宣言になっているです（@<list>{ul-nested-chrome}）。
 
 //list[ul-nested-chrome][入れ子になったul要素に対するChromeやSafariのスタイル定義]{
 #@mapfile(../codes/browser/chrome/ul-nested.css)
@@ -270,8 +267,8 @@ ul ul ul {
 #@end
 //}
 
-sanitize.cssではnav要素が親要素としてあるときにol要素とul要素に対して@<code>{list-style: none;}の宣言をしています（@<list>{sanitize-ul-ol}）。
-nav要素内に宣言したol要素とul要素に対して@<code>{list-style}の値を宣言することは少ないので、自分で書くスタイル宣言を減らせます。
+sanitize.cssでは、nav要素が親要素のときにulとol要素に@<code>{list-style: none;}の宣言をしているです（@<list>{sanitize-ul-ol}）。
+nav要素内にあるulとol要素に@<code>{list-style}の値はあまり宣言しないので、このような宣言になっているです。
 
 //list[sanitize-ul-ol][sanitize.cssのulやol要素に対するスタイル宣言]{
 #@mapfile(../codes/reset-css/sanitize-css/ul-ol.css)
@@ -288,8 +285,8 @@ nav ul {
 
 == table要素
 
-table要素のスタイル宣言ですが、Firefoxでは非推奨となった属性にもスタイル宣言をおこなっているのが特色です。
-たとえば@<code>{align}や@<code>{frame}、@<code>{rules}といった属性が挙げられます（@<list>{table-firefox-1}）。
+Firefoxでtable要素の非推奨となった属性にスタイル宣言をしているのが面白いのです。
+たとえば@<code>{align}や@<code>{frame}、@<code>{rules}が挙げられるです（@<list>{table-firefox-1}）。
 
 //list[table-firefox-1][Firefoxで宣言されている非推奨の属性に対してのスタイル宣言（一部）]{
 #@mapfile(../codes/browser/firefox/table-1.css)
@@ -309,8 +306,8 @@ table[rules] {
 #@end
 //}
 
-またFirefox特有の宣言として@<code>{-moz-is-html}という擬似クラスのようなセレクタ宣言があります（@<list>{table-firefox-2}）。
-この宣言が何を示すのかJSFiddleで見てみようとしましたが、特に表示は変わりなく謎のままでした@<fn>{form-firefox}。
+他にもFirefoxだけ@<code>{-moz-is-html}という擬似クラスのようなセレクタ宣言があるです（@<list>{table-firefox-2}）。
+この宣言は何が起こるのか謎なのです。かしこいわれわれでも分からないことはあるのです@<fn>{form-firefox}。
 //footnote[form-firefox][https://jsfiddle.net/f3rp4kmu/]
 
 //list[table-firefox-2][-moz-is-htmlという謎の擬似クラスっぽいセレクタ]{
@@ -324,9 +321,8 @@ table > form:-moz-is-html {
 #@end
 //}
 
-sanitize.cssでは@<code>{border-collapse: collapse;}の宣言がされています（@<list>{sanitize-table}）。
-これはtableの@<code>{border}をセル同士で共有する宣言になります。
-表を表示するときにセルを分けて表示することは少ないため、余計なスタイル宣言を減らせます。
+sanitize.cssでは@<code>{border-collapse: collapse;}の宣言があるです（@<list>{sanitize-table}）。
+これによってtableの@<code>{border}がセル同士で共有されるです。セル同士をくっつけて表示したいときは便利なのです。
 
 //list[sanitize-table][sanitize.cssのtable要素に対する宣言]{
 #@mapfile(../codes/reset-css/sanitize-css/table.css)
@@ -340,15 +336,15 @@ table {
 #@end
 //}
 
-@<code>{border-collapse}の値によって表示がどのように変わるかは@<img>{table-border-collapse}で示すとおりです。
+@<code>{border-collapse}の値が表示へどのように影響するのかは@<img>{table-border-collapse}で示すとおりなのです。
 
 //image[table-border-collapse][border-collapseの宣言によって表示が変わる]{
 //}
 
 == blockquote要素
 
-blockquote要素はFirefoxで@<code>{[type=cite]}という属性に対するスタイル宣言があります（@<list>{blockquote-firefox}）。
-この属性は現在W3Cの仕様には無い仕様ですが、過去にはあったらしくFirefoxではいい感じの見た目になります（@<img>{firefox-blockquote-type-cite}）。
+blockquote要素はFirefoxで@<code>{[type=cite]}という属性へスタイル宣言があるのです（@<list>{blockquote-firefox}）。
+この属性はいまW3Cの仕様には無いですが、過去にはあってFirefoxではいい感じの見た目になるのです（@<img>{firefox-blockquote-type-cite}）。
 
 //list[blockquote-firefox][blockquote要素に対してのスタイル宣言]{
 #@mapfile(../codes/browser/firefox/blockquote.css)
@@ -377,8 +373,7 @@ blockquote[type=cite] {
 //image[firefox-blockquote-type-cite][Firefoxでblockquote[type="cite"\]をプレビューしてみた様子]{
 //}
 
-Eric Meyer's Reset CSSではblockquoteやq要素に対し引用符を消すスタイルが宣言されています（@<list>{eric-meyers-blockquote}）。
-なお、他のReset CSSには特徴的な宣言がありません。
+Eric Meyer's Reset CSSでは、blockquoteやq要素で引用符を消すスタイル宣言があるです（@<list>{eric-meyers-blockquote}）。
 
 //list[eric-meyers-blockquote][Eric Meyer's Reset CSSのblockquote要素に対するスタイル宣言]{
 #@mapfile(../codes/reset-css/eric-meyers-blockquote.css)
@@ -395,22 +390,21 @@ q:before, q:after {
 
 == input要素
 
-input要素はtype属性の値によって挙動が大きく変わります（@<img>{input-types}）。
-そのためChromeのユーザーエージェントスタイルシートでは1123行中295行がinput要素関連のスタイル宣言です。
-Safariに至っては1221行中421行がinput要素関連のスタイル宣言です@<fn>{safari-user-agent-stylesheet-line}。
-//footnote[safari-user-agent-stylesheet-line][Safariの場合iOS向けと思われるスタイル宣言もあるためChromeと比較して行数が多いのかもしれません]
-なおFirefoxは895行中24行がinput要素関連のスタイル宣言です。
+input要素はtype属性の値によって動きが大きく変わるのです（@<img>{input-types}）。まるでパンサーカメレオンのようなのです。
+input要素関連のスタイル宣言はChromeのユーザーエージェントスタイルシートで1123行中295行、Safariは1221行中421行も充てられているのです@<fn>{safari-user-agent-stylesheet-line}。
+Firefoxは895行中24行がinput要素関連のスタイル宣言に充てられているです。
+//footnote[safari-user-agent-stylesheet-line][SafariはiOS向けのスタイル宣言もあるので行数が多いかもしれないです]
 
 //image[input-types][input要素はtype属性の値によって挙動が大きく変わる]{
 //}
 
-Reset CSSのinput要素に対する宣言はnormalize.css、sanitize.css、ressそれぞれで似通っているのですが微妙に違います。
-この項ではそれぞれのライブラリでどのように宣言されているかを解説します。
+Reset CSSのinput要素に対する宣言はnormalize.css、sanitize.css、ressそれぞれで似ていますが微妙に違うのです。
+それぞれのライブラリでどのように宣言されているか解説していくです。
 
 ==={input-normalize} normalize.css
 
-normalize.cssはinput要素に対してブラウザ間の差異を埋める程度に留めています（@<list>{normalize-input}）。
-これもv6.0.0から作者の意見を入れないようにしたnormalize.cssの特徴を示しているといえます。
+normalize.cssはブラウザ間の違いをなくす宣言だけなのです（@<list>{normalize-input}）。
+これもv6.0.0から作者の意見を入れないようにしたnormalize.cssの特徴が示されているのです。
 
 //list[normalize-input][あくまでブラウザ間の差異を埋める程度に留めるnormalize.css]{
 #@mapfile(../codes/reset-css/normalize-css/input.css)
@@ -438,32 +432,10 @@ input { /* 1 */
 #@end
 //}
 
-ちなみに、バージョン5.0.0まではフォントや行間に作者の意見が反映されていました（@<list>{normalize-input-old}）。
-ほとんどの場合@<code>{font-family: sans-serif}はフォームを構成する要素へ対し宣言されることが多い値です。
-そのためnormalize.cssで宣言することで、normalize.cssを使う側では宣言をしなくて済むことを目指していたと思われます。
-
-//list[normalize-input-old][バージョン5.0.0までのnormalize.css]{
-#@mapfile(../codes/reset-css/normalize-css/input-old.css)
-/**
- * 1. Change the font styles in all browsers (opinionated).
- */
-
-button,
-input,
-optgroup,
-select,
-textarea {
-  font-family: sans-serif; /* 1 */
-  font-size: 100%; /* 1 */
-  line-height: 1.15; /* 1 */
-}
-#@end
-//}
-
 ==={input-sanitize} sanitize.css
 
-normalize.cssの宣言を受け継ぎつつ、@<code>{font-size}や@<code>{line-height}の値として@<code>{inherit}が宣言されています（@<list>{sanitize-input}）。
-親要素の宣言を継承することにより、自分でスタイル宣言することを極力減らそうとしています。
+normalize.cssの宣言を元に、@<code>{font-size}や@<code>{line-height}の値として@<code>{inherit}が宣言されているのです（@<list>{sanitize-input}）。
+親要素の宣言を受け継ぐことによって、スタイル宣言することを極力減らすようにしているです。優しいのです。
 
 //list[sanitize-input][normalize.cssより作者の主張が含まれているsanitize.css]{
 #@mapfile(../codes/reset-css/sanitize-css/input.css)
@@ -505,8 +477,8 @@ input { /* 1 */
 #@end
 //}
 
-またinput要素に対する宣言として他にないものとしては@<code>{touch-action: manipulation;}があります（@<list>{sanitize-fix-tap-delay}）。
-ページのスクロールとズームのみを許可する宣言ですが、IE 10ではタップ時の遅延をなくす宣言になります。
+input要素への宣言として他にないものは@<code>{touch-action: manipulation;}なのです（@<list>{sanitize-fix-tap-delay}）。
+ページのスクロールとズームのみを許可する宣言なのですが、IE 10だとタップ時の遅延もなくなるのです。
 
 //list[sanitize-fix-tap-delay][IE 10でタップ時の遅延を無くすCSS]{
 #@mapfile(../codes/reset-css/sanitize-css/fix-tap-delay.css)
@@ -532,10 +504,9 @@ textarea,
 
 ==={input-ress} ress
 
-ressもsanitize.css並かそれ以上に作者の意見が反映されています（@<list>{ress-input}）。
-@<code>{[type="button"]}や@<code>{[type="submit"]}、@<code>{[type="search"]}はブラウザのユーザーエージェントスタイルシートで@<code>{border-radius}と宣言されていますが、ressでは無かったことにしています。
-
-また@<code>{background-color}を透過したり、@<code>{border-style}を無くす宣言があったりと大胆な宣言をしています。
+ressもsanitize.css、もしくはそれ以上に作者の意見が反映されているのです（@<list>{ress-input}）。
+@<code>{[type="button"]}や@<code>{[type="submit"]}、@<code>{[type="search"]}はブラウザのユーザーエージェントスタイルシートで@<code>{border-radius}が適用されているですが、ressでは無かったことになっているです。
+他にも@<code>{background-color}を透過させたり@<code>{border-style}を無くしたり大胆なのです。
 
 //list[ress-input][normalize.cssと同じく主張が強いress]{
 #@mapfile(../codes/reset-css/ress/input.css)
@@ -565,8 +536,8 @@ textarea {
 
 == select要素
 
-select要素はChromeとSafariで@<code>{text-transform: none;}という宣言がされています。
-しかしEdgeとFirefoxでは宣言がないため、normalize.cssとsanitize.cssでは同様の宣言をしています（@<list>{normalize-select}）。
+select要素はChromeとSafariで@<code>{text-transform: none;}の宣言がされているのです。
+しかしEdgeとFirefoxでは宣言がないので、normalize.cssとsanitize.cssには同じ宣言があるです（@<list>{normalize-select}）。
 
 //list[normalize-select][normalize.cssとsanitize.cssではtext-transform: none;の宣言だけ]{
 #@mapfile(../codes/reset-css/normalize-css/select.css)
@@ -584,9 +555,9 @@ select { /* 1 */
 
 ==={select-ress} ress
 
-normalize.cssやsanitize.cssと違い独自路線なのがressです。
-@<code>{text-transform: none;}も宣言されていますが、他にもselect要素らしい見た目を無くす@<code>{appearance}やIE独自の疑似要素に対してスタイルを宣言しています（@<list>{ress-select}）。
-IE独自の疑似要素について書くと、@<code>{::-ms-expand}はドロップダウンを表示するためのボタンを表す疑似要素、@<code>{::-ms-value}はselect要素内の文字を表す疑似要素です@<fn>{ie-pseudo-elements}。
+normalize.cssやsanitize.cssと違って自分の道を歩いているのがressなのです。
+@<code>{text-transform: none;}も宣言していますが、他にもselect要素らしい見た目を無くす@<code>{appearance}やIE独自の疑似要素へスタイルを宣言しているのです（@<list>{ress-select}）。
+@<code>{::-ms-expand}はドロップダウンの項目を見るためのボタンを表す疑似要素で、@<code>{::-ms-value}はselect要素内の文字を表す疑似要素なのです@<fn>{ie-pseudo-elements}。
 //footnote[ie-pseudo-elements][http://subtech.g.hatena.ne.jp/mayuki/20110923/1316786871]
 
 //list[ress-select][ressはselect要素でも独自路線]{
@@ -609,8 +580,8 @@ select::-ms-value {
 
 == button要素
 
-normalize.cssやsanitize.css、ressではWebKitのバグを修正するセレクタ宣言やプロパティと値の宣言がおこなわれています（@<list>{normalize-button}）。
-またFirefoxに対してもbutton要素内に画像を配置したときにボタンの@<code>{border}と画像の間に隙間が空く問題などが修正されています@<fn>{firefox-form-button}。
+normalize.cssやsanitize.css、ressではWebKitのバグを修正するセレクタ宣言やプロパティと値の宣言をしているです（@<list>{normalize-button}）。
+Firefoxでもbutton要素内に画像を置いたときに生まれる@<code>{border}と画像の間にある隙間が埋まるようにしてあるのです@<fn>{firefox-form-button}。
 #@# prh:disable
 //footnote[firefox-form-button][http://jeffreyfrancesco.org/weblog/2011062101/]
 
@@ -656,9 +627,9 @@ button:-moz-focusring,
 
 ==={button-ress} ress
 
-ressはnormalize.cssやsanitize.cssと同じ宣言もしていますが、ress独自の宣言として@<code>{cursor: pointer;}や@<code>{overflow: visible;}があります（@<list>{ress-button}）。
-@<code>{cursor: pointer;}はユーザーエージェントスタイルシートでカーソルへ対する宣言がないため、ress側で宣言しています。
-@<code>{overflow: visible;}はコメントにもありますが、IE8〜11ではbutton要素へ対して@<code>{hidden}という値が宣言されているため、それでは不都合があると考えたのか@<code>{overflow: visible;}が宣言されています。
+ressはnormalize.cssやsanitize.cssと同じ宣言もあるですが、独自に@<code>{cursor: pointer;}や@<code>{overflow: visible;}が宣言されているです（@<list>{ress-button}）。
+@<code>{cursor: pointer;}はユーザーエージェントスタイルシートでカーソルの宣言がないのでressで宣言しているのです。
+@<code>{overflow: visible;}はコメントにもあるように、IE8〜11はbutton要素の値として@<code>{hidden}が宣言されているのです。その宣言を無くすために@<code>{overflow: visible;}が宣言されているです。
 
 //list[ress-button][ressのbutton要素へ対する宣言]{
 #@mapfile(../codes/reset-css/ress/button.css)
@@ -679,11 +650,11 @@ button {
 
 == textarea要素
 
-textarea要素はnormalize.cssやsanitize.css、ressで似通った宣言になっています。
+textarea要素はnormalize.cssやsanitize.css、ressで似た宣言がされているです。
 
 ==={textarea-normalize} normalize.css
 
-normalize.cssの宣言は単純で、IE向けにtextarea要素内のスクロールバーを消すだけの宣言がされています（@<list>{normalize-textarea}）。
+normalize.cssの宣言は単純なのです。IE向けにtextarea要素内のスクロールバーを消すだけの宣言だけです（@<list>{normalize-textarea}）。
 
 //list[normalize-textarea][normalize.cssのtextarea要素へ対する宣言]{
 #@mapfile(../codes/reset-css/normalize-css/textarea.css)
@@ -699,7 +670,7 @@ textarea {
 
 ==={textarea-sanitize-and-ress} sanitize.cssとress
 
-sanitize.cssとressでは、normalize.cssでされていた宣言に加え、textarea要素のリサイズできる方向を縦方向にのみ制限する宣言がされています（@<list>{sanitize-and-ress-textarea}）。
+sanitize.cssとressは、normalize.cssの宣言に加えてtextarea要素がリサイズできる方向を縦だけにする宣言がされているのです（@<list>{sanitize-and-ress-textarea}）。
 
 //list[sanitize-and-ress-textarea][sanitize.cssとressのtextarea要素へ対する宣言]{
 #@mapfile(../codes/reset-css/sanitize-css/textarea.css)
@@ -718,8 +689,8 @@ textarea {
 ==={textarea-yui3} YUI 3 Reset CSS
 
 #@# prh:disable
-書かれた時期が古いため、IE 7以下に適用されるCSSハックが書かれています（@<list>{yui3-textarea}）。
-この@<code>{*font-size:100%}という書き方については@ITの「IE 6とIE 7のCSSハック16選」内にあるアスタリスクハック@<fn>{atmarkit-css}を見てください。
+書かれた時期が古いので、IE 7以下で使えるCSSハックが書かれているです（@<list>{yui3-textarea}）。
+@<code>{*font-size:100%}という書き方は@ITの「IE 6とIE 7のCSSハック16選」内にある@<kw>{アスタリスクハック}@<fn>{atmarkit-css}を見るのです。…見なくてもよいのです。
 //footnote[atmarkit-css][http://www.atmarkit.co.jp/fwcr/design/benkyo/csshack02/03.html#13]
 
 //list[yui3-textarea][YUI 3のtextarea要素へ対する宣言]{
@@ -737,11 +708,10 @@ select {
 
 == まとめ
 
-Reset CSSといってもライブラリによって思想や宣言内容が違います。
-その中から自分が作ろうとしているものに応じてReset CSSを選択するのが重要です。
+Reset CSSといってもライブラリによって思想や宣言内容が違うのです。フレンズによって得意なことは違うのです。
+その中から自分が作ろうとしているものに適したReset CSSを選ぶのが重要なのです。カレーのスパイスが重要なのと一緒なのです。
 
-個人的な意見としては、Eric Meyer's Reset CSSやnormalize.css、sanitize.cssはブラウザ既定の見た目を大幅に上書きしない場面で使えます。
-たとえば、企業の公式Webサイトや1ページで収まるようなキャンペーンサイトが挙げられます。
+われわれとしては、Eric Meyer's Reset CSSやnormalize.css、sanitize.cssはブラウザ既定の見た目を大幅に上書きしなければ使えるです。
+たとえば会社のWebサイトやキャンペーンサイトが挙げられるのです。
 
-ressはその逆で、大幅にブラウザ既定の見た目を書き換えたい場合に使えます。
-たとえばWebアプリやElectronなどで作るデスクトップアプリなどが挙げられます。
+ressは大幅にブラウザ既定の見た目を書き換えたいときに使えるです。たとえばWebアプリやElectronで作るデスクトップアプリなどです。
