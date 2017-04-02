@@ -53,7 +53,10 @@
 
     <main class="book-body col-md-10">
       <h1><a id="h1"></a><span class="secno">第1章　</span>Reset CSSとは何か</h1>
-<p>Reset CSSは、Web上のページを読み込んだときに既定で適用されるスタイル宣言（ユーザーエージェントスタイルシートとも呼ばれます）をリセットするものです。Reset CSSは<b class="kw">Hard reset</b><!-- IDX:Hard reset -->と呼ばれる「ユニバーサル（全称）セレクタを使ってすべてのmarginとpaddingを0にする」手法から始まりました（リスト1.1）。そこから今日にいたるまでさまざまな手法が開発されています。</p>
+<p>ここからReset CSSについて解説するよ！かばんちゃんから教えてもらったことを、できるだけ分かりやすく私が教えるからね！</p>
+<p>Reset CSSっていうのは、Webページを読み込んだときに既定で適用されるスタイル<a id="fnb-user-agent-stylesheet" href="#fn-user-agent-stylesheet" class="noteref" epub:type="noteref">*1</a>をリセットするものだよ！</p>
+<p><b class="kw">Hard reset</b><!-- IDX:Hard reset -->っていう「ユニバーサル（全称）セレクタを使ってすべてのmarginとpaddingを0にする」ところから始まったんだよ！（リスト1.1）そこから今までさまざまなReset CSSのフレンズが生まれたんだって！すっごーい！</p>
+<div class="footnote" epub:type="footnote" id="fn-user-agent-stylesheet"><p class="footnote">[*1] ユーザーエージェントスタイルシートとも呼ばれます</p></div>
 <div class="caption-code">
 <p class="caption">リスト1.1: 初期のReset CSSであるHard reset</p>
 <pre class="list">* {
@@ -64,7 +67,7 @@
 </div>
 
 <h2><a id="h1-1"></a><span class="secno">1.1　</span>なぜReset CSSはユーザーエージェントスタイルシートを上書きできるか</h2>
-<p>Reset CSSはユーザーエージェントスタイルシートでの宣言を上書きすることにより、スタイル宣言をリセットしています。なぜリセットできるのでしょうか？それはスタイル宣言がされた場所（オリジン）によって適用されるスタイルの優先順位があるためです。CSS Cascading and Inheritance Level 3（<a href="https://www.w3.org/TR/css-cascade-3/#cascading" class="link">https://www.w3.org/TR/css-cascade-3/#cascading</a>）から優先順を引用すると次のとおりです。</p>
+<p>Reset CSSはユーザーエージェントスタイルシートの宣言を上書きすることで、既定で適用されるスタイルをリセットしているんだよ！なんでリセットできるかって？それはスタイル宣言がされたちほー（オリジン）によって適用されるスタイルの優先順位があるためなんだって。よくわかんないけど、CSS Cascading and Inheritance Level 3（<a href="https://www.w3.org/TR/css-cascade-3/#cascading" class="link">https://www.w3.org/TR/css-cascade-3/#cascading</a>）から優先順位を引用すると次のとおりみたい。</p>
 <ol>
 <li>transitionの宣言</li>
 <li>!important付きのユーザーエージェントスタイルシートでの宣言</li>
@@ -77,11 +80,12 @@
 <li>利用者による宣言</li>
 <li>ユーザーエージェントスタイルシートでの宣言</li>
 </ol>
-<p>ユーザーエージェントスタイルシートの宣言より作者による宣言、つまりHTMLファイルからリンクされたCSSなどの宣言が優先されるため、ユーザーエージェントスタイルシートのスタイル宣言を上書きできます。</p>
+<p>たとえばユーザーエージェントスタイルシートの宣言より、HTMLファイルからリンクされたCSS内の宣言が優先されるんだって。だからユーザーエージェントスタイルシートのスタイル宣言を上書きできるんだよー！…うー、ボスー！ちょっとよく分かんないよー！</p>
 
 <h2><a id="h1-2"></a><span class="secno">1.2　</span>なぜReset CSSを使うのか</h2>
-<p>Reset CSSが使われる理由は、ブラウザが既定で読み込むユーザーエージェントスタイルシートがブラウザ間で差異があるためです。例として<code class="inline-code tt">h1</code>要素と<code class="inline-code tt">p</code>要素のみ定義したHTMLをブラウザで見てみます。Firefoxはセリフ<a id="fnb-font-serif" href="#fn-font-serif" class="noteref" epub:type="noteref">*1</a>がないフォントで表示されます（図1.1）が、Safariはセリフがあるフォントで表示されます（図1.2）。</p>
-<div class="footnote" epub:type="footnote" id="fn-font-serif"><p class="footnote">[*1] 文字の線の端にある小さな飾りのことです</p></div>
+<p>Reset CSSを使うのは、ブラウザが既定で読み込むユーザーエージェントスタイルシートがブラウザ間で違いがあるからなんだよ！たとえば<code class="inline-code tt">h1</code>要素と<code class="inline-code tt">p</code>要素だけ書いたHTMLをブラウザで見てみるよ。</p>
+<p>するとFirefoxはセリフ<a id="fnb-font-serif" href="#fn-font-serif" class="noteref" epub:type="noteref">*2</a>がないフォントだけど（図1.1）、Safariはセリフがあるフォントだよ（図1.2）。ふっしぎー！</p>
+<div class="footnote" epub:type="footnote" id="fn-font-serif"><p class="footnote">[*2] 文字の線の端にある小さな飾りのことです</p></div>
 <div id="firefox-font" class="image">
 <img src="images/firefox-font.png" alt="Firefoxでプレビューしたときの見た目" />
 <p class="caption">
@@ -94,10 +98,10 @@
 図1.2: Safariでプレビューしたときの見た目
 </p>
 </div>
-<p>このように単純なHTMLでも見た目に差異があります。h1要素やp要素の他にも差異はあるため、それを吸収するために何らかのReset CSSライブラリを使うか自分で差異を吸収する必要があります。</p>
+<p>こんな感じで単純なHTMLにも見た目に違いはあるんだよ！ブラウザによって得意なことは違うからなんらかのReset CSSライブラリを使うか自分で違いを吸収する必要があるんだってー！</p>
 
 <h2><a id="h1-3"></a><span class="secno">1.3　</span>Reset CSSを使わない場面</h2>
-<p>Reset CSSを使う理由として「ブラウザの既定で適用されるスタイル定義の差異を吸収するため」と書きました。そのため<b class="kw">NW.js</b><!-- IDX:NW.js -->や<b class="kw">Electron</b><!-- IDX:Electron -->といったChromiumしか存在しない環境ではReset CSSを使う必要はなく、必要に応じてユーザーエージェントスタイルシートのスタイル定義をリセットするとよいです。</p>
+<p>Reset CSSを使うのは、ブラウザが既定で適用するスタイルがブラウザ間で違いがあるからだけど、<b class="kw">NW.js</b><!-- IDX:NW.js -->？や<b class="kw">Electron</b><!-- IDX:Electron -->？みたいな<b class="kw">Chromium</b><!-- IDX:Chromium -->？しか無いちほーではReset CSSを使わなくていいんだって！</p>
     </main>
 
     <nav class="book-navi">
