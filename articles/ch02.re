@@ -28,7 +28,7 @@ Hard resetが発表されたときは、ブラウザ間で@<code>{margin}や@<co
 
 == Eric Meyer's Reset CSS
 
-Eric MeyerというCSSへ対しとても貢献している人がいるであります。Eric Mayerの実績はすごいでありますよ！@<fn>{eric-meyer-linkedin}
+Eric MeyerというCSSへ対しとても貢献している人がいるであります。Eric Meyerの実績はすごいでありますよ！@<fn>{eric-meyer-linkedin}
 
   * オライリーから出版された@<kw>{CSS: The Definitive Guide}@<fn>{css-the-definitive-guide}（日本語版は@<kw>{CSS完全ガイド}@<fn>{css-complete-guide}）を執筆
   * 上記の本以外にも多数の本を執筆@<fn>{eric-meyer-biblio}
@@ -73,14 +73,14 @@ Yahoo!が主に開発していたYUI libraryに含まれるReset CSSでありま
 //footnote[yui2-2008-2][https://github.com/yui/yui2/blob/324b3755ea4f3ac643572eb839d85c09801aac5f/build/reset/reset.css]
 //footnote[yui2-reset][https://github.com/yui/yui2/blob/master/src/reset/css/reset.css]
 
-== HTML5 Docter Reset CSS
+== HTML5 Doctor Reset CSS
 
-HTML5を使った開発について発信していた@<kw>{HTML5 Docter}で発表されたReset CSSであります！
-HTML5 Docter Reset CSSのソースコードは@<href>{http://html5doctor.com/html-5-reset-stylesheet/}であります！
+HTML5を使った開発について発信していた@<kw>{HTML5 Doctor}で発表されたReset CSSであります！
+HTML5 Doctor Reset CSSのソースコードは@<href>{http://html5doctor.com/html-5-reset-stylesheet/}であります！
 
-HTML5 Docter Reset CSSはEric Meyer's Reset CSSのv1.0を元に作られたものでありますよ。
+HTML5 Doctor Reset CSSはEric Meyer's Reset CSSのv1.0を元に作られたものでありますよ。
 Eric Meyer's Reset CSSのv1.0は作られた時期が2008年2月12日なので、HTML5で追加された要素のスタイル宣言がなかったであります。
-HTML5 Docter Reset CSSはそこにHTML5で追加された要素のスタイル宣言を追加しているであります。他にもいろんな要素に独自のスタイル宣言をしているであります！
+HTML5 Doctor Reset CSSはそこにHTML5で追加された要素のスタイル宣言を追加しているであります。他にもいろんな要素に独自のスタイル宣言をしているであります！
 
 ちょっと眠くなったので、ここからはビーバー殿にまかせてわたしは寝るであります。
 
