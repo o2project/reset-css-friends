@@ -1,5 +1,0 @@
-<redpen-conf lang="en">
-    <validators>
-        <validator name="NumberOfCharacters"/>
-    </validators>
-</redpen-conf>
